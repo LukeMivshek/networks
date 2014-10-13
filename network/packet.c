@@ -1,13 +1,14 @@
 #include <xinu.h>
 
 void printPacket(uchar[], int);
+void printIP(uchar[]);
 void Build_Ethernet_Frame(void);
 void Build_IPv4_Header(void);
 void Build_UDP_Header(void);
 void Build_DHCP_Header(void);
 void sendDiscoverPacket(void);
 void sendArpReply(uchar[]);
-void sendEchoRequestPacket(uchar[], uchar[], int);
+void sendEchoRequestPacket(uchar[], uchar[], int, int);
 
 /* DHCP */ 
 struct ethergram *disc_ethergram;
@@ -241,7 +242,7 @@ void sendArpReply(uchar packet[]){
  * Send an echo request given an IP Address and Mac Address
  * this is called from sendPing shell command
  */
-void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid){
+void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining){
 	printf("Sending echo request\n");
 
 	//declare and zero out packet
@@ -277,5 +278,16 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid){
 	ping_icmpgram->code = ICMP_QUERY_CODE;
 	ping_icmpgram->chksum = 0; //temporary
 	ping_icmpgram->ident = pid;
+	ping_icmpgram->seq = pingsRemaining;
 	
+	//setting lengths and checksums
+	int end = (int)&ping_icmpgram->data[60];
+	ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
+	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
+	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
+
+	printf("Sending ping %d to ", pingsRemaining);
+	printIP(IP);
+	printf("\n");
+	write(ETH0, packet, (end-(int)&ping_ethergram));
 }

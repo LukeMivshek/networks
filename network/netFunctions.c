@@ -3,6 +3,7 @@
 #include <xinu.h>
 
 int parseIP(char*, uchar*);
+void printIP(uchar[]);
 void printNumberedPacket(uchar[], int);
 void printPacket(uchar[], int);
 
@@ -21,6 +22,13 @@ int parseIP(char *ipstr, uchar *ip){
 			ipstr++;
 	}
 	return OK;
+}
+
+void printIP(uchar ip[]){
+	int d = 0;
+	for(d = 0; d < IP_ADDR_LEN; ip++){
+		printf("%d ", ip[0]);
+	}
 }
 
 void printNumberedPacket(uchar packet[], int length){
