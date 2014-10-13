@@ -1,0 +1,110 @@
+xsh_test.o: ../shell/xsh_test.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+shell-commands.o: ../shell/shell-commands.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+xsh_dhcpsnoop.o: ../shell/xsh_dhcpsnoop.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+xsh_dhcp.o: ../shell/xsh_dhcp.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+xsh_arp.o: ../shell/xsh_arp.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+netInit.o: ../network/netInit.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+netDaemon.o: ../network/netDaemon.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+dhcpClient.o: ../network/dhcpClient.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+packet.o: ../network/packet.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h
+arpDaemon.o: ../network/arp/arpDaemon.c /usr/include/stdc-predef.h \
+ ../include/xinu.h ../include/kernel.h ../include/platform.h \
+ ../include/stdarg.h ../include/stdlib.h ../include/stdio.h \
+ ../include/device.h ../include/string.h ../include/ctype.h \
+ ../include/mips.h ../include/proc.h ../include/interrupt.h \
+ ../include/queue.h ../include/semaphore.h ../include/bufpool.h \
+ ../include/clock.h ../include/memory.h ../include/nvram.h \
+ ../include/sbchipc.h ../include/sbconfig.h ../include/backplane.h \
+ ../include/bcm4713.h ../include/bcmswitch.h ../include/ether.h \
+ ../include/vlan.h ../include/network.h ../include/uart.h \
+ ../include/tty.h ../include/shell.h

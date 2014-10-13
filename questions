@@ -1,0 +1,9 @@
+Did I do the Makefile right? (NETARP)
+
+What should this table look like in include.h?
+	whats the right way to do this?
+	what kind of data entry/removing are we doing (adding to 1st spot, kicking out last)
+
+Do we need another daemon in addition to arpDaemon to do the 3 tries?
+
+what is the ' file in include
