@@ -52,7 +52,8 @@ void sendPings(uchar ipAddr[], int numOfPings){
 	for(q = 0; q < numOfPings; q++){
 		//send one packet then sleep
 		printf("Sending echo request\n");
-		//sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid());
+		//test change		
+//sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid());
 		sleep(2000);
 	}
 
