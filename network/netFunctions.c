@@ -26,8 +26,8 @@ int parseIP(char *ipstr, uchar *ip){
 
 void printIP(uchar ip[]){
 	int d = 0;
-	for(d = 0; d < IP_ADDR_LEN; ip++){
-		printf("%d ", ip[0]);
+	for(d = 0; d < IP_ADDR_LEN; d++){
+		printf("%d ", ip[d]);
 	}
 }
 

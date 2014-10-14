@@ -274,11 +274,11 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	memcpy(&ping_ipgram->dst[0], &IP[0], IP_ADDR_LEN);
 
 	//ICMP header
-	ping_icmpgram->type = ICMP_REQUEST;
-	ping_icmpgram->code = ICMP_QUERY_CODE;
-	ping_icmpgram->chksum = 0; //temporary
-	ping_icmpgram->ident = pid;
-	ping_icmpgram->seq = pingsRemaining;
+	//ping_icmpgram->type = ICMP_REQUEST;
+	//ping_icmpgram->code = ICMP_QUERY_CODE;
+	//ping_icmpgram->chksum = 0; //temporary
+	//ping_icmpgram->ident = pid;
+	//ping_icmpgram->seq = pingsRemaining;
 	
 	//setting lengths and checksums
 	int end = (int)&ping_icmpgram->data[60];
@@ -289,5 +289,6 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	printf("Sending ping %d to ", pingsRemaining);
 	printIP(IP);
 	printf("\n");
+	printPacket(packet, PKTSZ);
 	write(ETH0, packet, (end-(int)&ping_ethergram));
 }
