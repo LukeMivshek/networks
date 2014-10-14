@@ -27,12 +27,25 @@ command xsh_ping(int nargs, char *args[]){
 			printf("Error parsing IP\n");
 			return OK;
 		}
-
+		printf("calling sendPing from two args with %d number of pings", numOfPings);
 		sendPings(pingIPAddress, numOfPings);
 
 	//a number is given, use that as number of pings
 	}else if(nargs == 3){
-		sendPings(pingIPAddress, numOfPings);
+			numOfPings = 0;
+			char *pings = args[2];
+			while(*pings){
+				if(isdigit((uchar)*pings)){
+					numOfPings *= 10;
+					numOfPings += *pings - '0';	
+				}else{
+					printf("Incorrect 3rd argument of ping, should be a numerical value\n");
+				}
+				pings++;
+			}
+			printf("calling sendPing from three args with %d number of pings", numOfPings);
+			sendPings(pingIPAddress, numOfPings);
+
 	}else{
 		printf("Incorrect number of args\n");
 	}
@@ -54,7 +67,7 @@ void sendPings(uchar ipAddr[], int numOfPings){
 		printf("Sending echo request\n");
 		
 		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
-		sleep(2000);
+		sleep(1000);
 	}
 
 	printf("Done sending ping requests\n");
