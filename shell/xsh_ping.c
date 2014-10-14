@@ -11,6 +11,7 @@ int getEntry(uchar[]);
 char* ipPtr;
 int parseIP(char*, uchar *);
 uchar pingIPAddress[IP_ADDR_LEN];
+bool existsInTable(uchar[]);
 
 command xsh_ping(int nargs, char *args[]){
 	//zero out IP Address variable
@@ -27,7 +28,7 @@ command xsh_ping(int nargs, char *args[]){
 			printf("Error parsing IP\n");
 			return OK;
 		}
-		printf("calling sendPing from two args with %d number of pings", numOfPings);
+		printf("calling sendPing from two args with %d number of pings\n", numOfPings);
 		sendPings(pingIPAddress, numOfPings);
 
 	//a number is given, use that as number of pings
@@ -43,7 +44,7 @@ command xsh_ping(int nargs, char *args[]){
 				}
 				pings++;
 			}
-			printf("calling sendPing from three args with %d number of pings", numOfPings);
+			printf("calling sendPing from three args with %d number of pings\n", numOfPings);
 			sendPings(pingIPAddress, numOfPings);
 
 	}else{
@@ -60,11 +61,16 @@ void sendPings(uchar ipAddr[], int numOfPings){
 
 	//look up the index in the table with getEntry
 	int index = getEntry(ipAddr);
+	
+	if(index == -1){
+		printf("IP requested for Ping could not be resolved.\n");
+		return;
+	}	
 
 	int q = 0;
 	for(q = 0; q < numOfPings; q++){
 		//send one packet then sleep
-		printf("Sending echo request\n");
+		printf("Sending echo request with index %d\n", index);
 		
 		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
 		sleep(1000);
@@ -78,37 +84,40 @@ void sendPings(uchar ipAddr[], int numOfPings){
  */
 int getEntry(uchar ipAddr[]){
 	bool mismatch = FALSE;
+	if(existsInTable(ipAddr)){
 
-	int a = 0;
-	while(a < ARPENT_LEN){ 
-		//if it is not in the empty state, compare IP Addresses
-		if(arptab.arps[a].state != ARPENT_STATE_EMPTY){
-			int u = 0;
-			for(u = 0; u < IP_ADDR_LEN; u++){
-				if(arptab.arps[a].ipAddress[u] != ipAddr[u]){
-					mismatch = TRUE;
-					break;
+		int a = 0;
+		while(a < ARPENT_LEN){ 
+			//if it is not in the empty state, compare IP Addresses
+			if(arptab.arps[a].state != ARPENT_STATE_EMPTY){
+				int u = 0;
+				for(u = 0; u < IP_ADDR_LEN; u++){
+					if(arptab.arps[a].ipAddress[u] != ipAddr[u]){
+						mismatch = TRUE;
+						break;
+					}
 				}
-			}
 			
-			//no mismatch was found
-			if(!mismatch){
-				printf("getMac returning: ");
-				int w = 0;
-				for(w = 0; w < ETH_ADDR_LEN; w++){
-					printf("%02X ", arptab.arps[a].macAddress[w]);
+				//no mismatch was found
+				if(!mismatch){
+					printf("getMac returning: ");
+					int w = 0;
+					for(w = 0; w < ETH_ADDR_LEN; w++){
+						printf("%02X ", arptab.arps[a].macAddress[w]);
+					}
+					printf("\n");
+					return a;	
 				}
-				printf("\n");
-				return a;	
+			//its in the free state, skip it
+			}else{
+				a++;
 			}
-		//its in the free state, skip it
-		}else{
-			a++;
 		}
 	}
 
 	printf("Returning SYSERR in getMac, no entry found based on IP Address\n");
 	return SYSERR;	
+	
 }
 
 
