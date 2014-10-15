@@ -252,7 +252,7 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	//Create struct pointers for organization
 	struct ethergram *ping_ethergram = (struct ethergram*)packet;
 	struct ipgram *ping_ipgram = (struct ipgram*)ping_ethergram->data;
-	struct icmpgram *ping_icmpgram = (struct icmpgram*)disc_ipgram->opts;
+	struct icmpgram *ping_icmpgram = (struct icmpgram*)ping_ipgram->opts;
 	
 	//Dest address
 	memcpy(&ping_ethergram->dst[0], &MAC[0], ETH_ADDR_LEN);
