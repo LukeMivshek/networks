@@ -7,10 +7,13 @@ int Get_Ethergram_Type(uchar[]);
 void printPacket(uchar[], int);
 bool Is_Our_Offer(int,int,int,int);
 bool Is_Our_ACK(int, int, int, int);
+bool Is_Echo_Reply(uchar[]);
 void Print_Source_Address(uchar[]);
 struct packet netD_pkt;
 struct packet *pktPointer;
 void setMyIP(uchar[]);
+void printNumberedPacket(uchar packet[], int length);
+
 
 /**
  * reads from ethernet device and decides what to do with packets.
@@ -77,7 +80,24 @@ void netDaemon(int ETH_0){
 		
 		//handling IPV4 packets (homework 2)
 		if(packetType == ETYPE_IPv4){
+			printf("ICMP Check: Packet: %02X , with %02X\n", netD_pkt.payload[23], IPv4_PROTO_ICMP);	
 			
+			printNumberedPacket(netD_pkt.payload, 64);
+			//is ICMP
+ 			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
+				printf("Is ICMP Packet\n");
+
+				if(Is_Echo_Reply(netD_pkt.payload)){
+						
+					pktPointer = malloc(sizeof(struct packet));
+			
+					//Copy current packet to amlloced space
+					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
+					//send to icmp daemon
+					send(icmp_pid, (int)pktPointer);
+				}
+			}
+
 			//since we know its an ipv4, we know where dhcp stuff is
 			int packet_tag = netD_pkt.payload[282];
 			int packet_length = netD_pkt.payload[283];
@@ -244,4 +264,17 @@ void setMyIP(uchar packet[]){
 		}
 		//printf("%02X ", myIP[m]);
 	}
+}
+
+bool Is_Echo_Reply(uchar packet[]){
+	printf("Is echo check: ICMP Type: %02X , with %02X\n", packet[34], ICMP_REPLY);
+	if(packet[34] == ICMP_REPLY){
+		printf("Returning true in Is_Echo_Reply\n");
+		return TRUE;
+	}else{
+		printf("Returning false in Is_Echo_Reply\n");
+		return FALSE;
+	}
+	printf("Returning SYSERR in Is_Echo_Reply\n");
+	return SYSERR;
 }

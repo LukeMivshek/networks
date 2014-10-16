@@ -289,6 +289,6 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	printf("Sending ping %d to ", pingsRemaining);
 	printIP(IP);
 	printf("\n");
-	printPacket(packet, PKTSZ);
+	printPacket(packet, 64);
 	write(ETH0, packet, (end-(int)&ping_ethergram));
 }
