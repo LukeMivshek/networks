@@ -283,12 +283,13 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	//setting lengths and checksums
 	int end = (int)&ping_icmpgram->data[60];
 	ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
-	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
+	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
+	printf("Length is %d", ping_ipgram->len);
 	printf("Sending ping %d to ", pingsRemaining);
 	printIP(IP);
 	printf("\n");
-	printPacket(packet, 64);
+	printPacket(packet, ARPSZ);
 	write(ETH0, packet, (end-(int)&ping_ethergram));
 }
