@@ -257,6 +257,7 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	struct ipgram *ping_ipgram = (struct ipgram*)ping_ethergram->data;
 	struct icmpgram *ping_icmpgram = (struct icmpgram*)ping_ipgram->opts;
 	
+	//control(ETH0, ETH_CTRL_GET_MAC, (ulong)ping_ethergram->dst, 0);
 	int y;
 	//Dest address
 	for(y = 0; y < ETH_ADDR_LEN; y++){
@@ -272,11 +273,12 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	ping_ipgram->ver_ihl = 69;
 	ping_ipgram->tos = IPv4_TOS_ROUTINE;
 	ping_ipgram->len = 0; //temporary
-	ping_ipgram->id = 0xED14;
+	ping_ipgram->id = pingsRemaining;
 	ping_ipgram->flags_froff = htons(IPv4_FLAG_DF<<13);
 	ping_ipgram->ttl = IPv4_TTL;
 	ping_ipgram->proto = IPv4_PROTO_ICMP;
 	ping_ipgram->chksum = 0; //temporary
+	//ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4*(ping_ipgram->ver_ihl & IPv4_IHL)));
 	memcpy(&ping_ipgram->src[0], &myIP[0], IP_ADDR_LEN);
 	memcpy(&ping_ipgram->dst[0], &IP[0], IP_ADDR_LEN);
 
@@ -293,8 +295,8 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 
 	//setting lengths and checksums
 	int end = (int)&ping_icmpgram->data[60];
-	ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
-	//ping_ipgram->len = htons(0x0058);
+	//ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
+	ping_ipgram->len = htons(0x003C);
 	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
 	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
@@ -304,7 +306,7 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	printIP(IP);
 	printf("\n");
 	printPacket(packet, ARPSZ);
-	write(ETH0, packet, 64);
+	printf("%d bytes written\n", write(ETH0, packet, PKTSZ));
 	return;
 }
 
