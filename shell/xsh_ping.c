@@ -44,8 +44,10 @@ command xsh_ping(int nargs, char *args[]){
 				}
 				pings++;
 			}
-			printf("calling sendPing from three args with %d number of pings\n", numOfPings);
-			sendPings(pingIPAddress, numOfPings);
+			ipPtr = args[1];
+			if(parseIP(ipPtr, pingIPAddress)){
+				sendPings(pingIPAddress, numOfPings);
+			}
 
 	}else{
 		printf("Incorrect number of args\n");
@@ -61,7 +63,10 @@ command xsh_ping(int nargs, char *args[]){
  * waits for message from netDaemon and collects data, prints at the end
  */
 void sendPings(uchar ipAddr[], int numOfPings){
-
+	int time = 0;
+	int transmit = 0;
+	int drop = 0;
+	int temp;
 	//look up the index in the table with getEntry
 	int index = getEntry(ipAddr);
 	
@@ -69,23 +74,30 @@ void sendPings(uchar ipAddr[], int numOfPings){
 		printf("IP requested for Ping could not be resolved.\n");
 		return;
 	}	
-
+	int totalTime = clocktime;
 	int q = 0;
 	for(q = 0; q < numOfPings; q++){
 		//send one packet then wait on reply (comes from netdaemon)
-		printf("Sending echo request with index %d\n", index);
-		
+		printf("");
+		time = clocktime;
 		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
 		
 		//wait on the response from net daemon
 		message msg = recvtime(1500);
-		
+		if(msg < 0){
+			drop++;				
+		}else{
+			transmit++;
+			time -= clocktime;
+			printf("time: %dms\n", time);
+		}
 		int pckstrt = (int)msg;
 
-		printf("in send pings, pkstrt: %d\n", pckstrt);
-		
 	}
+	totalTime = clocktime - totalTime;
 	printf("Done sending ping requests\n");
+	printf("-----Ping Statistics-----\n");
+	printf("%d packets transmitted, %d packets dropped, total time of %dms\n", transmit, drop, time);
 }
 
 /*

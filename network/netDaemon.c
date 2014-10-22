@@ -97,25 +97,24 @@ void netDaemon(int ETH_0){
 			//is ICMP
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
 
-				if(Is_Echo_Request(netD_pkt.payload)){
+				if(Is_Our_Echo_Reply(netD_pkt.payload)){
 				
+					//message pass to the shell, using the pid from the packet
+					pktPointer = malloc(sizeof(struct packet));
+					
+					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
+					int shellPid = netD_pkt.payload[38];
+					printf("%d bytes received from %d.%d.%d.%d: icmp_seq = %d ", netD_pkt.payload[17],netD_pkt.payload[26], netD_pkt.payload[27], netD_pkt.payload[28], netD_pkt.payload[29], netD_pkt.payload[40]);
+					send(shellPid, 1);
+	
+				}else if(Is_Echo_Request(netD_pkt.payload)){
+	
 					pktPointer = malloc(sizeof(struct packet));
 			
 					//Copy current packet to amlloced space
 					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
 					//send to icmp daemon
 					send(icmp_pid, (int)pktPointer);
-				}else if(Is_Our_Echo_Reply(netD_pkt.payload)){
-					//message pass to the shell, using the pid from the packet
-					pktPointer = malloc(sizeof(struct packet));
-					
-					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
-					printf("sending pointer to shell\n");
-
-					int shellPid = netD_pkt.payload[38];
-
-					send(shellPid, (int)pktPointer);
-	
 				}else{
 					printf("Incoming ICMP is neither request or reply\n");
 				}
@@ -289,18 +288,14 @@ void setMyIP(uchar packet[]){
  * meaning it is an icmp reply directed at us
  */
 bool Is_Our_Echo_Reply(uchar packet[]){
-	printf("Is echo check: ICMP Type: %02X , with %02X\n", packet[34], ICMP_REPLY);
 	if(packet[34] == ICMP_REPLY){
-		printf("Is of ICMP_REPLY type\n");
-		
 		int x = 0; 
 		for(x = 0; x < IP_ADDR_LEN; x++){
-			if(packet[26 + x] != myIP[x]){
+			if(packet[30 + x] != myIP[x]){
 				printf("My IP mismatch packet destination address, returning false\n");
 				return FALSE;
 			}
 		}
-		printf("My IP and packet destination IP match\n");
 		return TRUE;
 	}else{
 		printf("Returning false in Is_Echo_Reply, not type ICMP_REPLY\n");

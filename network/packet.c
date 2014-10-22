@@ -284,7 +284,6 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
 	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
-
 	write(ETH0, packet, PKTSZ);
 	return;
 }
