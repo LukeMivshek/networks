@@ -13,7 +13,9 @@ struct packet netD_pkt;
 struct packet *pktPointer;
 void setMyIP(uchar[]);
 void printNumberedPacket(uchar packet[], int length);
+void Print_Entire_Packet(uchar[]);
 
+bool snoopActive;
 
 /**
  * reads from ethernet device and decides what to do with packets.
@@ -35,10 +37,10 @@ void netDaemon(int ETH_0){
 
 	//spawn dhcpClient and get our own IP
 	ready(dhcp_pid = create((void *)dhcpClient, INITSTK, 40, "dhcp_client", 1,ETH_0), 0);
-	
 	//send dhcp discover, method in packet.c	
 	sendDiscoverPacket();
-
+	
+	snoopActive = FALSE;
 	//spawn arpDaemon
 	ready(arp_pid = create((void *)arpDaemon, INITSTK, 41, "arp_daemon",0),0);	
 
@@ -52,26 +54,25 @@ void netDaemon(int ETH_0){
 		netD_pkt.interface = ETH_0;
 		//Get the packet type and handle them appropriately
 		int packetType = Get_Ethergram_Type(netD_pkt.payload);
+
 		
+		if(snoopActive){
+			Print_Entire_Packet(netD_pkt.payload);
+		}			
+
+
 		/* Handling ARP Packets 
  	         * (Homework 3)
  	         * send packet over to arpDaemon to be evaluated 
  	         */
-		if(packetType == ETYPE_ARP){
-
-			//Debug print
-			//Print_Packet_Fields(netD_pkt.payload, ARPSZ);
-			
+		if(packetType == ETYPE_ARP){	
+		
 			//malloc space for the packet being sent to arpDaemon to handle
 			pktPointer = malloc(sizeof(struct packet));
 			
 			//Copy current packet to amlloced space
 			memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
 			
-			//Debug prints
-			//printf("Sending packet to arpDaemon\n");
-			//printf("Packet Start in ND: %X\n", pktPointer);
-
 			//send the arp daemon the packet start
 			send(arp_pid, (int)pktPointer);
 
@@ -80,9 +81,7 @@ void netDaemon(int ETH_0){
 		
 		//handling IPV4 packets (homework 2)
 		if(packetType == ETYPE_IPv4){
-			//printf("ICMP Check: Packet: %02X , with %02X\n", netD_pkt.payload[23], IPv4_PROTO_ICMP);	
 			
-			//printNumberedPacket(netD_pkt.payload, 64);
 			//is ICMP
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
 				//printf("Is ICMP Packet\n");
@@ -106,55 +105,29 @@ void netDaemon(int ETH_0){
 			
 			//get the transaction ID from the packet
 			memcpy(&packet_transactionID,&netD_pkt.payload[46],4);
-			
-			//printf("Tag: %02X Length: %02X Value: %02X Transaction ID: %02X\n",packet_tag,packet_length,packet_value,packet_transactionID);
-			//print entire packet
-			//printPacket(netD_pkt.payload, PKTSZ);
 			if(Is_Our_Offer(packet_tag,packet_length,packet_value,packet_transactionID) == TRUE){
 				printf("Found Our Offer Packet\n");
-				
-				setMyIP(netD_pkt.payload);
-	
-				//print source
-				//Print_Source_Address(packet);
 				
 				//malloc space for the packet being sent to arpDaemon to handle
 				pktPointer = malloc(sizeof(struct packet));
 			
 				//Copy current packet to amlloced space
 				memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
-				
-				//Debug prints
-				//printf("Sending packet to arpDaemon\n");
-				//printf("Packet Start in ND: %X\n", pktPointer);
-				
-				//printf("Sending packet pointer to dhcpClient\n");
 
 				//send the arp daemon the packet start
 				send(dhcp_pid, (int)pktPointer);
 
-				//sleep to keep natDaemon from working too hard
-				sleep(200);
-
 			}
 				
 			if(Is_Our_ACK(packet_tag,packet_length, packet_value, packet_transactionID) ==TRUE){
-				printf("Found Our ACK Packet\n");	
+				printf("Found Our ACK Packet\n");
+				setMyIP(netD_pkt.payload);	
 			}
 			
 		}
-	
-		/*	
-		printf("Netdaemon sleeping...");		
-		sleep(2000);
-		printf("Awake, ");
 
-		printf("end of packet read.\n\n");
-		*/
 		bzero(netD_pkt.payload, PKTSZ);
 
-		//prett sure we don't need this. its up top
-		//read(ETH_0, netD_pkt.payload, PKTSZ);
 	}
 }
 
@@ -163,7 +136,6 @@ void netDaemon(int ETH_0){
  * Return syserror if we dont have a defined type
  */
 int Get_Ethergram_Type(uchar packet[]){
-	//printf("12: %02X 13: %02X ", packet[12], packet[13]);
 	if (packet[12] == 8 && packet[13] == 0){
 		//printf("Found IPv4 Ethernet Packet\n");
 		return ETYPE_IPv4;
@@ -197,7 +169,6 @@ bool Is_Our_Offer(int tag, int length, int value,int transID){
 		return FALSE;
 	}
 	if(value != DHCP_MESSAGE_OFFER){
-		//printf("Not our offer because of value is not an offer\n");
 		return FALSE;
 	}
 	if(transID != transactionID){
@@ -227,7 +198,6 @@ bool Is_Our_ACK(int tag, int length, int value, int transID){
 	}
 
 	if(value != DHCP_MESSAGE_ACK){
-		printf("Not our ACK because value is not an ACK\n");
 		return FALSE;
 	}
 

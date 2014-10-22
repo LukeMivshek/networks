@@ -370,5 +370,6 @@ void sendDiscoverPacket(void);
 void sendArpResolvePacket(uchar*);
 void sendArpReply(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int);
+void sendEchoReplyPacket(uchar[], uchar[], int, int);
 
 #endif /*_NET_H_*/

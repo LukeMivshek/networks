@@ -20,8 +20,6 @@ void arpDaemon(){
 		//recieve arp packets from netDaemon
 		message msg = receive();
 	
-		printf("Arp packet recieved in arpDaemon\n");
-	
 		//create a packet from the sent memory address
 		arpD_pktPointer = (struct packet*)msg;
 		arpD_pkt = *arpD_pktPointer;
@@ -39,8 +37,6 @@ void arpDaemon(){
 
 		//check if its a reply
 		if(arpD_pkt.payload[21] == ARP_OPCODE_REPLY){
-			printf("Arp packet is a reply\n");
-		
 			//now check if its our reply
 			if(isOurReply()){
 				printf("Arp packet is our reply\n");
@@ -49,22 +45,16 @@ void arpDaemon(){
 
 				//update the global table with the incoming mac
 				updateArpTable(newMac, ipAdr);
-				printf("in arp demon hasBeenUpdated is TRUE.\n");
 				hasBeenUpdated = TRUE;
-			}else{
-				printf("Arp packet is not our reply\n");
 			}
 
 		}else if(arpD_pkt.payload[21] == ARP_OPCODE_REQUEST){
-			printf("Arp Request Found\n");
 			if(isOurRequest()){
-				printf("Found Request Directed at us\n");
+				printf("Found ARP Request Directed at us\n");
 				sendArpReply(arpD_pkt.payload);
-			}else{
-				printf("Request not directed at us\n");
 			}	
 		}else{
-			printf("Arp is of unknown type\n");
+			printf("ARP is of unknown type\n");
 			printPacket(arpD_pkt.payload, 50);
 		}
 	}
@@ -162,7 +152,7 @@ bool isOurRequest(void){
 	for(k = 0; k < IP_ADDR_LEN; k++){
 			//printf("comparing arpD packet: %02X with my IP: %02X\n", arpD_pkt.payload[k+38], myIP[k]);
 		if(arpD_pkt.payload[k+38] != myIP[k]){
-			printf("Mismatch IP Addresses, not a request for us\n");
+			//printf("Mismatch IP Addresses, not a request for us\n");
 			return FALSE;
 		}
 	}

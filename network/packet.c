@@ -9,6 +9,7 @@ void Build_DHCP_Header(void);
 void sendDiscoverPacket(void);
 void sendArpReply(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int);
+void sendEchoReplyPacket(uchar[], uchar[], int, int);
 
 /* DHCP */ 
 struct ethergram *disc_ethergram;
@@ -293,3 +294,63 @@ void sendEchoRequestPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining)
 	printPacket(packet, ARPSZ);
 	write(ETH0, packet, (end-(int)&ping_ethergram));
 }
+
+
+/*
+ * Send an echo reply given an IP Address and Mac Address
+ * this is called from the icmp daemon
+ */
+void sendEchoReplyPacket(uchar IP[], uchar MAC[], int pid, int pingsRemaining){
+	printf("Sending echo request\n");
+
+	//declare and zero out packet
+	uchar packet[PKTSZ];
+	bzero(packet,PKTSZ);
+
+	//Create struct pointers for organization
+	struct ethergram *ping_ethergram = (struct ethergram*)packet;
+	struct ipgram *ping_ipgram = (struct ipgram*)ping_ethergram->data;
+	struct icmpgram *ping_icmpgram = (struct icmpgram*)ping_ipgram->opts;
+	
+	//Dest address
+	memcpy(&ping_ethergram->dst[0], &MAC[0], ETH_ADDR_LEN);
+	//Src address
+	control(ETH0, ETH_CTRL_GET_MAC, (ulong)ping_ethergram->src, 0);
+	//Type
+	ping_ethergram->type = htons(ETYPE_IPv4);
+
+	//IPv4 header
+	ping_ipgram->ver_ihl = 69;
+	ping_ipgram->tos = IPv4_TOS_ROUTINE;
+	ping_ipgram->len = 0; //temporary
+	ping_ipgram->id = 0x0000;
+	ping_ipgram->flags_froff = htons(IPv4_FLAG_DF<<13);
+	ping_ipgram->ttl = IPv4_TTL;
+	ping_ipgram->proto = IPv4_PROTO_ICMP;
+	ping_ipgram->chksum = 0; //temporary
+	memcpy(&ping_ipgram->src[0], &myIP[0], IP_ADDR_LEN);
+	memcpy(&ping_ipgram->dst[0], &IP[0], IP_ADDR_LEN);
+
+	//ICMP header
+	ping_icmpgram->type = ICMP_REQUEST;
+	ping_icmpgram->code = ICMP_QUERY_CODE;
+	ping_icmpgram->chksum = 0; //temporary
+	ping_icmpgram->ident = pid;
+	ping_icmpgram->seq = pingsRemaining;
+	
+	//setting lengths and checksums
+	int end = (int)&ping_icmpgram->data[60];
+	ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
+	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
+	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
+
+	printf("Writing echo response to ETH0\n");
+	printf("Length is %d", ping_ipgram->len);
+	printf("Sending ping %d to ", pingsRemaining);
+	printIP(IP);
+	printf("\n");
+	printPacket(packet, ARPSZ);
+	write(ETH0, packet, (end-(int)&ping_ethergram));
+}
+
+
