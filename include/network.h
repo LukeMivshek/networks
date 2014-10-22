@@ -226,7 +226,7 @@ struct udpgram                  /**< UDP Packet Variables           */
 
 struct dhcpgram                 /**< DHCP Packet Variables          */
 {
-    uchar  opcode;              /**< DHCP Operation                 */
+        uchar  opcode;              /**< DHCP Operation                 */
 	uchar  htype;               /**< DHCP hardware type             */
 	uchar  hlen;                /**< DHCP hardware address length   */
 	uchar  hops;                /**< DHCP hop count allowed         */

@@ -29,6 +29,7 @@ int  Get_UDP_Data_Length(uchar[]);
 void Print_Opcode(uchar[]);
 void Print_Hs(uchar[]);
 void Print_Transaction_ID(uchar[]);
+void Print_Time_Elapsed(uchar[]);
 void Print_Multi_IP(uchar[]);
 void Print_Server_Name(uchar[]);
 void Print_Bootfile_Name(uchar[]);
@@ -58,8 +59,6 @@ extern bool snoopActive;
  */
 command xsh_dhcpsnoop(int nargs, char *args[])
 {
-	printf("Inside dhcpsnoop");
-    	
 	if(snoopActive == TRUE){
 		snoopActive = FALSE;
 	}else{
@@ -87,6 +86,7 @@ void Print_Entire_Packet(uchar packet[]){
        			Print_Opcode(packet);
 			Print_Hs(packet);
 			Print_Transaction_ID(packet);
+			Print_Time_Elapsed(packet);
 			Print_Multi_IP(packet);
 			Print_Server_Name(packet);
 			Print_Bootfile_Name(packet);
@@ -127,7 +127,8 @@ void Print_Entire_Packet(uchar packet[]){
  * This is the start of the Ethernet Frame.
  */
 void Print_Ethernet_Addresses(uchar packet[]){
-        int v = 0;
+	printf("Destination address: "); 
+       int v = 0;
 
         for(v = 0; v < 6; v++){
                 printf("%02X", packet[v]);
@@ -135,7 +136,7 @@ void Print_Ethernet_Addresses(uchar packet[]){
                         printf(":");
                 }
         }
-	printf(" ");
+	printf("\nSource address:      ");
 	for(v = 6; v < 12; v++){
 		printf("%02X", packet[v]);
 		if(v < 11){
@@ -192,6 +193,7 @@ int Get_IPv4_Data_Length(uchar packet[], int HLEN){
  * of 20 as well as 21 are the Fragmentation offset. 22 is the time to live. 
  */
 void Print_Time_To_Live(uchar packet[]){
+	printf("[IPv4]   Fragmentation Offset      %02X%02X\n", packet[20], packet[21]);
 	printf("[IPv4]   Time to Live:             %d\n", packet[22]);
 }
 
@@ -201,16 +203,16 @@ void Print_Time_To_Live(uchar packet[]){
 int Get_Protocol(uchar packet[]){
 	int protocol = packet[23];
 	if (protocol == UDP_Protocol){
-		printf("[IPv4]   Protocol value is         %d: UDP\n", UDP_Protocol);
+		printf("[IPv4]   Protocol value is         %d:    UDP\n", UDP_Protocol);
 		return UDP_Protocol;
 	}else if (protocol == ICMP_Protocol){
-		printf("[IPv4]   Protocol value is         %d: ICMP\n", ICMP_Protocol);
+		printf("[IPv4]   Protocol value is         %d:    ICMP\n", ICMP_Protocol);
 		return ICMP_Protocol;
 	}else if (protocol == IGMP_Protocol){
-		printf("[IPv4]   Protocol value is         %d: IGMP\n", IGMP_Protocol);
+		printf("[IPv4]   Protocol value is         %d:    IGMP\n", IGMP_Protocol);
 		return IGMP_Protocol;
 	}else if (protocol == TCP_Protocol){
-		printf("[IPv4]   Protocol value is         %d: TCP\n", TCP_Protocol);
+		printf("[IPv4]   Protocol value is         %d:    TCP\n", TCP_Protocol);
 		return TCP_Protocol;
 	}else{
 		printf("[IPv4]   Protocol value is of unknown type.\n");
@@ -223,7 +225,8 @@ int Get_Protocol(uchar packet[]){
  * Bytes 24 & 25 are the header checksum. Bytes 26-29 and 30-33 are the IPv4 addresses
  */
  void Print_IPv4_Addresses(uchar packet[]){       
-	printf("[IPv4]   ");
+	printf("[IPv4]   Checksum:                 %02X%02X\n", packet[24], packet[25]);
+	printf("[IPv4]   Source IP:                ");
 
 	int v = 26;
 
@@ -233,7 +236,7 @@ int Get_Protocol(uchar packet[]){
                         printf(":");
                 }
         }
-	printf(" ");
+	printf("\n[IPv4]   Destintation IP:          ");
 	for(v = 30; v < 34; v++){
 		printf("%02X", packet[v]);
 		if(v < 33){
@@ -289,7 +292,7 @@ void Print_HandPlen(uchar packet[]){
 }
 
 void Print_Op(uchar packet[]){
-	printf("[ARP]	Operation:		   %d\n", (packet[22]+packet[23]));
+	printf("[ARP]	 Operation:		   %d\n", (packet[22]+packet[23]));
 }
 
 void Print_SrcMACandIP(uchar packet[]){       
@@ -363,7 +366,7 @@ void Print_Transaction_ID(uchar packet[]){
  *Bytes 50 & 51 are the time elapsed
  */
 void Print_Time_Elapsed(uchar packet[]){
-	printf("[DCHP]   Time Elapsed:             %02X\n", (packet[50]+packet[51]));
+	printf("[DCHP]   Time Elapsed:             %02X%02X\n", packet[50], packet[51]);
 }
 
 /*

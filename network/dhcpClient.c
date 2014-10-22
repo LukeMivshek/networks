@@ -136,7 +136,7 @@ void dhcpClient(int packet2){
 	
 		//write packet
 		write(ETH0, packet, PKTSZ);
-		printf("Sent dhcp reply packet.\n");
+		printf("Writing dhcp reply packet.\n");
 	}
 }
 

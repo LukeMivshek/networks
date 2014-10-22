@@ -21,6 +21,8 @@ void setMyIP(uchar[]);
 
 void printNumberedPacket(uchar packet[], int length);
 
+void Print_Netstat(uchar[]);
+
 void Print_Entire_Packet(uchar[]);
 
 bool ipSet = FALSE;
@@ -94,7 +96,6 @@ void netDaemon(int ETH_0){
 		if(packetType == ETYPE_IPv4){
 			//is ICMP
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
-				printf("Is ICMP Packet\n");
 
 				if(Is_Echo_Request(netD_pkt.payload)){
 				
@@ -145,7 +146,8 @@ void netDaemon(int ETH_0){
 				
 			if(Is_Our_ACK(packet_tag,packet_length, packet_value, packet_transactionID) ==TRUE){
 				printf("Found Our ACK Packet\n");
-				setMyIP(netD_pkt.payload);	
+				setMyIP(netD_pkt.payload);
+				Print_Netstat(netD_pkt.payload);	
 			}
 			
 		}
@@ -172,6 +174,24 @@ int Get_Ethergram_Type(uchar packet[]){
 		//printf("Found undefined type packet\n");
 		return SYSERR;
 	}
+}
+
+
+void Print_Netstat(uchar packet[]){
+	
+	printf("---------------netstat---------------\n");
+	printf("Opcode:                   %02X\n", packet[42]);
+	printf("Hardware Type:            %02X\n", packet[43]);
+	printf("Hardware Address Length:  %02X\n", packet[44]);
+	printf("Hop count:                %02X\n", packet[45]);  
+	printf("Transaction ID:           %02X\n", (packet[46]+packet[47]+packet[48]+packet[49]));
+	printf("Time Elapsed:             %02X%02X\n", packet[50], packet[51]);
+	printf("Client IP:                %02X.%02X.%02X.%02X\n", packet[54], packet[55], packet[56], packet[57]);
+	printf("Your IP:                  %02X.%02X.%02X.%02X\n", packet[58], packet[59], packet[60], packet[61]);
+	printf("Server IP:                %02X.%02X.%02X.%02X\n", packet[62], packet[63], packet[64], packet[65]);
+	printf("Router IP:                %02X.%02X.%02X.%02X\n", packet[66], packet[67], packet[68], packet[69]);
+	printf("-------------------------------------\n");
+    	
 }
 
 

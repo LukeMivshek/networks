@@ -57,16 +57,13 @@ void sendDiscoverPacket(){
 	disc_ipgram->ver_ihl = 69;
 	disc_ipgram->tos = IPv4_TOS_ROUTINE; 
 	disc_ipgram->len = 0; //temp
-	//TODO len is end of options to beginning - 14 for the ethergram
 	disc_ipgram->id = ipcounter;
 	//update the id counter for the next packet
 	ipcounter++;
-	//Enter in flags eventually TODO
         disc_ipgram->flags_froff = 0x0000000000;
 	disc_ipgram->ttl = IPv4_TTL;
 	disc_ipgram->proto = IPv4_PROTO_UDP;
 	disc_ipgram->chksum = 0; //temp
-	//TODO set checksum at end
 
 	int zeros = 0x00000000;
 	int fs = 0xFFFFFFFF;
@@ -84,9 +81,7 @@ void sendDiscoverPacket(){
 	disc_udpgram->srcPort = htons(0x44);
 	disc_udpgram->dstPort = htons(0x43);
 	disc_udpgram->len = 0; //temp
-	//TODO len is the same as ipgram - ipgram size
 	disc_udpgram->chksum = 0; //temp
-	//TODO chksum at end
 	
 	disc_dhcpgram->opcode = DHCP_OPCODE_REQUEST;
 	disc_dhcpgram->htype = 0x01;
@@ -225,13 +220,7 @@ void sendArpReply(uchar packet[]){
 	memcpy(&res_arpgram->dstMacAddress[0], &packet[22], ETH_ADDR_LEN);
 	memcpy(&res_arpgram->dstIpAddress[0], &packet[28], 4);
 
-	printf("Received packet\n");
-
-	//printArpPacket(packet);
-
 	printf("Writing Arp reply packet to ETH0\n");
-
-	//printArpPacket(replyPacket);
 
 	write(ETH0, replyPacket, PKTSZ);	
 	
@@ -246,7 +235,6 @@ void sendArpReply(uchar packet[]){
  * this is called from sendPing shell command
  */
 void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining){
-	printf("Sending echo request\n");
 
 	//declare and zero out packet
 	uchar packet[PKTSZ];
@@ -257,12 +245,10 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	struct ipgram *ping_ipgram = (struct ipgram*)ping_ethergram->data;
 	struct icmpgram *ping_icmpgram = (struct icmpgram*)ping_ipgram->opts;
 	
-	//control(ETH0, ETH_CTRL_GET_MAC, (ulong)ping_ethergram->dst, 0);
 	int y;
 	//Dest address
 	for(y = 0; y < ETH_ADDR_LEN; y++){
 		ping_ethergram->dst[y] = MAC[y];
-		//ping_ethergram->src[y] = MAC[y];
 	}
 	//Src address
 	control(ETH0, ETH_CTRL_GET_MAC, (ulong)ping_ethergram->src, 0);
@@ -278,7 +264,6 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 	ping_ipgram->ttl = IPv4_TTL;
 	ping_ipgram->proto = IPv4_PROTO_ICMP;
 	ping_ipgram->chksum = 0; //temporary
-	//ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4*(ping_ipgram->ver_ihl & IPv4_IHL)));
 	memcpy(&ping_ipgram->src[0], &myIP[0], IP_ADDR_LEN);
 	memcpy(&ping_ipgram->dst[0], &IP[0], IP_ADDR_LEN);
 
@@ -295,18 +280,12 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 
 	//setting lengths and checksums
 	int end = (int)&ping_icmpgram->data[60];
-	//ping_ipgram->len = htons(end - (int)&ping_ethergram->data);
 	ping_ipgram->len = htons(0x003C);
 	ping_icmpgram->chksum = checksum((uchar *)ping_icmpgram, (4 * (end - (int)&ping_ipgram->opts)));
 	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
 
-	printf("Length is %d   ", ping_ipgram->len);
-	printf("Sending ping %d to ", pingsRemaining);
-	printIP(IP);
-	printf("\n");
-	printPacket(packet, ARPSZ);
-	printf("%d bytes written\n", write(ETH0, packet, PKTSZ));
+	write(ETH0, packet, PKTSZ);
 	return;
 }
 
@@ -316,9 +295,6 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
  * this is called from the icmp daemon
  */
 void sendEchoReplyPacket(uchar packet[]){
-	printf("Sending echo request\n");
-		
-	printPacket(packet, ARPSZ);
 	
 	//Create struct pointers for organization
 	struct ethergram *ping_ethergram = (struct ethergram*)packet;
@@ -350,11 +326,6 @@ void sendEchoReplyPacket(uchar packet[]){
 	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
 	printf("Writing echo response to ETH0\n");
-	printf("Length is %d", ping_ipgram->len);
-	printf("Sending ping %d to ", ping_icmpgram->seq);
-	printIP(ping_ipgram->dst);
-	printf("\n");
-	printPacket(packet, ARPSZ);
 	write(ETH0, packet, (end-(int)&ping_ethergram));
 	return;
 }
