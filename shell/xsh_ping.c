@@ -54,8 +54,11 @@ command xsh_ping(int nargs, char *args[]){
 	printf("Returning OK in xsh_ping (shell)\n");
 	return OK;
 }
+
 /*
- * send a ping
+ * takes the target ip address, looks up its mac in table and resolves if necessary
+ * takes number of pings and loops over a sendEchoRequests
+ * waits for message from netDaemon and collects data, prints at the end
  */
 void sendPings(uchar ipAddr[], int numOfPings){
 
@@ -69,13 +72,19 @@ void sendPings(uchar ipAddr[], int numOfPings){
 
 	int q = 0;
 	for(q = 0; q < numOfPings; q++){
-		//send one packet then sleep
+		//send one packet then wait on reply (comes from netdaemon)
 		printf("Sending echo request with index %d\n", index);
 		
 		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
-		sleep(1000);
-	}
+		
+		//wait on the response from net daemon
+		message msg = recvtime(1500);
+		
+		int pckstrt = (int)msg;
 
+		printf("in send pings, pkstrt: %d\n", pckstrt);
+		
+	}
 	printf("Done sending ping requests\n");
 }
 
@@ -85,19 +94,21 @@ void sendPings(uchar ipAddr[], int numOfPings){
 int getEntry(uchar ipAddr[]){
 	bool mismatch = FALSE;
 	if(existsInTable(ipAddr)){
-
 		int a = 0;
-		while(a < ARPENT_LEN){ 
+		while(a < ARPENT_LEN){
+			//printf("a: %d\n", a); 
 			//if it is not in the empty state, compare IP Addresses
 			if(arptab.arps[a].state != ARPENT_STATE_EMPTY){
+				mismatch = FALSE;
 				int u = 0;
 				for(u = 0; u < IP_ADDR_LEN; u++){
+					//printf("getEntry: %02X : %02X\n",arptab.arps[a].ipAddress[u], ipAddr[u]);
 					if(arptab.arps[a].ipAddress[u] != ipAddr[u]){
 						mismatch = TRUE;
 						break;
 					}
 				}
-			
+					
 				//no mismatch was found
 				if(!mismatch){
 					printf("getMac returning: ");
@@ -106,18 +117,21 @@ int getEntry(uchar ipAddr[]){
 						printf("%02X ", arptab.arps[a].macAddress[w]);
 					}
 					printf("\n");
-					return a;	
+					return a;
+
+				//mismatch is true, next entry	
+				}else{
+					//printf("mismatch increment\n");
+					a++;
 				}
-			//its in the free state, skip it
+			//its in the free state, next entry
 			}else{
+				//printf("free state increment\n");
 				a++;
 			}
 		}
 	}
 
-	printf("Returning SYSERR in getMac, no entry found based on IP Address\n");
-	return SYSERR;	
-	
+	printf("Returning SYSERR in getEntry, no entry found based on IP Address\n");
+	return SYSERR;		
 }
-
-

@@ -7,6 +7,9 @@ void printIP(uchar[]);
 void printNumberedPacket(uchar[], int);
 void printPacket(uchar[], int);
 
+//uchar parseICMPMAC(uchar []);
+//uchar parseICMPIP(uchar []);
+
 int parseIP(char *ipstr, uchar *ip){
 	bzero(ip, 4);
 	int index = 0;

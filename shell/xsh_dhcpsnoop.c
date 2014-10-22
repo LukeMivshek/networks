@@ -10,8 +10,13 @@
 /* Embedded XINU, Copyright (C) 2009.  All rights reserved. */
 
 #include <xinu.h>
-#define IPv4 1
-#define UDP_Protocol 17
+#define IPv4 		1
+#define ARP 		2
+#define FISH 		3
+#define ICMP_Protocol	1
+#define IGMP_Protocol	2
+#define TCP_Protocol	6
+#define UDP_Protocol 	17
 
 
 int  Get_Packet_Type(uchar[]);
@@ -32,6 +37,17 @@ int Get_Protocol(uchar[]);
 void Print_UDP_Port_Numbers(uchar[]);
 int Get_IPv4_Data_Length(uchar[],int);
 void Assign_Ethergram_Values(void);
+void Print_Htype(uchar[]);
+void Print_Proto(uchar[]);
+void Print_HandPlen(uchar[]);
+void Print_Op(uchar[]);
+void Print_SrcMACandIP(uchar[]);
+void Print_DstMACandIP(uchar[]);
+void Print_Type(uchar[]);
+void Print_Code(uchar[]);
+void Print_Identifier(uchar[]);
+void Print_Sequence(uchar[]);
+
 
 extern bool snoopActive;
 
@@ -54,27 +70,55 @@ command xsh_dhcpsnoop(int nargs, char *args[])
 
 void Print_Entire_Packet(uchar packet[]){
 
-		printf("----------START ETHERNET FRAME--------------------\n");
-		Print_Ethernet_Addresses(packet);
-		Get_Packet_Type(packet);
+	printf("----------START ETHERNET FRAME--------------------\n");
+	Print_Ethernet_Addresses(packet);
+	int type = Get_Packet_Type(packet);
+	if(type == IPv4){
 		printf("----------START PROTOCOL (IPv4) HEADER------------\n");
 		Get_IPv4_Data_Length(packet,Get_Header_Length(packet));
 		Print_Time_To_Live(packet);
-		Get_Protocol(packet);
+		int proto = Get_Protocol(packet);
 		Print_IPv4_Addresses(packet);
-		printf("----------START PROTOCOL (UDP) HEADER-------------\n");
-		Print_UDP_Port_Numbers(packet);
-		Get_UDP_Data_Length(packet);
-		printf("----------START DHCP HEADER-----------------------\n");
-       		 Print_Opcode(packet);
-		Print_Hs(packet);
-		Print_Transaction_ID(packet);
-		Print_Multi_IP(packet);
-		Print_Server_Name(packet);
-		Print_Bootfile_Name(packet);
-		Print_Option(packet);
-		printf("------------END ETHERNET FRAME--------------------\n\n\n\n");
+		if(proto == UDP_Protocol){
+			printf("----------START PROTOCOL (UDP) HEADER-------------\n");
+			Print_UDP_Port_Numbers(packet);
+			Get_UDP_Data_Length(packet);
+			printf("----------START DHCP HEADER-----------------------\n");
+       			Print_Opcode(packet);
+			Print_Hs(packet);
+			Print_Transaction_ID(packet);
+			Print_Multi_IP(packet);
+			Print_Server_Name(packet);
+			Print_Bootfile_Name(packet);
+			Print_Option(packet);
+		}else if(proto == ICMP_Protocol){
+			printf("----------START PROTOCOL (ICMP) HEADER------------\n");
+			Print_Type(packet);
+			Print_Code(packet);
+			Print_Identifier(packet);
+			Print_Sequence(packet);
+		}else if(proto == IGMP_Protocol){
+			printf("----------START PROTOCOL (IGMP) HEADER------------\n");
+		}else if(proto == TCP_Protocol){
+			printf("----------START PROTOCOL (TCP) HEADER-------------\n");
+		}
+	}else if(type == ARP){
+		printf("----------START PROTOCOL (ARP) HEADER-------------\n");
+		Print_Htype(packet);
+		Print_Proto(packet);
+		Print_HandPlen(packet);
+		Print_Op(packet);
+		Print_SrcMACandIP(packet);
+		Print_DstMACandIP(packet);
+	}else if(type == FISH){
+		printf("Tasty fishes\n");
+	}else{
+		printf("Unknown Packet Type Received\n");
+	}
+	
+	printf("------------END ETHERNET FRAME--------------------\n\n\n\n");
 }
+
 
 //----------------START ETHERNET FRAME--------------------
 
@@ -108,6 +152,12 @@ int Get_Packet_Type(uchar packet[]){
         if (packet[12] == 8 && packet[13] == 0){
 		printf("Packet type:                      IPv4\n");
 		return IPv4;
+	}else if(packet[12] == 8 && packet[13] == 6){
+		printf("Packet type:                      ARP\n");
+		return ARP;
+	}else if(packet[12] == 50 && packet[13] == 80){
+		printf("Packet type:                      fishes?\n");
+		return FISH;
 	}
 	return -1;
 }
@@ -153,6 +203,17 @@ int Get_Protocol(uchar packet[]){
 	if (protocol == UDP_Protocol){
 		printf("[IPv4]   Protocol value is         %d: UDP\n", UDP_Protocol);
 		return UDP_Protocol;
+	}else if (protocol == ICMP_Protocol){
+		printf("[IPv4]   Protocol value is         %d: ICMP\n", ICMP_Protocol);
+		return ICMP_Protocol;
+	}else if (protocol == IGMP_Protocol){
+		printf("[IPv4]   Protocol value is         %d: IGMP\n", IGMP_Protocol);
+		return IGMP_Protocol;
+	}else if (protocol == TCP_Protocol){
+		printf("[IPv4]   Protocol value is         %d: TCP\n", TCP_Protocol);
+		return TCP_Protocol;
+	}else{
+		printf("[IPv4]   Protocol value is of unknown type.\n");
 	}
 	//Unknown protocol
 	return -1;
@@ -192,6 +253,77 @@ void Print_UDP_Port_Numbers(uchar packet[]){
 	printf("[UDP]    Destination port number:  %d\n", (packet[36]+packet[37]));
 }
 
+void Print_Type(uchar packet[]){
+	if(packet[34] == 8){
+		printf("[ICMP]	 Type:			   REQUEST\n");
+	}else if(packet[34] == 0){
+		printf("[ICMP]	 Type:			   REPLY\n");
+	}else{
+		printf("[ICMP]	 Type:			   UNKNOWN\n");
+	}
+}
+
+void Print_Code(uchar packet[]){
+	printf("[ICMP]	 Code:			   %d\n", packet[35]);
+}
+
+void Print_Identifier(uchar packet[]){
+	printf("[ICMP]   Identifier:		   %d\n", (packet[38]+packet[39]));
+}
+
+void Print_Sequence(uchar packet[]){
+	printf("[ICMP]   Sequence:		   %d\n", (packet[40]+packet[41]));
+}
+
+void Print_Htype(uchar packet[]){
+	printf("[ARP]    Hardware Type: 	   %d\n", (packet[16]+packet[17]));
+}
+
+void Print_Proto(uchar packet[]){
+	printf("[ARP]    Protocol:		   %d\n", (packet[18]+packet[19]));
+}
+
+void Print_HandPlen(uchar packet[]){
+	printf("[ARP]    Hardware Length:	   %d\n", packet[20]);
+	printf("[ARP]    Protocol Length:	   %d\n", packet[21]);
+}
+
+void Print_Op(uchar packet[]){
+	printf("[ARP]	Operation:		   %d\n", (packet[22]+packet[23]));
+}
+
+void Print_SrcMACandIP(uchar packet[]){       
+	printf("[ARP]    Source MAC:		   ");
+
+	int v = 24;
+
+        for(v = 24; v < 30; v++){
+                printf("%02X", packet[v]);
+        }
+	printf("\n");
+	printf("[ARP]	Source IP:		   ");
+	for(v = 30; v < 34; v++){
+		printf("%02X", packet[v]);
+	}
+        printf("\n");
+}
+
+void Print_DstMACandIP(uchar packet[]){       
+	printf("[ARP]    Source MAC:		   ");
+
+	int v = 34;
+
+        for(v = 34; v < 40; v++){
+                printf("%02X", packet[v]);
+        }
+	printf("\n");
+	printf("[ARP]	Source IP:		   ");
+	for(v = 40; v < 44; v++){
+		printf("%02X", packet[v]);
+	}
+        printf("\n");
+}
+
 /*
  * Bytes 38-39 & 40-41 are the total length and checksum
  */
@@ -200,6 +332,7 @@ int Get_UDP_Data_Length(uchar packet[]){
 	printf("[UDP]    Total Length:             %d\n", length);
 	return(length);
 }
+
 
 //----------------START DHCP HEADER-------------------------
 

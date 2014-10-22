@@ -363,13 +363,17 @@ void arpDaemon(void);
 //icmpDaemon prototype
 void icmpDaemon(void);
 
+//my ip address
 extern uchar myIP[IP_ADDR_LEN];
+
+//flag to know if were looking for an ip
+extern bool ipSet;
 
 //various packet sends
 void sendDiscoverPacket(void);
 void sendArpResolvePacket(uchar*);
 void sendArpReply(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int);
-void sendEchoReplyPacket(uchar[], uchar[], int, int);
+void sendEchoReplyPacket(uchar[]);
 
 #endif /*_NET_H_*/

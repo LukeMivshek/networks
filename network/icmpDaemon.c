@@ -9,8 +9,9 @@
 
 #include <xinu.h>
 
-struct packet *icmp_pktPointer;
 struct packet icmp_pkt;
+
+void sendEchoReplyPacket(uchar*);
 
 void icmpDaemon(){
 	printf("Started icmpDaemon\n");
@@ -21,11 +22,10 @@ void icmpDaemon(){
 			
 		printf("ICMP packet recieved in icmpDaemon\n");
 		
-		icmp_pktPointer = (struct packet*)msg;
-		icmp_pkt = *icmp_pktPointer;
-
+		int pckstrt = (int)msg;		
+		uchar *icmp_pktPointer = (uchar *)pckstrt;		
+		sendEchoReplyPacket(icmp_pktPointer);
 		free ((void *) msg);
 
-		//sendEchoReplyPacket(
 	}
 }

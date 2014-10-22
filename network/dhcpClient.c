@@ -39,10 +39,7 @@ void dhcpClient(int packet2){
 		struct ethergram *off_ethergram = (struct ethergram*)offerPacket;
 		struct ipgram *off_ipgram = (struct ipgram*)off_ethergram->data;
 		struct udpgram *off_udpgram = (struct udpgram*)off_ipgram->opts;
-		struct dhcpgram *off_dhcpgram = (struct dhcpgram*)off_udpgram->data;	
-
-
-	
+		struct dhcpgram *off_dhcpgram = (struct dhcpgram*)off_udpgram->data;		
 		int m = 0;
 
 		//Dest Address	

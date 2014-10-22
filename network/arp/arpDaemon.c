@@ -127,11 +127,11 @@ int arpResolve(uchar *ipaddr, uchar *mac){
 bool updateArpTable(uchar * mac, uchar * ipaddr){
 	printf("Updating Table\n");
 	
-	int o;
+	int t;
 	//Update table at arpnum sopt, arpnum being set to the next editable spot
-	for(o = 0; o < ARPENT_LEN; o++){
-		if(arptab.arps[o].age < arptab.arps[arptab.arpnum].age){
-			arptab.arps[o].age = arptab.arps[o].age + 1;
+	for(t = 0; t < ARPENT_LEN; t++){
+		if(arptab.arps[t].age < arptab.arps[arptab.arpnum].age){
+			arptab.arps[t].age = arptab.arps[t].age + 1;
 		}
 	}
 	arptab.arps[arptab.arpnum].age = 0;

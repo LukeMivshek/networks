@@ -4,16 +4,26 @@
 #include <xinu.h>
 
 int Get_Ethergram_Type(uchar[]);
+
 void printPacket(uchar[], int);
+
 bool Is_Our_Offer(int,int,int,int);
 bool Is_Our_ACK(int, int, int, int);
-bool Is_Echo_Reply(uchar[]);
+
+bool Is_Our_Echo_Reply(uchar[]);
+bool Is_Echo_Request(uchar[]);
+
 void Print_Source_Address(uchar[]);
 struct packet netD_pkt;
 struct packet *pktPointer;
+
 void setMyIP(uchar[]);
+
 void printNumberedPacket(uchar packet[], int length);
+
 void Print_Entire_Packet(uchar[]);
+
+bool ipSet = FALSE;
 
 bool snoopActive;
 
@@ -37,8 +47,6 @@ void netDaemon(int ETH_0){
 
 	//spawn dhcpClient and get our own IP
 	ready(dhcp_pid = create((void *)dhcpClient, INITSTK, 40, "dhcp_client", 1,ETH_0), 0);
-	//send dhcp discover, method in packet.c	
-	sendDiscoverPacket();
 	
 	snoopActive = FALSE;
 	//spawn arpDaemon
@@ -46,7 +54,11 @@ void netDaemon(int ETH_0){
 
 	//spawn icmpDaemon
 	ready(icmp_pid = create((void *)icmpDaemon,INITSTK, 41, "icmp_daemon", 0), 0);
+	//send dhcp discover, method in packet.c
+	sendDiscoverPacket();
 	
+	ipSet = FALSE;
+
 	while(1){
 	
 		//Read packets in and send there where they belong
@@ -54,7 +66,6 @@ void netDaemon(int ETH_0){
 		netD_pkt.interface = ETH_0;
 		//Get the packet type and handle them appropriately
 		int packetType = Get_Ethergram_Type(netD_pkt.payload);
-
 		
 		if(snoopActive){
 			Print_Entire_Packet(netD_pkt.payload);
@@ -81,19 +92,31 @@ void netDaemon(int ETH_0){
 		
 		//handling IPV4 packets (homework 2)
 		if(packetType == ETYPE_IPv4){
-			
 			//is ICMP
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
-				//printf("Is ICMP Packet\n");
+				printf("Is ICMP Packet\n");
 
-				if(Is_Echo_Reply(netD_pkt.payload)){
-						
+				if(Is_Echo_Request(netD_pkt.payload)){
+				
 					pktPointer = malloc(sizeof(struct packet));
 			
 					//Copy current packet to amlloced space
 					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
 					//send to icmp daemon
 					send(icmp_pid, (int)pktPointer);
+				}else if(Is_Our_Echo_Reply(netD_pkt.payload)){
+					//message pass to the shell, using the pid from the packet
+					pktPointer = malloc(sizeof(struct packet));
+					
+					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
+					printf("sending pointer to shell\n");
+
+					int shellPid = netD_pkt.payload[38];
+
+					send(shellPid, (int)pktPointer);
+	
+				}else{
+					printf("Incoming ICMP is neither request or reply\n");
 				}
 			}
 
@@ -105,7 +128,8 @@ void netDaemon(int ETH_0){
 			
 			//get the transaction ID from the packet
 			memcpy(&packet_transactionID,&netD_pkt.payload[46],4);
-			if(Is_Our_Offer(packet_tag,packet_length,packet_value,packet_transactionID) == TRUE){
+			
+			if(ipSet == FALSE && Is_Our_Offer(packet_tag,packet_length,packet_value,packet_transactionID) == TRUE){
 				printf("Found Our Offer Packet\n");
 				
 				//malloc space for the packet being sent to arpDaemon to handle
@@ -127,7 +151,6 @@ void netDaemon(int ETH_0){
 		}
 
 		bzero(netD_pkt.payload, PKTSZ);
-
 	}
 }
 
@@ -188,12 +211,12 @@ bool Is_Our_ACK(int tag, int length, int value, int transID){
 	int transactionID = htonl(0x6b69746e);
 	
 	if(tag != 0x35){
-		printf("Not our offer because of tag.\n");
+		//printf("Not our offer because of tag.\n");
 		return FALSE;
 	}
 
 	if(length != 0x01){
-		printf("Not our offer because of length\n");
+		//printf("Not our offer because of length\n");
 		return FALSE;
 	}
 
@@ -202,10 +225,12 @@ bool Is_Our_ACK(int tag, int length, int value, int transID){
 	}
 
 	if(transID != transactionID){
-		printf("Not our transaction ID");
+		//printf("Not our transaction ID");
 		return FALSE;
 	}
 	
+	ipSet = TRUE;
+
 	return TRUE;
 }
 
@@ -224,6 +249,7 @@ void Print_Source_Address(uchar packet[]){
 
 void setMyIP(uchar packet[]){
 	memcpy(&myIP[0], &packet[58],IP_ADDR_LEN);
+	
 	printf("My IP set as: ");
 	int m = 0; 
 	for(m = 0; m < IP_ADDR_LEN; m++){
@@ -232,19 +258,41 @@ void setMyIP(uchar packet[]){
 		}else{
 			printf("%d.", myIP[m]);
 		}
-		//printf("%02X ", myIP[m]);
 	}
+	
+	//set the global flag that we are not expecting any dhcp packets
+	ipSet = TRUE;
 }
 
-bool Is_Echo_Reply(uchar packet[]){
+/*
+ * given a packet, check that the type is a reply and the ip matches ours,
+ * meaning it is an icmp reply directed at us
+ */
+bool Is_Our_Echo_Reply(uchar packet[]){
 	printf("Is echo check: ICMP Type: %02X , with %02X\n", packet[34], ICMP_REPLY);
 	if(packet[34] == ICMP_REPLY){
-		printf("Returning true in Is_Echo_Reply\n");
+		printf("Is of ICMP_REPLY type\n");
+		
+		int x = 0; 
+		for(x = 0; x < IP_ADDR_LEN; x++){
+			if(packet[26 + x] != myIP[x]){
+				printf("My IP mismatch packet destination address, returning false\n");
+				return FALSE;
+			}
+		}
+		printf("My IP and packet destination IP match\n");
 		return TRUE;
 	}else{
-		printf("Returning false in Is_Echo_Reply\n");
+		printf("Returning false in Is_Echo_Reply, not type ICMP_REPLY\n");
 		return FALSE;
 	}
 	printf("Returning SYSERR in Is_Echo_Reply\n");
+	return SYSERR;
+}
+
+/*
+ * given a packet, chech that it is an Echo request directed at us
+ */
+bool Is_Echo_Request(uchar packet[]){
 	return SYSERR;
 }

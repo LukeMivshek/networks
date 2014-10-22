@@ -97,9 +97,9 @@ bool existsInTable(uchar ipAddr[]){
 	uchar* ip;
 	uchar* mac;
 	int k = 0;
-	
+	//printf("Arpnum = %d", arptab.arpnum);
 	//check if ip is in the table
-	if(arptab.arpnum == 0 || (isInTable(ipAddr) == -1)){
+	if(isInTable(ipAddr) == -1){
 		printf("IP address not in table\n");
 		printf("Attempting to resolve requested mapping...\n");
 		
@@ -120,15 +120,6 @@ bool existsInTable(uchar ipAddr[]){
 			printf("Mapping resolved\n");
 			//setting state to resolved
 			
-			/*
-			printf("IP: ");
-			int o;
-			for(o = 0; o < IP_ADDR_LEN; o++){
-				printf("%02X ", arptab.arps[arptab.arpnum].ipAddress[o]);
-			} 
-			printf("   MAC: %02X    &MAC: %02X\n", arptab.arps[arptab.arpnum].macAddress, &arptab.arps[arptab.arpnum].macAddress);
-			*/
-
 			arptab.arps[arptab.arpnum].state = ARPENT_STATE_RESOLVED;
 			
 			return TRUE;
@@ -168,17 +159,17 @@ void printTable(){
 		}
 		printf("State: ");		
 		if(arptab.arps[m].state == 0){
-			printf("EMPTY ");
+			printf("EMPTY      ");
 		}else if(arptab.arps[m].state == 1){
-			printf("RESOLVED ");
+			printf("RESOLVED   ");
 		}else if(arptab.arps[m].state == 2){
 			printf("UNRESOLVED ");
 		}else{
 			printf("UNKNOWN, value: %d ", arptab.arps[m].state);
 		}
 
-		printf("Age: %d ", arptab.arps[m].age);
-		printf("PID: %d \n", arptab.arps[m].age);
+		printf("Age: %d \n", arptab.arps[m].age);
+		//printf("PID: %d \n", arptab.arps[m].age);
 	}
 	printf("---- ARP Table End ----\n");
 }
@@ -243,12 +234,12 @@ int isInTable(uchar ipAddr[]){
 			}else{
 				//printf("Unequal IP Addresses\n");
 				mismatch = TRUE;
+				//printf("mismatch = true\n");
 				break;
 			}
 		}
 
 		if(!mismatch){
-			printf("Found IP address in arp table.\n");
 			printf("Returing true in isInTable IP: %d MAC: %d\n", arptab.arps[k].ipAddress, arptab.arps[k].macAddress);
 			return k;
 		}
