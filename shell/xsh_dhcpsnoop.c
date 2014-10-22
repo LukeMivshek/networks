@@ -43,6 +43,7 @@ struct ethergram *egram;
 command xsh_dhcpsnoop(int nargs, char *args[])
 {
 
+	printf("Inside dhcpsnoop");
 	uchar packet[PKTSZ];
 	uchar *ppkt = packet;
         int i = 0;
@@ -53,8 +54,8 @@ command xsh_dhcpsnoop(int nargs, char *args[])
         while(1){
                 int m = 0;
 		read(ETH0, packet, PKTSZ);
-		Assign_Ethergram_Values();
-		printf("%d", egram->type);
+		//Assign_Ethergram_Values();
+		//printf("%d", egram->type);
                 if (Get_Packet_Type(packet)==IPv4){
 			Print_Entire_Packet(packet);
                 }else{
@@ -64,36 +65,27 @@ command xsh_dhcpsnoop(int nargs, char *args[])
         return OK;
 }
 
-void Assign_Ethergram_Values(){
-	int i;
-	for(i = 0; i < 6; i++){
-		egram->dst[i] = egram->data[i];
-		egram->src[i] = egram->data[i+6];
-	}	
-	egram->type = (egram->data[6] + egram->data[7]);
-}
-
 void Print_Entire_Packet(uchar packet[]){
-//	printf("----------START ETHERNET FRAME--------------------\n");
-//	Print_Ethernet_Addresses(packet);
-//	Get_Packet_Type(packet);
-//	printf("----------START PROTOCOL (IPv4) HEADER------------\n");
-//	Get_IPv4_Data_Length(packet,Get_Header_Length(packet));
-//	Print_Time_To_Live(packet);
-//	Get_Protocol(packet);
-//	Print_IPv4_Addresses(packet);
-//	printf("----------START PROTOCOL (UDP) HEADER-------------\n");
-//	Print_UDP_Port_Numbers(packet);
-//	Get_UDP_Data_Length(packet);
-//	printf("----------START DHCP HEADER-----------------------\n");
-//      Print_Opcode(packet);
-//	Print_Hs(packet);
-//	Print_Transaction_ID(packet);
-//	Print_Multi_IP(packet);
-//	Print_Server_Name(packet);
-//	Print_Bootfile_Name(packet);
-//	Print_Option(packet);
-//	printf("------------END ETHERNET FRAME--------------------\n\n\n\n");
+	printf("----------START ETHERNET FRAME--------------------\n");
+	Print_Ethernet_Addresses(packet);
+	Get_Packet_Type(packet);
+	printf("----------START PROTOCOL (IPv4) HEADER------------\n");
+	Get_IPv4_Data_Length(packet,Get_Header_Length(packet));
+	Print_Time_To_Live(packet);
+	Get_Protocol(packet);
+	Print_IPv4_Addresses(packet);
+	printf("----------START PROTOCOL (UDP) HEADER-------------\n");
+	Print_UDP_Port_Numbers(packet);
+	Get_UDP_Data_Length(packet);
+	printf("----------START DHCP HEADER-----------------------\n");
+        Print_Opcode(packet);
+	Print_Hs(packet);
+	Print_Transaction_ID(packet);
+	Print_Multi_IP(packet);
+	Print_Server_Name(packet);
+	Print_Bootfile_Name(packet);
+	Print_Option(packet);
+	printf("------------END ETHERNET FRAME--------------------\n\n\n\n");
 }
 
 //----------------START ETHERNET FRAME--------------------

@@ -80,12 +80,12 @@ void netDaemon(int ETH_0){
 		
 		//handling IPV4 packets (homework 2)
 		if(packetType == ETYPE_IPv4){
-			printf("ICMP Check: Packet: %02X , with %02X\n", netD_pkt.payload[23], IPv4_PROTO_ICMP);	
+			//printf("ICMP Check: Packet: %02X , with %02X\n", netD_pkt.payload[23], IPv4_PROTO_ICMP);	
 			
-			printNumberedPacket(netD_pkt.payload, 64);
+			//printNumberedPacket(netD_pkt.payload, 64);
 			//is ICMP
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
-				printf("Is ICMP Packet\n");
+				//printf("Is ICMP Packet\n");
 
 				if(Is_Echo_Reply(netD_pkt.payload)){
 						
@@ -165,13 +165,13 @@ void netDaemon(int ETH_0){
 int Get_Ethergram_Type(uchar packet[]){
 	//printf("12: %02X 13: %02X ", packet[12], packet[13]);
 	if (packet[12] == 8 && packet[13] == 0){
-		printf("Found IPv4 Ethernet Packet\n");
+		//printf("Found IPv4 Ethernet Packet\n");
 		return ETYPE_IPv4;
 	}else if(packet[12] == 8 && packet[13] == 6){
-		printf("Found ARP Ethernet Packet\n");
+		//printf("Found ARP Ethernet Packet\n");
 		return ETYPE_ARP;
 	}else if(packet[12] == 32 && packet[13] == 50){
-		printf("Found FISH Ethernet Packet\n");
+		//printf("Found FISH Ethernet Packet\n");
 		return ETYPE_FISH;
 	}else{
 		//printf("Found undefined type packet\n");

@@ -25,7 +25,5 @@ void icmpDaemon(){
 		icmp_pkt = *icmp_pktPointer;
 
 		free ((void *) msg);
-
-		
 	}
 }

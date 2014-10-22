@@ -1,11 +1,16 @@
 #include <xinu.h>
 
-void Print_Full_Packet(uchar[]);
-
+void printNumberedPacket(uchar[], int);
 struct ethergram *cli_ethergram;
 struct ipgram *cli_ipgram;
 struct udpgram *cli_udpgram;
 struct dhcpgram *cli_dhcpgram;
+
+struct ethergram *off_ethergram;
+struct ipgram *off_ipgram;
+struct udpgram *off_udpgram;
+struct dhcpgram *off_dhcpgram;
+
 
 int ipcount = 0;
 
@@ -28,19 +33,17 @@ void dhcpClient(int packet2){
 	
 		//cast to int
 		int pckstrt = (int)msg;
-		uchar *start = (uchar *)pckstrt;
+		uchar *offerPacket = (uchar *)pckstrt;
 		
-		//used to check the message pass with netdaemon	
-		//printf("DHCP Client thinks the address is: %d\n", pckstrt);
-		//memcpy(&packet[0],(void *)pckstrt, 1);
-		//printf("Packet pointer received in dhcpClient\n");
-		//Print_Full_Packet(start);
-		//Print_Full_Packet(packet);
-		int m = 0;
+		
+		struct ethergram *off_ethergram = (struct ethergram*)offerPacket;
+		struct ipgram *off_ipgram = (struct ipgram*)off_ethergram->data;
+		struct udpgram *off_udpgram = (struct udpgram*)off_ipgram->opts;
+		struct dhcpgram *off_dhcpgram = (struct dhcpgram*)off_udpgram->data;	
 
-		//for(m = 0; m < ETH_ADDR_LEN; m++){
-		//ethergm->dst[m] = 0xFF;
-		//}
+
+	
+		int m = 0;
 
 		//Dest Address	
 		for(m = 0; m < ETH_ADDR_LEN; m++){
@@ -81,11 +84,7 @@ void dhcpClient(int packet2){
 		cli_udpgram->srcPort = htons(0x44);
 		cli_udpgram->dstPort = htons(0x43);
 		cli_udpgram->len = 0; //temp
-		
-		//TODO len is the same as ipgram - ipgram size
 		cli_udpgram->chksum = 0; //temp
-		//TODO chksum at end
-	
 		cli_dhcpgram->opcode = DHCP_OPCODE_REQUEST;
 		cli_dhcpgram->htype = 0x01;
 		cli_dhcpgram->hlen = 0x06;
@@ -111,29 +110,32 @@ void dhcpClient(int packet2){
 		cli_dhcpgram->opts[1] = magic_cookie2;
 		cli_dhcpgram->opts[2] = magic_cookie3;
 		cli_dhcpgram->opts[3] = magic_cookie4;
-		cli_dhcpgram->opts[4] = 0x35;
-		cli_dhcpgram->opts[5] = 0x01;
-		cli_dhcpgram->opts[6] = 0x03;
-		cli_dhcpgram->opts[7] = 0x32;
-		cli_dhcpgram->opts[8] = 0x06;
-		cli_dhcpgram->opts[9] = packet[70];
-		cli_dhcpgram->opts[10] = packet[71];
-		cli_dhcpgram->opts[11] = packet[72];
-		cli_dhcpgram->opts[12] = packet[73];
-		cli_dhcpgram->opts[13] = packet[74];
-		cli_dhcpgram->opts[14] = packet[75];
-		cli_dhcpgram->opts[15] = 0xFF;
-		int end = (int)&cli_dhcpgram->opts[16];
+
+		cli_dhcpgram->opts[4] = 0x35;//Option 53
+		cli_dhcpgram->opts[5] = 0x01;//Length 1
+		cli_dhcpgram->opts[6] = 0x03;//DHCP Request
+		
+		cli_dhcpgram->opts[7] = 0x32; // Option 50
+		cli_dhcpgram->opts[8] = IPv4_ADDR_LEN; //Length 4
+		cli_dhcpgram->opts[9] = off_dhcpgram->yourIP[0];
+		cli_dhcpgram->opts[10] = off_dhcpgram->yourIP[1];
+		cli_dhcpgram->opts[11] = off_dhcpgram->yourIP[2];
+		cli_dhcpgram->opts[12] = off_dhcpgram->yourIP[3];
+
+		cli_dhcpgram->opts[13] = 0x36;//Option 54
+		cli_dhcpgram->opts[14] = IPv4_ADDR_LEN; //Length 4
+		cli_dhcpgram->opts[15] = off_dhcpgram->server[0];
+		cli_dhcpgram->opts[16] = off_dhcpgram->server[1];
+		cli_dhcpgram->opts[17] = off_dhcpgram->server[2];
+		cli_dhcpgram->opts[18] = off_dhcpgram->server[3];
+		cli_dhcpgram->opts[19] = 0xFF; 
+		int end = (int)&cli_dhcpgram->opts[20];
 	
 		control(ETH0, ETH_CTRL_GET_MAC, (ulong)cli_dhcpgram->hwaddr, 0);
-
-		//memcpy(&cli_dhcpgram->hwaddr[0], &myMac, ETH_ADDR_LEN);
 
 		cli_ipgram->len = htons(end - (int)&cli_ethergram->data);
 		cli_udpgram->len = htons(end - (int)&cli_ipgram->opts);
 		cli_ipgram->chksum = checksum((uchar *)cli_ipgram, (4 * (cli_ipgram->ver_ihl & IPv4_IHL)));
-
-		//Print_Full_Packet(packet);
 	
 		//write packet
 		write(ETH0, packet, PKTSZ);
@@ -141,24 +143,3 @@ void dhcpClient(int packet2){
 	}
 }
 
-void Print_Full_Packet(uchar packet[]){
-	int i = 0;
-	int count = 1;
-	int count2 = 1;
-	
-	while(i < PKTSZ){
-		printf("%02X", packet[i]);
-		if(count == 2){
-			printf(" ");
-			count = 0;
-		}
-		if(count2 == 16){
-			printf("\n");
-			count2 = 0;
-		}
-		i++;
-		count++;
-		count2++;
-	}
-	printf("\n");
-}
