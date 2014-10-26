@@ -298,7 +298,7 @@ bool Is_Our_Echo_Reply(uchar packet[]){
 		}
 		return TRUE;
 	}else{
-		printf("Returning false in Is_Echo_Reply, not type ICMP_REPLY\n");
+		//printf("Returning false in Is_Echo_Reply, not type ICMP_REPLY\n");
 		return FALSE;
 	}
 	printf("Returning SYSERR in Is_Echo_Reply\n");

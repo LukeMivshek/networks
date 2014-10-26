@@ -420,7 +420,13 @@ void Print_Option(uchar packet[]){
 	if(packet[278]==0x63 && packet[279]==0x82 && packet[280]==0x53 && packet[281]==0x63){
 		printf("Magic Cookie Exists, value 99.130.83.99 matches\n");
 		printf("Option %02X, length %02X: REQUEST\n", packet[282], packet[283]);
-		
+		/*
+		//bool flag = true;
+		int d = 282; 
+		while(flag){
+			if(packet[d] == 0xFF
+		}
+		*/
 	}else{
 		printf("Magic Cookie does not exist.\n");
 	}

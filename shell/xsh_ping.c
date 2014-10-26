@@ -81,13 +81,16 @@ void sendPings(uchar ipAddr[], int numOfPings){
 		printf("");
 		time = clocktime;
 		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
-		
+			
 		//wait on the response from net daemon
 		message msg = recvtime(1500);
 		if(msg < 0){
+			temp = clocktime - time;
+			printf("No response, time: %dms\n", temp);
 			drop++;				
 		}else{
 			transmit++;
+			sleep(1000);
 			time -= clocktime;
 			printf("time: %dms\n", time);
 		}

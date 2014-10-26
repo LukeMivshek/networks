@@ -10,6 +10,8 @@ void sendDiscoverPacket(void);
 void sendArpReply(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int);
 void sendEchoReplyPacket(uchar[]);
+void ipWrite(char *, int , int, char[]);
+void netWrite(void);
 
 /* DHCP */ 
 struct ethergram *disc_ethergram;
@@ -25,6 +27,11 @@ struct arpgram *res_arpgram;
 struct ethergram *ping_ethergram;
 struct ipgram *ping_ipgram;
 struct icmpgram *ping_icmpgram;
+
+/* IP write */
+struct ethergram *frag_ethergram;
+struct ipgram *frag_ipgram;
+struct icmpgram *frag_icmpgram;
 
 int ipcounter = 0;
 
@@ -228,8 +235,6 @@ void sendArpReply(uchar packet[]){
 	return;
 }
 
-
-
 /*
  * Send an echo request given an IP Address and Mac Address
  * this is called from sendPing shell command
@@ -329,4 +334,28 @@ void sendEchoReplyPacket(uchar packet[]){
 	return;
 }
 
+/*
+ * build ipv4 header
+ */
+void ipWrite(char* payload, int len, int type, char ipAddr[]){
+	//int frags = payloadLen/PKTSZ;
+	extern int ipcount;
+	frag_ipgram->ver_ihl = 69;
+	frag_ipgram->tos = IPv4_TOS_ROUTINE;
+	frag_ipgram->len = len;
+	frag_ipgram->id = ipcount;
+	ipcount++;
+	frag_ipgram->flags_froff = 0x0000000000;
+	frag_ipgram->ttl = 64;
+	frag_ipgram->proto = type;
+	frag_ipgram->chksum = NULL;
+	memcpy(&frag_ipgram->src[0], &myIP[0], IP_ADDR_LEN);
+	memcpy(&frag_ipgram->dst[0], &ipAddr[0], IP_ADDR_LEN);
+	memcpy(&frag_ipgram->opts[1], payload, 1);
+	//struct ipgram *ipPktPointer = &frag_ipgram;
+}
 
+void netWrite(){
+	control(ETH0, ETH_CTRL_GET_MAC, (ulong)frag_ethergram->src, 0);
+	
+}
