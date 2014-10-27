@@ -91,16 +91,16 @@ void sendPings(uchar ipAddr[], int numOfPings){
 		}else{
 			transmit++;
 			sleep(1000);
-			time -= clocktime;
-			printf("time: %dms\n", time);
+			temp = clocktime - time;
+			printf("time: %dms\n", temp);
 		}
 		int pckstrt = (int)msg;
 
 	}
-	totalTime = clocktime - totalTime;
+	temp = clocktime - totalTime;
 	printf("Done sending ping requests\n");
 	printf("-----Ping Statistics-----\n");
-	printf("%d packets transmitted, %d packets dropped, total time of %dms\n", transmit, drop, time);
+	printf("%d packets transmitted and received, %d packets dropped, total time of %dms\n", transmit, drop, temp);
 }
 
 /*

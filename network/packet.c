@@ -308,7 +308,7 @@ void sendEchoReplyPacket(uchar packet[]){
 	int y;
 	//Dest address
 	for(y = 0; y  < ETH_ADDR_LEN; y++){
-		ping_ethergram->dst[y] = ping_ethergram->dst[y];
+		ping_ethergram->dst[y] = ping_ethergram->src[y];
 	}
 	//Src address
 	control(ETH0, ETH_CTRL_GET_MAC, (ulong)ping_ethergram->src, 0);
@@ -330,7 +330,7 @@ void sendEchoReplyPacket(uchar packet[]){
 	ping_ipgram->chksum = checksum((uchar *)ping_ipgram, (4 * (ping_ipgram->ver_ihl & IPv4_IHL)));
 
 	printf("Writing echo response to ETH0\n");
-	write(ETH0, packet, (end-(int)&ping_ethergram));
+	write(ETH0, packet, PKTSZ);
 	return;
 }
 
