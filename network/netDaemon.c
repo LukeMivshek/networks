@@ -34,13 +34,7 @@ bool snoopActive;
  **/
 void netDaemon(int ETH_0){
 
-	//uchar packet[PKTSZ];
-	//uchar dhcpPacket[PKTSZ];
-	//uchar arpPacket[PKTSZ];
-
 	bzero(netD_pkt.payload,PKTSZ);
-	//bzero(dhcpPacket,PKTSZ);
-	//bzero(arpPacket,PKTSZ);
 
 	//pids to refernce processes	
 	int dhcp_pid;
@@ -74,9 +68,11 @@ void netDaemon(int ETH_0){
 		}			
 
 
-		/* Handling ARP Packets 
+		/* 
+ 		 * Handling ARP Packets 
  	         * (Homework 3)
  	         * send packet over to arpDaemon to be evaluated 
+ 	         *
  	         */
 		if(packetType == ETYPE_ARP){	
 		
@@ -92,9 +88,20 @@ void netDaemon(int ETH_0){
 			sleep(200);
 		}
 		
-		//handling IPV4 packets (homework 2)
+		/* 
+ 		 * Handling IPV4 packets 
+ 		 * (homework 2)
+ 		 * Evaluates different types of headers inside the IPv4 and acts
+ 		 * accordingly
+ 		 *
+ 		 */
 		if(packetType == ETYPE_IPv4){
-			//is ICMP
+			/*
+ 			 * Handling ICMP type IPv4 packets
+ 			 * (homework 5)
+			 * Evaluates requests or replies and acts accordingly
+			 *
+			 */ 
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
 
 				if(Is_Our_Echo_Reply(netD_pkt.payload)){
@@ -119,6 +126,13 @@ void netDaemon(int ETH_0){
 					printf("Incoming ICMP is neither request or reply\n");
 				}
 			}
+
+			/*
+			 * Handling DHCP type IPv4 packets
+			 * (homework 3)
+			 * Finds offers and acks and acts accordingly
+			 *
+			 */ 
 
 			//since we know its an ipv4, we know where dhcp stuff is
 			int packet_tag = netD_pkt.payload[282];
@@ -154,6 +168,11 @@ void netDaemon(int ETH_0){
 		bzero(netD_pkt.payload, PKTSZ);
 	}
 }
+
+
+// -- Start helper functions --
+
+
 
 /*
  * This function returns the type of ethergram

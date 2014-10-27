@@ -20,8 +20,6 @@ void icmpDaemon(){
 		//recieve icmp type packets fro netDaemon
 		message msg = receive();
 			
-		printf("ICMP packet recieved in icmpDaemon\n");
-		
 		int pckstrt = (int)msg;		
 		uchar *icmp_pktPointer = (uchar *)pckstrt;		
 		sendEchoReplyPacket(icmp_pktPointer);
