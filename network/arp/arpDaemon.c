@@ -4,6 +4,7 @@ int arpResolve(uchar*, uchar*);
 struct packet *arpD_pktPointer;
 struct packet arpD_pkt;
 void printPacket(uchar[], int);
+void sendArpReplyPacket(uchar[]);
 
 bool isOurRequest(void);
 bool isOurReply(void);
@@ -51,7 +52,7 @@ void arpDaemon(){
 		}else if(arpD_pkt.payload[21] == ARP_OPCODE_REQUEST){
 			if(isOurRequest()){
 				printf("Found ARP Request Directed at us\n");
-				sendArpReply(arpD_pkt.payload);
+				sendArpReplyPacket(arpD_pkt.payload);
 			}	
 		}else{
 			printf("ARP is of unknown type\n");

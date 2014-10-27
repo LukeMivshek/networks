@@ -7,11 +7,9 @@ void Build_IPv4_Header(void);
 void Build_UDP_Header(void);
 void Build_DHCP_Header(void);
 void sendDiscoverPacket(void);
-void sendArpReply(uchar[]);
+void sendArpReplyPacket(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int);
 void sendEchoReplyPacket(uchar[]);
-void ipWrite(char *, int , int, char[]);
-void netWrite(void);
 
 /* DHCP */ 
 struct ethergram *disc_ethergram;
@@ -35,6 +33,11 @@ struct icmpgram *frag_icmpgram;
 
 int ipcounter = 0;
 
+/*
+ * 	---------- DHCP packets ----------
+ *
+ *	DHCP Discover
+ */
 void sendDiscoverPacket(){
 	
 	//declare and zero out packet
@@ -144,6 +147,12 @@ void sendDiscoverPacket(){
 	return;
 }
 
+
+/*
+ * 	---------- ARP Packets ----------
+ *
+ *	ARP Resolve
+ */
 void sendArpResolvePacket(uchar* ipAddress){
 	
 	//declare and zero out packet
@@ -189,9 +198,9 @@ void sendArpResolvePacket(uchar* ipAddress){
 }
 
 /*
- * build and send an Arp reply to respond to an arp resolve (directed at an IP/mac)
+ * 	ARP Reply
  */
-void sendArpReply(uchar packet[]){
+void sendArpReplyPacket(uchar packet[]){
 	
 	uchar replyPacket[PKTSZ];
 	bzero(replyPacket,PKTSZ);
@@ -236,8 +245,10 @@ void sendArpReply(uchar packet[]){
 }
 
 /*
- * Send an echo request given an IP Address and Mac Address
- * this is called from sendPing shell command
+ *	---------- Ping Packets ----------
+ *
+ * 	Ping Request
+ * 	(this is called from sendPing shell command)
  */
 void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining){
 
@@ -295,8 +306,8 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining)
 
 
 /*
- * Send an echo reply given an IP Address and Mac Address
- * this is called from the icmp daemon
+ * 	Ping Reply
+ * 	(this is called from the icmp daemon)
  */
 void sendEchoReplyPacket(uchar packet[]){
 	
@@ -334,28 +345,3 @@ void sendEchoReplyPacket(uchar packet[]){
 	return;
 }
 
-/*
- * build ipv4 header
- */
-void ipWrite(char* payload, int len, int type, char ipAddr[]){
-	//int frags = payloadLen/PKTSZ;
-	extern int ipcount;
-	frag_ipgram->ver_ihl = 69;
-	frag_ipgram->tos = IPv4_TOS_ROUTINE;
-	frag_ipgram->len = len;
-	frag_ipgram->id = ipcount;
-	ipcount++;
-	frag_ipgram->flags_froff = 0x0000000000;
-	frag_ipgram->ttl = 64;
-	frag_ipgram->proto = type;
-	frag_ipgram->chksum = NULL;
-	memcpy(&frag_ipgram->src[0], &myIP[0], IP_ADDR_LEN);
-	memcpy(&frag_ipgram->dst[0], &ipAddr[0], IP_ADDR_LEN);
-	memcpy(&frag_ipgram->opts[1], payload, 1);
-	//struct ipgram *ipPktPointer = &frag_ipgram;
-}
-
-void netWrite(){
-	control(ETH0, ETH_CTRL_GET_MAC, (ulong)frag_ethergram->src, 0);
-	
-}

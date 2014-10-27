@@ -23,7 +23,7 @@ NETARP = arpDaemon.c
 
 SRC =	${SHLL:%.c=../shell/%.c} \
 		${NET:%.c=../network/%.c} \
-		${NETARP:%.c=../network/arp/%.c}
+			${NETARP:%.c=../network/arp/%.c}
 
 KRNOBJ = ${SRC:%.c=%.o}
 
