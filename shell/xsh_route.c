@@ -13,6 +13,7 @@ uchar* gtwyIpPtr;
 char* destArgPtr;
 char* gtwyArgPtr;
 
+
 command xsh_route(int nargs, char *args[]){
 	bzero(destIP, IP_ADDR_LEN);
 	bzero(gtwyIP, IP_ADDR_LEN);	
