@@ -4,29 +4,20 @@
 #include <xinu.h>
 
 int Get_Ethergram_Type(uchar[]);
-
 void printPacket(uchar[], int);
-
 bool Is_Our_Offer(int,int,int,int);
 bool Is_Our_ACK(int, int, int, int);
-
 bool Is_Our_Echo_Reply(uchar[]);
 bool Is_Echo_Request(uchar[]);
-
 void Print_Source_Address(uchar[]);
 struct packet netD_pkt;
 struct packet *pktPointer;
-
 void setMyIP(uchar[]);
-
 void printNumberedPacket(uchar packet[], int length);
-
 void Print_Netstat(uchar[]);
-
 void Print_Entire_Packet(uchar[]);
 
 bool ipSet = FALSE;
-
 bool snoopActive;
 
 /**

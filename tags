@@ -1,0 +1,1506 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AGING	include/kernel.h	55;"	d
+ARP	shell/xsh_dhcpsnoop.c	14;"	d	file:
+ARPENT_LEN	include/network.h	329;"	d
+ARPENT_STATE_EMPTY	include/network.h	341;"	d
+ARPENT_STATE_RESOLVED	include/network.h	342;"	d
+ARPENT_STATE_UNRESOLVED	include/network.h	343;"	d
+ARPSZ	include/network.h	23;"	d
+ARP_HLEN	include/network.h	317;"	d
+ARP_LAN_HTYPE	include/network.h	315;"	d
+ARP_NETLAY_PROTO	include/network.h	316;"	d
+ARP_OPCODE_REPLY	include/network.h	310;"	d
+ARP_OPCODE_REQUEST	include/network.h	309;"	d
+ARP_PKT_OPCODE_REPLY	include/network.h	312;"	d
+ARP_PKT_OPCODE_REQUEST	include/network.h	311;"	d
+ARP_PLEN	include/network.h	318;"	d
+ASSERT	include/kernel.h	60;"	d
+ASSERTFUNC	include/kernel.h	61;"	d
+AT	include/mips.h	20;"	d
+BADPID	include/proc.h	41;"	d
+BFPFREE	include/bufpool.h	20;"	d
+BFPUSED	include/bufpool.h	21;"	d
+BOOTIMAGE	compile/Makefile	/^BOOTIMAGE = xinu.boot$/;"	m
+BootPC	include/dhcp.h	4;"	d
+BootPServer	include/dhcp.h	5;"	d
+CAM_CTRL_BUSY	include/bcm4713.h	155;"	d
+CAM_CTRL_ENABLE	include/bcm4713.h	149;"	d
+CAM_CTRL_INDEX_MASK	include/bcm4713.h	153;"	d
+CAM_CTRL_INDEX_SHIFT	include/bcm4713.h	154;"	d
+CAM_CTRL_MSEL	include/bcm4713.h	150;"	d
+CAM_CTRL_READ	include/bcm4713.h	151;"	d
+CAM_CTRL_WRITE	include/bcm4713.h	152;"	d
+CAM_DATA_HI_VALID	include/bcm4713.h	146;"	d
+CAP_EXTBUS	include/sbchipc.h	126;"	d
+CAP_FLASH_MASK	include/sbchipc.h	127;"	d
+CAP_MIPSEB	include/sbchipc.h	122;"	d
+CAP_PLL_MASK	include/sbchipc.h	128;"	d
+CAP_PWR_CTL	include/sbchipc.h	129;"	d
+CAP_UARTGPIO	include/sbchipc.h	125;"	d
+CAP_UARTS_MASK	include/sbchipc.h	121;"	d
+CAP_UCLKSEL	include/sbchipc.h	123;"	d
+CAP_UINTCLK	include/sbchipc.h	124;"	d
+CAUSE_EXC	include/mips.h	97;"	d
+CAUSE_HW0	include/mips.h	100;"	d
+CAUSE_HW1	include/mips.h	101;"	d
+CAUSE_HW2	include/mips.h	102;"	d
+CAUSE_HW3	include/mips.h	103;"	d
+CAUSE_HW4	include/mips.h	104;"	d
+CAUSE_HW5	include/mips.h	105;"	d
+CAUSE_SW0	include/mips.h	98;"	d
+CAUSE_SW1	include/mips.h	99;"	d
+CC_125_M	include/sbchipc.h	179;"	d
+CC_125_M25	include/sbchipc.h	180;"	d
+CC_125_M33	include/sbchipc.h	181;"	d
+CC_125_N	include/sbchipc.h	178;"	d
+CC_CFG_CD_MASK	include/sbchipc.h	228;"	d
+CC_CFG_CE	include/sbchipc.h	229;"	d
+CC_CFG_DS	include/sbchipc.h	227;"	d
+CC_CFG_EM_ASYNC	include/sbchipc.h	223;"	d
+CC_CFG_EM_IDE	include/sbchipc.h	226;"	d
+CC_CFG_EM_MASK	include/sbchipc.h	222;"	d
+CC_CFG_EM_PCMCIA	include/sbchipc.h	225;"	d
+CC_CFG_EM_SYNC	include/sbchipc.h	224;"	d
+CC_CFG_EN	include/sbchipc.h	221;"	d
+CC_CFG_SB	include/sbchipc.h	230;"	d
+CC_CLOCK_BASE	include/sbchipc.h	211;"	d
+CC_F5_BIAS	include/sbchipc.h	194;"	d
+CC_F6_2	include/sbchipc.h	184;"	d
+CC_F6_3	include/sbchipc.h	186;"	d
+CC_F6_4	include/sbchipc.h	188;"	d
+CC_F6_5	include/sbchipc.h	190;"	d
+CC_F6_6	include/sbchipc.h	191;"	d
+CC_F6_7	include/sbchipc.h	192;"	d
+CC_M1_MASK	include/sbchipc.h	169;"	d
+CC_M2_MASK	include/sbchipc.h	170;"	d
+CC_M2_SHIFT	include/sbchipc.h	171;"	d
+CC_M3_MASK	include/sbchipc.h	172;"	d
+CC_M3_SHIFT	include/sbchipc.h	173;"	d
+CC_MC_BYPASS	include/sbchipc.h	196;"	d
+CC_MC_M1	include/sbchipc.h	197;"	d
+CC_MC_M1M2	include/sbchipc.h	198;"	d
+CC_MC_M1M2M3	include/sbchipc.h	199;"	d
+CC_MC_M1M3	include/sbchipc.h	200;"	d
+CC_MC_MASK	include/sbchipc.h	174;"	d
+CC_MC_SHIFT	include/sbchipc.h	175;"	d
+CC_SE	include/sbchipc.h	140;"	d
+CC_T2M2_BIAS	include/sbchipc.h	204;"	d
+CC_T2MC_M1BYP	include/sbchipc.h	206;"	d
+CC_T2MC_M2BYP	include/sbchipc.h	207;"	d
+CC_T2MC_M3BYP	include/sbchipc.h	208;"	d
+CC_T2_BIAS	include/sbchipc.h	203;"	d
+CC_UARTCLKO	include/sbchipc.h	139;"	d
+CID_CC_MASK	include/sbchipc.h	117;"	d
+CID_CC_SHIFT	include/sbchipc.h	118;"	d
+CID_ID_MASK	include/sbchipc.h	112;"	d
+CID_PKG_MASK	include/sbchipc.h	115;"	d
+CID_PKG_SHIFT	include/sbchipc.h	116;"	d
+CID_REV_MASK	include/sbchipc.h	113;"	d
+CID_REV_SHIFT	include/sbchipc.h	114;"	d
+CI_EI	include/sbchipc.h	143;"	d
+CN_N1_MASK	include/sbchipc.h	164;"	d
+CN_N2_MASK	include/sbchipc.h	165;"	d
+CN_N2_SHIFT	include/sbchipc.h	166;"	d
+CONFIG1_DA	include/mips.h	163;"	d
+CONFIG1_DL	include/mips.h	162;"	d
+CONFIG1_DS	include/mips.h	161;"	d
+CONFIG1_IA	include/mips.h	160;"	d
+CONFIG1_IL	include/mips.h	159;"	d
+CONFIG1_IS	include/mips.h	158;"	d
+CONFIG1_MASK	include/mips.h	164;"	d
+CONSOLE	include/device.h	30;"	d
+CONTEXT	include/mips.h	138;"	d
+CONTEXT_WORDS	include/mips.h	140;"	d
+CP0_BADVADDR	include/mips.h	65;"	d
+CP0_CAUSE	include/mips.h	70;"	d
+CP0_COMPARE	include/mips.h	68;"	d
+CP0_CONFIG	include/mips.h	73;"	d
+CP0_CONTEXT	include/mips.h	62;"	d
+CP0_COUNT	include/mips.h	66;"	d
+CP0_DIAG	include/mips.h	74;"	d
+CP0_ENTRYHI	include/mips.h	67;"	d
+CP0_ENTRYLO0	include/mips.h	60;"	d
+CP0_ENTRYLO1	include/mips.h	61;"	d
+CP0_EPC	include/mips.h	71;"	d
+CP0_ERREPC	include/mips.h	77;"	d
+CP0_INDEX	include/mips.h	58;"	d
+CP0_PGMASK	include/mips.h	63;"	d
+CP0_PRID	include/mips.h	72;"	d
+CP0_RANDOM	include/mips.h	59;"	d
+CP0_STATUS	include/mips.h	69;"	d
+CP0_TAGHI	include/mips.h	76;"	d
+CP0_TAGLO	include/mips.h	75;"	d
+CP0_WIRED	include/mips.h	64;"	d
+CTX_JA	include/mips.h	142;"	d
+CTX_RA	include/mips.h	143;"	d
+CTX_S0	include/mips.h	144;"	d
+CTX_S1	include/mips.h	145;"	d
+CTX_S2	include/mips.h	146;"	d
+CTX_S3	include/mips.h	147;"	d
+CTX_S4	include/mips.h	148;"	d
+CTX_S5	include/mips.h	149;"	d
+CTX_S6	include/mips.h	150;"	d
+CTX_S7	include/mips.h	151;"	d
+CTX_S8	include/mips.h	152;"	d
+CTX_S9	include/mips.h	153;"	d
+DEVCTRL_EPR	include/bcm4713.h	24;"	d
+DEVCTRL_IPP	include/bcm4713.h	23;"	d
+DEVCTRL_PADDR	include/bcm4713.h	27;"	d
+DEVCTRL_PFE	include/bcm4713.h	22;"	d
+DEVCTRL_PMCE	include/bcm4713.h	26;"	d
+DEVCTRL_PME	include/bcm4713.h	25;"	d
+DHCP_BOOTFILE_LEN	include/network.h	225;"	d
+DHCP_HWFIELD_LEN	include/network.h	223;"	d
+DHCP_MAGIC_COOKIE	include/network.h	249;"	d
+DHCP_MESSAGE_ACK	include/network.h	268;"	d
+DHCP_MESSAGE_DECLINE	include/network.h	267;"	d
+DHCP_MESSAGE_DISCOVER	include/network.h	264;"	d
+DHCP_MESSAGE_INFORM	include/network.h	271;"	d
+DHCP_MESSAGE_NACK	include/network.h	269;"	d
+DHCP_MESSAGE_OFFER	include/network.h	265;"	d
+DHCP_MESSAGE_RELEASE	include/network.h	270;"	d
+DHCP_MESSAGE_REQUEST	include/network.h	266;"	d
+DHCP_OPCODE_REPLY	include/network.h	247;"	d
+DHCP_OPCODE_REQUEST	include/network.h	246;"	d
+DHCP_OPTIONS_CLIENT_ID	include/network.h	260;"	d
+DHCP_OPTIONS_DNS_SERVER	include/network.h	254;"	d
+DHCP_OPTIONS_DOMAIN_NAME	include/network.h	255;"	d
+DHCP_OPTIONS_END	include/network.h	261;"	d
+DHCP_OPTIONS_LEASETIME	include/network.h	257;"	d
+DHCP_OPTIONS_MESSAGE	include/network.h	258;"	d
+DHCP_OPTIONS_REQUESTED_IP	include/network.h	256;"	d
+DHCP_OPTIONS_ROUTER	include/network.h	253;"	d
+DHCP_OPTIONS_SERVER_ID	include/network.h	259;"	d
+DHCP_OPTIONS_SUBNET_MASK	include/network.h	252;"	d
+DHCP_SERVNAME_LEN	include/network.h	224;"	d
+DMARX_CTRL_ENABLE	include/bcm4713.h	96;"	d
+DMARX_CTRL_ROMASK	include/bcm4713.h	97;"	d
+DMARX_CTRL_ROSHIFT	include/bcm4713.h	98;"	d
+DMARX_STAT_CDMASK	include/bcm4713.h	104;"	d
+DMARX_STAT_EBEBW	include/bcm4713.h	114;"	d
+DMARX_STAT_EBEDA	include/bcm4713.h	115;"	d
+DMARX_STAT_EDFO	include/bcm4713.h	113;"	d
+DMARX_STAT_EDPE	include/bcm4713.h	112;"	d
+DMARX_STAT_EMASK	include/bcm4713.h	110;"	d
+DMARX_STAT_ENONE	include/bcm4713.h	111;"	d
+DMARX_STAT_SACTIVE	include/bcm4713.h	107;"	d
+DMARX_STAT_SDISABLED	include/bcm4713.h	106;"	d
+DMARX_STAT_SIDLE	include/bcm4713.h	108;"	d
+DMARX_STAT_SMASK	include/bcm4713.h	105;"	d
+DMARX_STAT_SSTOPPED	include/bcm4713.h	109;"	d
+DMATX_CTRL_ENABLE	include/bcm4713.h	71;"	d
+DMATX_CTRL_FAIRPRIO	include/bcm4713.h	74;"	d
+DMATX_CTRL_FLUSH	include/bcm4713.h	75;"	d
+DMATX_CTRL_LPBACK	include/bcm4713.h	73;"	d
+DMATX_CTRL_SUSPEND	include/bcm4713.h	72;"	d
+DMATX_STAT_CDMASK	include/bcm4713.h	80;"	d
+DMATX_STAT_EBEBR	include/bcm4713.h	91;"	d
+DMATX_STAT_EBEDA	include/bcm4713.h	92;"	d
+DMATX_STAT_EDFU	include/bcm4713.h	90;"	d
+DMATX_STAT_EDPE	include/bcm4713.h	89;"	d
+DMATX_STAT_EMASK	include/bcm4713.h	87;"	d
+DMATX_STAT_ENONE	include/bcm4713.h	88;"	d
+DMATX_STAT_FLUSHED	include/bcm4713.h	93;"	d
+DMATX_STAT_SACTIVE	include/bcm4713.h	83;"	d
+DMATX_STAT_SDISABLED	include/bcm4713.h	82;"	d
+DMATX_STAT_SIDLE	include/bcm4713.h	84;"	d
+DMATX_STAT_SMASK	include/bcm4713.h	81;"	d
+DMATX_STAT_SSTOPPED	include/bcm4713.h	85;"	d
+DMATX_STAT_SSUSP	include/bcm4713.h	86;"	d
+EMPTY	include/kernel.h	30;"	d
+ENET_CTRL_DISABLE	include/bcm4713.h	159;"	d
+ENET_CTRL_ENABLE	include/bcm4713.h	158;"	d
+ENET_CTRL_EPSEL	include/bcm4713.h	161;"	d
+ENET_CTRL_SRST	include/bcm4713.h	160;"	d
+EOF	include/kernel.h	44;"	d
+ETH0	include/device.h	33;"	d
+ETHER_MINPAYLOAD	include/network.h	33;"	d
+ETHER_SIZE	include/network.h	30;"	d
+ETH_ADDR_LEN	include/ether.h	20;"	d
+ETH_ADDR_LEN	include/network.h	20;"	d
+ETH_CRC_LEN	include/ether.h	36;"	d
+ETH_CTRL_CLEAR_STATS	include/ether.h	49;"	d
+ETH_CTRL_DISABLE	include/ether.h	54;"	d
+ETH_CTRL_GET_MAC	include/ether.h	51;"	d
+ETH_CTRL_RESET	include/ether.h	53;"	d
+ETH_CTRL_SET_MAC	include/ether.h	50;"	d
+ETH_CTRL_SET_RX_MODE	include/ether.h	52;"	d
+ETH_DESC_CTRL_CMASK	include/ether.h	91;"	d
+ETH_DESC_CTRL_EOF	include/ether.h	94;"	d
+ETH_DESC_CTRL_EOT	include/ether.h	92;"	d
+ETH_DESC_CTRL_IOC	include/ether.h	93;"	d
+ETH_DESC_CTRL_LEN	include/ether.h	90;"	d
+ETH_DESC_CTRL_SOF	include/ether.h	95;"	d
+ETH_DMA_TABLE_PAGES	include/ether.h	30;"	d
+ETH_HEADER_LEN	include/ether.h	34;"	d
+ETH_IBLEN	include/ether.h	24;"	d
+ETH_INVALID	include/ether.h	108;"	d
+ETH_LOCAL_MAC	include/vlan.h	30;"	d
+ETH_MAX_PKT_LEN	include/ether.h	37;"	d
+ETH_MTU	include/ether.h	33;"	d
+ETH_RING_PAGES	include/ether.h	29;"	d
+ETH_RX_BUF_SIZE	include/ether.h	39;"	d
+ETH_RX_FLAG_BCAST	include/ether.h	63;"	d
+ETH_RX_FLAG_CRCERR	include/ether.h	58;"	d
+ETH_RX_FLAG_ERRORS	include/ether.h	66;"	d
+ETH_RX_FLAG_LARGE	include/ether.h	61;"	d
+ETH_RX_FLAG_LAST	include/ether.h	65;"	d
+ETH_RX_FLAG_MCAST	include/ether.h	62;"	d
+ETH_RX_FLAG_MISS	include/ether.h	64;"	d
+ETH_RX_FLAG_ODD	include/ether.h	60;"	d
+ETH_RX_FLAG_OFIFO	include/ether.h	57;"	d
+ETH_RX_FLAG_SERR	include/ether.h	59;"	d
+ETH_RX_RING_ENTRIES	include/ether.h	25;"	d
+ETH_STATE_DOWN	include/ether.h	45;"	d
+ETH_STATE_FREE	include/ether.h	44;"	d
+ETH_STATE_UP	include/ether.h	46;"	d
+ETH_TX_BUF_SIZE	include/ether.h	41;"	d
+ETH_TX_RING_ENTRIES	include/ether.h	26;"	d
+ETH_TYPE_VLAN	include/vlan.h	32;"	d
+ETH_VLAN_IDMASK	include/vlan.h	33;"	d
+ETH_VLAN_LEN	include/ether.h	35;"	d
+ETYPE_ARP	include/network.h	26;"	d
+ETYPE_FISH	include/network.h	27;"	d
+ETYPE_IPv4	include/network.h	25;"	d
+FALSE	include/kernel.h	25;"	d
+FILL_I_CACHE	include/mips.h	170;"	d
+FISH	shell/xsh_dhcpsnoop.c	15;"	d	file:
+FLASH_NONE	include/sbchipc.h	214;"	d
+Get_Ethergram_Type	network/netDaemon.c	/^int Get_Ethergram_Type(uchar packet[]){$/;"	f
+Get_Header_Length	shell/xsh_dhcpsnoop.c	/^int Get_Header_Length(uchar packet[]){$/;"	f
+Get_IPv4_Data_Length	shell/xsh_dhcpsnoop.c	/^int Get_IPv4_Data_Length(uchar packet[], int HLEN){$/;"	f
+Get_Packet_Type	shell/xsh_dhcpsnoop.c	/^int Get_Packet_Type(uchar packet[]){$/;"	f
+Get_Protocol	shell/xsh_dhcpsnoop.c	/^int Get_Protocol(uchar packet[]){$/;"	f
+Get_UDP_Data_Length	shell/xsh_dhcpsnoop.c	/^int Get_UDP_Data_Length(uchar packet[]){$/;"	f
+IBLEN	include/tty.h	8;"	d
+ICMP_Protocol	shell/xsh_dhcpsnoop.c	16;"	d	file:
+ICMP_QUERY_CODE	include/network.h	140;"	d
+ICMP_REPLY	include/network.h	137;"	d
+ICMP_REQUEST	include/network.h	136;"	d
+ICMP_TIMESTMP_REPLY	include/network.h	139;"	d
+ICMP_TIMESTMP_REQUEST	include/network.h	138;"	d
+IGMP_Protocol	shell/xsh_dhcpsnoop.c	17;"	d	file:
+IMASK_DEF	include/bcm4713.h	49;"	d
+INDEX_STORE_TAG_D	include/mips.h	171;"	d
+INDEX_STORE_TAG_I	include/mips.h	169;"	d
+INITPRIO	include/proc.h	66;"	d
+INITRET	include/proc.h	67;"	d
+INITSTK	include/proc.h	65;"	d
+INTERRUPT_H	include/interrupt.h	12;"	d
+IP_ADDR_LEN	include/network.h	21;"	d
+IPv4	shell/xsh_dhcpsnoop.c	13;"	d	file:
+IPv4_ADDR_LEN	include/network.h	64;"	d
+IPv4_DOTDEC_MAXLEN	include/network.h	57;"	d
+IPv4_FLAGS	include/network.h	62;"	d
+IPv4_FLAG_DF	include/network.h	84;"	d
+IPv4_FLAG_LF	include/network.h	82;"	d
+IPv4_FLAG_MF	include/network.h	83;"	d
+IPv4_FROFF	include/network.h	63;"	d
+IPv4_HDR_LEN	include/network.h	68;"	d
+IPv4_IHL	include/network.h	60;"	d
+IPv4_MAX_HDRLEN	include/network.h	70;"	d
+IPv4_MAX_IHL	include/network.h	72;"	d
+IPv4_MAX_OPTLEN	include/network.h	69;"	d
+IPv4_MIN_IHL	include/network.h	71;"	d
+IPv4_PROTO_ICMP	include/network.h	76;"	d
+IPv4_PROTO_IGMP	include/network.h	77;"	d
+IPv4_PROTO_TCP	include/network.h	78;"	d
+IPv4_PROTO_UDP	include/network.h	79;"	d
+IPv4_TOS_CRITIC	include/network.h	89;"	d
+IPv4_TOS_FLASH	include/network.h	91;"	d
+IPv4_TOS_FLASHOV	include/network.h	90;"	d
+IPv4_TOS_IM	include/network.h	92;"	d
+IPv4_TOS_INTCNTRL	include/network.h	88;"	d
+IPv4_TOS_NETCNTRL	include/network.h	87;"	d
+IPv4_TOS_PRIO	include/network.h	93;"	d
+IPv4_TOS_ROUTINE	include/network.h	94;"	d
+IPv4_TTL	include/network.h	65;"	d
+IPv4_VER	include/network.h	61;"	d
+IPv4_VERSION	include/network.h	73;"	d
+IRQREC_A0	include/interrupt.h	53;"	d
+IRQREC_A1	include/interrupt.h	54;"	d
+IRQREC_A2	include/interrupt.h	55;"	d
+IRQREC_A3	include/interrupt.h	56;"	d
+IRQREC_AT	include/interrupt.h	50;"	d
+IRQREC_CAUSE	include/interrupt.h	84;"	d
+IRQREC_EPC	include/interrupt.h	83;"	d
+IRQREC_FP	include/interrupt.h	79;"	d
+IRQREC_GP	include/interrupt.h	77;"	d
+IRQREC_HI	include/interrupt.h	82;"	d
+IRQREC_K0	include/interrupt.h	75;"	d
+IRQREC_K1	include/interrupt.h	76;"	d
+IRQREC_LO	include/interrupt.h	81;"	d
+IRQREC_RA	include/interrupt.h	80;"	d
+IRQREC_S0	include/interrupt.h	65;"	d
+IRQREC_S1	include/interrupt.h	66;"	d
+IRQREC_S2	include/interrupt.h	67;"	d
+IRQREC_S3	include/interrupt.h	68;"	d
+IRQREC_S4	include/interrupt.h	69;"	d
+IRQREC_S5	include/interrupt.h	70;"	d
+IRQREC_S6	include/interrupt.h	71;"	d
+IRQREC_S7	include/interrupt.h	72;"	d
+IRQREC_SIZE	include/interrupt.h	86;"	d
+IRQREC_SP	include/interrupt.h	78;"	d
+IRQREC_STATUS	include/interrupt.h	85;"	d
+IRQREC_T0	include/interrupt.h	57;"	d
+IRQREC_T1	include/interrupt.h	58;"	d
+IRQREC_T2	include/interrupt.h	59;"	d
+IRQREC_T3	include/interrupt.h	60;"	d
+IRQREC_T4	include/interrupt.h	61;"	d
+IRQREC_T5	include/interrupt.h	62;"	d
+IRQREC_T6	include/interrupt.h	63;"	d
+IRQREC_T7	include/interrupt.h	64;"	d
+IRQREC_T8	include/interrupt.h	73;"	d
+IRQREC_T9	include/interrupt.h	74;"	d
+IRQREC_V0	include/interrupt.h	51;"	d
+IRQREC_V1	include/interrupt.h	52;"	d
+IRQREC_ZER	include/interrupt.h	49;"	d
+IRQVEC_ADDR	include/interrupt.h	19;"	d
+IRQVEC_END	include/interrupt.h	21;"	d
+IRQ_ADDR	include/interrupt.h	15;"	d
+IRQ_ETH0	include/interrupt.h	45;"	d
+IRQ_ETH1	include/interrupt.h	46;"	d
+IRQ_HW0	include/interrupt.h	35;"	d
+IRQ_HW1	include/interrupt.h	36;"	d
+IRQ_HW2	include/interrupt.h	37;"	d
+IRQ_HW3	include/interrupt.h	38;"	d
+IRQ_HW4	include/interrupt.h	39;"	d
+IRQ_HW5	include/interrupt.h	40;"	d
+IRQ_SW0	include/interrupt.h	33;"	d
+IRQ_SW1	include/interrupt.h	34;"	d
+IRQ_TIMER	include/interrupt.h	43;"	d
+IRQ_UART	include/interrupt.h	44;"	d
+ISTAT_DATAE	include/bcm4713.h	35;"	d
+ISTAT_DPE	include/bcm4713.h	36;"	d
+ISTAT_DSCE	include/bcm4713.h	34;"	d
+ISTAT_EMAC	include/bcm4713.h	42;"	d
+ISTAT_ERRORS	include/bcm4713.h	45;"	d
+ISTAT_MII_READ	include/bcm4713.h	44;"	d
+ISTAT_MII_WRITE	include/bcm4713.h	43;"	d
+ISTAT_PME	include/bcm4713.h	32;"	d
+ISTAT_RDU	include/bcm4713.h	37;"	d
+ISTAT_RFO	include/bcm4713.h	38;"	d
+ISTAT_RX	include/bcm4713.h	40;"	d
+ISTAT_TFU	include/bcm4713.h	39;"	d
+ISTAT_TO	include/bcm4713.h	33;"	d
+ISTAT_TX	include/bcm4713.h	41;"	d
+Is_Echo_Request	network/netDaemon.c	/^bool Is_Echo_Request(uchar packet[]){$/;"	f
+Is_Our_ACK	network/netDaemon.c	/^bool Is_Our_ACK(int tag, int length, int value, int transID){$/;"	f
+Is_Our_Echo_Reply	network/netDaemon.c	/^bool Is_Our_Echo_Reply(uchar packet[]){$/;"	f
+Is_Our_Offer	network/netDaemon.c	/^bool Is_Our_Offer(int tag, int length, int value,int transID){	$/;"	f
+KRNOBJ	compile/Makefile	/^KRNOBJ = ${SRC:%.c=%.o}$/;"	m
+KSEG0_BASE	include/mips.h	127;"	d
+KSEG0_SIZE	include/mips.h	128;"	d
+KSEG1_BASE	include/mips.h	129;"	d
+KSEG1_SIZE	include/mips.h	130;"	d
+KSEG2_BASE	include/mips.h	131;"	d
+KSEG2_SIZE	include/mips.h	132;"	d
+KUSEG_BASE	include/mips.h	125;"	d
+KUSEG_SIZE	include/mips.h	126;"	d
+LDFLAGS	compile/Makefile	/^LDFLAGS   = -static --gc-sections -no-warn-mismatch -T ld.script$/;"	m
+LIB	compile/Makefile	/^LIB       = ..\/lib$/;"	m
+MAC_CTRL_CRC32_ENAB	include/bcm4713.h	55;"	d
+MAC_CTRL_PHY_EDET	include/bcm4713.h	57;"	d
+MAC_CTRL_PHY_LEDCTRL	include/bcm4713.h	58;"	d
+MAC_CTRL_PHY_PDOWN	include/bcm4713.h	56;"	d
+MAXADDR_DEFAULT	include/platform.h	21;"	d
+MAXADDR_WRT350N	include/platform.h	24;"	d
+MAXADDR_WRT54G	include/platform.h	22;"	d
+MAXADDR_WRT54GL	include/platform.h	23;"	d
+MDIO_CTRL_FREQ	include/bcm4713.h	138;"	d
+MDIO_CTRL_FREQ_MSK	include/bcm4713.h	139;"	d
+MDIO_CTRL_PREAMBLE	include/bcm4713.h	140;"	d
+MIB_CTRL_CLR_ON_READ	include/bcm4713.h	167;"	d
+MINSTK	include/proc.h	68;"	d
+NDEVS	include/device.h	41;"	d
+NDISK	include/device.h	38;"	d
+NET	compile/Makefile	/^NET  = netInit.c netDaemon.c dhcpClient.c packet.c icmpDaemon.c netFunctions.c$/;"	m
+NETARP	compile/Makefile	/^NETARP = arpDaemon.c$/;"	m
+NETHER	include/device.h	39;"	d
+NETROUTE	compile/Makefile	/^NETROUTE = routeAdd.c routeInit.c routeNextHop.c$/;"	m
+NOMSG	include/kernel.h	46;"	d
+NPOOL	include/bufpool.h	14;"	d
+NPROC	include/kernel.h	56;"	d
+NPROC	include/proc.h	18;"	d
+NQENT	include/queue.h	30;"	d
+NSEM	include/kernel.h	57;"	d
+NTTY	include/device.h	37;"	d
+NULL	include/kernel.h	29;"	d
+NULLPROC	include/proc.h	40;"	d
+NULLSTK	include/proc.h	69;"	d
+NVRAM_LOCATION	include/nvram.h	12;"	d
+NVRAM_MAGIC	include/nvram.h	38;"	d
+NVRAM_NHASH	include/nvram.h	40;"	d
+NVRAM_SIZE	include/nvram.h	39;"	d
+NVRAM_STRMAX	include/nvram.h	41;"	d
+OBLEN	include/tty.h	9;"	d
+OK	include/kernel.h	42;"	d
+PAGE_SIZE	include/ether.h	17;"	d
+PFLASH	include/sbchipc.h	217;"	d
+PKTSZ	include/network.h	22;"	d
+PLL_NONE	include/sbchipc.h	132;"	d
+PLL_TYPE1	include/sbchipc.h	133;"	d
+PLL_TYPE2	include/sbchipc.h	134;"	d
+PLL_TYPE3	include/sbchipc.h	135;"	d
+PLL_TYPE4	include/sbchipc.h	136;"	d
+PMEM_MASK	include/mips.h	133;"	d
+PNMLEN	include/proc.h	37;"	d
+POOL_MAX_BUFSIZE	include/bufpool.h	15;"	d
+POOL_MAX_NBUFS	include/bufpool.h	17;"	d
+POOL_MIN_BUFSIZE	include/bufpool.h	16;"	d
+PRCURR	include/proc.h	27;"	d
+PREEMPT	include/kernel.h	54;"	d
+PRFREE	include/proc.h	26;"	d
+PRID_CPUID	include/mips.h	83;"	d
+PRID_REV	include/mips.h	82;"	d
+PRID_REV_WRT350N	include/mips.h	92;"	d
+PRID_REV_WRT54G	include/mips.h	90;"	d
+PRID_REV_WRT54GL	include/mips.h	91;"	d
+PRREADY	include/proc.h	29;"	d
+PRRECV	include/proc.h	32;"	d
+PRRECVTM	include/proc.h	33;"	d
+PRSLEEP	include/proc.h	31;"	d
+PRSUSP	include/proc.h	28;"	d
+PRWAIT	include/proc.h	30;"	d
+Print_Bootfile_Name	shell/xsh_dhcpsnoop.c	/^void Print_Bootfile_Name(uchar packet[]){$/;"	f
+Print_Code	shell/xsh_dhcpsnoop.c	/^void Print_Code(uchar packet[]){$/;"	f
+Print_DstMACandIP	shell/xsh_dhcpsnoop.c	/^void Print_DstMACandIP(uchar packet[]){       $/;"	f
+Print_Entire_Packet	shell/xsh_dhcpsnoop.c	/^void Print_Entire_Packet(uchar packet[]){$/;"	f
+Print_Ethernet_Addresses	shell/xsh_dhcpsnoop.c	/^void Print_Ethernet_Addresses(uchar packet[]){$/;"	f
+Print_HandPlen	shell/xsh_dhcpsnoop.c	/^void Print_HandPlen(uchar packet[]){$/;"	f
+Print_Hs	shell/xsh_dhcpsnoop.c	/^void Print_Hs(uchar packet[]){$/;"	f
+Print_Htype	shell/xsh_dhcpsnoop.c	/^void Print_Htype(uchar packet[]){$/;"	f
+Print_IPv4_Addresses	shell/xsh_dhcpsnoop.c	/^ void Print_IPv4_Addresses(uchar packet[]){       $/;"	f
+Print_Identifier	shell/xsh_dhcpsnoop.c	/^void Print_Identifier(uchar packet[]){$/;"	f
+Print_Multi_IP	shell/xsh_dhcpsnoop.c	/^void Print_Multi_IP(uchar packet[]){$/;"	f
+Print_Netstat	network/netDaemon.c	/^void Print_Netstat(uchar packet[]){$/;"	f
+Print_Op	shell/xsh_dhcpsnoop.c	/^void Print_Op(uchar packet[]){$/;"	f
+Print_Opcode	shell/xsh_dhcpsnoop.c	/^void Print_Opcode(uchar packet[]){$/;"	f
+Print_Option	shell/xsh_dhcpsnoop.c	/^void Print_Option(uchar packet[]){$/;"	f
+Print_Proto	shell/xsh_dhcpsnoop.c	/^void Print_Proto(uchar packet[]){$/;"	f
+Print_Sequence	shell/xsh_dhcpsnoop.c	/^void Print_Sequence(uchar packet[]){$/;"	f
+Print_Server_Name	shell/xsh_dhcpsnoop.c	/^void Print_Server_Name(uchar packet[]){$/;"	f
+Print_Source_Address	network/netDaemon.c	/^void Print_Source_Address(uchar packet[]){$/;"	f
+Print_SrcMACandIP	shell/xsh_dhcpsnoop.c	/^void Print_SrcMACandIP(uchar packet[]){       $/;"	f
+Print_Time_Elapsed	shell/xsh_dhcpsnoop.c	/^void Print_Time_Elapsed(uchar packet[]){$/;"	f
+Print_Time_To_Live	shell/xsh_dhcpsnoop.c	/^void Print_Time_To_Live(uchar packet[]){$/;"	f
+Print_Transaction_ID	shell/xsh_dhcpsnoop.c	/^void Print_Transaction_ID(uchar packet[]){$/;"	f
+Print_Type	shell/xsh_dhcpsnoop.c	/^void Print_Type(uchar packet[]){$/;"	f
+Print_UDP_Port_Numbers	shell/xsh_dhcpsnoop.c	/^void Print_UDP_Port_Numbers(uchar packet[]){$/;"	f
+QUANTUM	include/clock.h	14;"	d
+RCV_LAZY_FC_MASK	include/bcm4713.h	64;"	d
+RCV_LAZY_FC_SHIFT	include/bcm4713.h	65;"	d
+RCV_LAZY_TO_MASK	include/bcm4713.h	63;"	d
+RESCHED_NO	include/kernel.h	50;"	d
+RESCHED_YES	include/kernel.h	49;"	d
+ROUTEENT_LEN	include/network.h	352;"	d
+RTCLOCK	include/kernel.h	53;"	d
+RXCONFIG_ALLMULTI	include/bcm4713.h	126;"	d
+RXCONFIG_DBCAST	include/bcm4713.h	125;"	d
+RXCONFIG_FLOW	include/bcm4713.h	130;"	d
+RXCONFIG_FLOW_ACCEPT	include/bcm4713.h	131;"	d
+RXCONFIG_LPBACK	include/bcm4713.h	129;"	d
+RXCONFIG_NONE	include/bcm4713.h	124;"	d
+RXCONFIG_NORX_W_TX	include/bcm4713.h	127;"	d
+RXCONFIG_PROMISC	include/bcm4713.h	128;"	d
+RXCONFIG_RFILT	include/bcm4713.h	132;"	d
+SBACTCNFG	include/sbconfig.h	56;"	d
+SBADMATCH0	include/sbconfig.h	51;"	d
+SBADMATCH1	include/sbconfig.h	43;"	d
+SBADMATCH2	include/sbconfig.h	42;"	d
+SBADMATCH3	include/sbconfig.h	41;"	d
+SBAM_AD64	include/sbconfig.h	178;"	d
+SBAM_ADEN	include/sbconfig.h	185;"	d
+SBAM_ADINT0_MASK	include/sbconfig.h	179;"	d
+SBAM_ADINT0_SHIFT	include/sbconfig.h	180;"	d
+SBAM_ADINT1_MASK	include/sbconfig.h	181;"	d
+SBAM_ADINT1_SHIFT	include/sbconfig.h	182;"	d
+SBAM_ADINT2_MASK	include/sbconfig.h	183;"	d
+SBAM_ADINT2_SHIFT	include/sbconfig.h	184;"	d
+SBAM_ADNEG	include/sbconfig.h	186;"	d
+SBAM_BASE0_MASK	include/sbconfig.h	187;"	d
+SBAM_BASE0_SHIFT	include/sbconfig.h	188;"	d
+SBAM_BASE1_MASK	include/sbconfig.h	189;"	d
+SBAM_BASE1_SHIFT	include/sbconfig.h	190;"	d
+SBAM_BASE2_MASK	include/sbconfig.h	191;"	d
+SBAM_BASE2_SHIFT	include/sbconfig.h	192;"	d
+SBAM_TYPE_MASK	include/sbconfig.h	177;"	d
+SBBCONFIG	include/sbconfig.h	54;"	d
+SBBC_LAT_MASK	include/sbconfig.h	215;"	d
+SBBC_MAX0_MASK	include/sbconfig.h	216;"	d
+SBBC_MAX0_SHIFT	include/sbconfig.h	217;"	d
+SBBC_MAX1_MASK	include/sbconfig.h	218;"	d
+SBBC_MAX1_SHIFT	include/sbconfig.h	219;"	d
+SBBSTATE	include/sbconfig.h	55;"	d
+SBBS_HRD	include/sbconfig.h	223;"	d
+SBBS_SRD	include/sbconfig.h	222;"	d
+SBBWA0	include/sbconfig.h	48;"	d
+SBBWA_TAB0_MASK	include/sbconfig.h	158;"	d
+SBBWA_TAB1_MASK	include/sbconfig.h	159;"	d
+SBBWA_TAB1_SHIFT	include/sbconfig.h	160;"	d
+SBCONFIGOFF	include/sbconfig.h	31;"	d
+SBCONFIGSIZE	include/sbconfig.h	32;"	d
+SBFLAGST	include/sbconfig.h	57;"	d
+SBIDHIGH	include/sbconfig.h	59;"	d
+SBIDH_CC_MASK	include/sbconfig.h	247;"	d
+SBIDH_CC_SHIFT	include/sbconfig.h	248;"	d
+SBIDH_RC_MASK	include/sbconfig.h	246;"	d
+SBIDH_VC_MASK	include/sbconfig.h	249;"	d
+SBIDH_VC_SHIFT	include/sbconfig.h	250;"	d
+SBIDLOW	include/sbconfig.h	58;"	d
+SBIDL_AR_MASK	include/sbconfig.h	227;"	d
+SBIDL_AR_SHIFT	include/sbconfig.h	228;"	d
+SBIDL_CS_MASK	include/sbconfig.h	226;"	d
+SBIDL_CW_MASK	include/sbconfig.h	236;"	d
+SBIDL_CW_SHIFT	include/sbconfig.h	237;"	d
+SBIDL_FIRST	include/sbconfig.h	235;"	d
+SBIDL_INIT	include/sbconfig.h	230;"	d
+SBIDL_IP_MASK	include/sbconfig.h	240;"	d
+SBIDL_IP_SHIFT	include/sbconfig.h	241;"	d
+SBIDL_MAXLAT	include/sbconfig.h	233;"	d
+SBIDL_MAXLAT_SHIFT	include/sbconfig.h	234;"	d
+SBIDL_MINLAT_MASK	include/sbconfig.h	231;"	d
+SBIDL_MINLAT_SHIFT	include/sbconfig.h	232;"	d
+SBIDL_RV_MASK	include/sbconfig.h	242;"	d
+SBIDL_RV_SHIFT	include/sbconfig.h	243;"	d
+SBIDL_SYNCH	include/sbconfig.h	229;"	d
+SBIDL_TP_MASK	include/sbconfig.h	238;"	d
+SBIDL_TP_SHIFT	include/sbconfig.h	239;"	d
+SBIMCH_BEM_MASK	include/sbconfig.h	173;"	d
+SBIMCH_BEM_SHIFT	include/sbconfig.h	174;"	d
+SBIMCH_IEM_MASK	include/sbconfig.h	170;"	d
+SBIMCH_TEM_MASK	include/sbconfig.h	171;"	d
+SBIMCH_TEM_SHIFT	include/sbconfig.h	172;"	d
+SBIMCL_CID_MASK	include/sbconfig.h	166;"	d
+SBIMCL_CID_SHIFT	include/sbconfig.h	167;"	d
+SBIMCL_RTO_MASK	include/sbconfig.h	164;"	d
+SBIMCL_RTO_SHIFT	include/sbconfig.h	165;"	d
+SBIMCL_STO_MASK	include/sbconfig.h	163;"	d
+SBIMCONFIGHIGH	include/sbconfig.h	50;"	d
+SBIMCONFIGLOW	include/sbconfig.h	49;"	d
+SBIMSTATE	include/sbconfig.h	44;"	d
+SBIM_AP_BOTH	include/sbconfig.h	126;"	d
+SBIM_AP_MASK	include/sbconfig.h	125;"	d
+SBIM_AP_RSV	include/sbconfig.h	129;"	d
+SBIM_AP_TK	include/sbconfig.h	128;"	d
+SBIM_AP_TS	include/sbconfig.h	127;"	d
+SBIM_BY	include/sbconfig.h	133;"	d
+SBIM_IBE	include/sbconfig.h	130;"	d
+SBIM_PC	include/sbconfig.h	123;"	d
+SBIM_RJ	include/sbconfig.h	135;"	d
+SBIM_TO	include/sbconfig.h	131;"	d
+SBINTVEC	include/sbconfig.h	45;"	d
+SBIPSFLAG	include/sbconfig.h	37;"	d
+SBIPS_INT1_MASK	include/sbconfig.h	103;"	d
+SBIPS_INT1_SHIFT	include/sbconfig.h	104;"	d
+SBIPS_INT2_MASK	include/sbconfig.h	105;"	d
+SBIPS_INT2_SHIFT	include/sbconfig.h	106;"	d
+SBIPS_INT3_MASK	include/sbconfig.h	107;"	d
+SBIPS_INT3_SHIFT	include/sbconfig.h	108;"	d
+SBIPS_INT4_MASK	include/sbconfig.h	109;"	d
+SBIPS_INT4_SHIFT	include/sbconfig.h	110;"	d
+SBTMCH_BM_MASK	include/sbconfig.h	204;"	d
+SBTMCH_EM_MASK	include/sbconfig.h	209;"	d
+SBTMCH_EM_SHIFT	include/sbconfig.h	210;"	d
+SBTMCH_IM_MASK	include/sbconfig.h	211;"	d
+SBTMCH_IM_SHIFT	include/sbconfig.h	212;"	d
+SBTMCH_RM_MASK	include/sbconfig.h	205;"	d
+SBTMCH_RM_SHIFT	include/sbconfig.h	206;"	d
+SBTMCH_SM_MASK	include/sbconfig.h	207;"	d
+SBTMCH_SM_SHIFT	include/sbconfig.h	208;"	d
+SBTMCL_CD_MASK	include/sbconfig.h	195;"	d
+SBTMCL_CO_MASK	include/sbconfig.h	196;"	d
+SBTMCL_CO_SHIFT	include/sbconfig.h	197;"	d
+SBTMCL_IF_MASK	include/sbconfig.h	198;"	d
+SBTMCL_IF_SHIFT	include/sbconfig.h	199;"	d
+SBTMCL_IM_MASK	include/sbconfig.h	200;"	d
+SBTMCL_IM_SHIFT	include/sbconfig.h	201;"	d
+SBTMCONFIGHIGH	include/sbconfig.h	53;"	d
+SBTMCONFIGLOW	include/sbconfig.h	52;"	d
+SBTMEL_CI	include/sbconfig.h	118;"	d
+SBTMEL_CM	include/sbconfig.h	117;"	d
+SBTMEL_EC	include/sbconfig.h	119;"	d
+SBTMEL_ME	include/sbconfig.h	120;"	d
+SBTMERRLOG	include/sbconfig.h	40;"	d
+SBTMERRLOGA	include/sbconfig.h	39;"	d
+SBTMH_BISTD	include/sbconfig.h	155;"	d
+SBTMH_BISTF	include/sbconfig.h	154;"	d
+SBTMH_BUSY	include/sbconfig.h	150;"	d
+SBTMH_FL_MASK	include/sbconfig.h	152;"	d
+SBTMH_GCR	include/sbconfig.h	153;"	d
+SBTMH_INT	include/sbconfig.h	149;"	d
+SBTMH_SERR	include/sbconfig.h	148;"	d
+SBTMH_TO	include/sbconfig.h	151;"	d
+SBTML_BE	include/sbconfig.h	145;"	d
+SBTML_CLK	include/sbconfig.h	141;"	d
+SBTML_FGC	include/sbconfig.h	142;"	d
+SBTML_FL_MASK	include/sbconfig.h	143;"	d
+SBTML_PE	include/sbconfig.h	144;"	d
+SBTML_REJ	include/sbconfig.h	140;"	d
+SBTML_RESET	include/sbconfig.h	139;"	d
+SBTMSTATEHIGH	include/sbconfig.h	47;"	d
+SBTMSTATELOW	include/sbconfig.h	46;"	d
+SBTPSFLAG	include/sbconfig.h	38;"	d
+SBTPS_F0EN0	include/sbconfig.h	114;"	d
+SBTPS_NUM0_MASK	include/sbconfig.h	113;"	d
+SB_ADSL	include/sbconfig.h	266;"	d
+SB_ATA100	include/sbconfig.h	281;"	d
+SB_CC	include/sbconfig.h	258;"	d
+SB_CODEC	include/sbconfig.h	264;"	d
+SB_COMMIT	include/sbconfig.h	252;"	d
+SB_CORE_SIZE	include/sbconfig.h	29;"	d
+SB_D11	include/sbconfig.h	273;"	d
+SB_ENET	include/sbconfig.h	263;"	d
+SB_ENUM_BASE	include/sbconfig.h	25;"	d
+SB_ENUM_LIM	include/sbconfig.h	26;"	d
+SB_EXTIF	include/sbconfig.h	272;"	d
+SB_GIGETH	include/sbconfig.h	283;"	d
+SB_ILINE100	include/sbconfig.h	267;"	d
+SB_ILINE20	include/sbconfig.h	259;"	d
+SB_IPSEC	include/sbconfig.h	268;"	d
+SB_MAXCORES	include/sbconfig.h	30;"	d
+SB_MEMC	include/sbconfig.h	271;"	d
+SB_MIPS	include/sbconfig.h	262;"	d
+SB_MIPS33	include/sbconfig.h	274;"	d
+SB_PCI	include/sbconfig.h	261;"	d
+SB_PCMCIA	include/sbconfig.h	269;"	d
+SB_ROBO	include/sbconfig.h	280;"	d
+SB_SATAXOR	include/sbconfig.h	282;"	d
+SB_SDIOH	include/sbconfig.h	279;"	d
+SB_SDRAM	include/sbconfig.h	260;"	d
+SB_SOCRAM	include/sbconfig.h	270;"	d
+SB_USB	include/sbconfig.h	265;"	d
+SB_USB11D	include/sbconfig.h	276;"	d
+SB_USB11H	include/sbconfig.h	275;"	d
+SB_USB20D	include/sbconfig.h	278;"	d
+SB_USB20H	include/sbconfig.h	277;"	d
+SB_VEND_BCM	include/sbconfig.h	255;"	d
+SCC_CD_MASK	include/sbchipc.h	160;"	d
+SCC_CD_SHF	include/sbchipc.h	161;"	d
+SCC_FS	include/sbchipc.h	152;"	d
+SCC_IP	include/sbchipc.h	154;"	d
+SCC_LF	include/sbchipc.h	150;"	d
+SCC_LP	include/sbchipc.h	151;"	d
+SCC_SS_LPO	include/sbchipc.h	147;"	d
+SCC_SS_MASK	include/sbchipc.h	146;"	d
+SCC_SS_PCI	include/sbchipc.h	149;"	d
+SCC_SS_XTAL	include/sbchipc.h	148;"	d
+SCC_XC	include/sbchipc.h	156;"	d
+SCC_XP	include/sbchipc.h	158;"	d
+SFLASH_AT	include/sbchipc.h	216;"	d
+SFLASH_AT_BLOCK_ERASE	include/sbchipc.h	268;"	d
+SFLASH_AT_BUF1_COMPARE	include/sbchipc.h	273;"	d
+SFLASH_AT_BUF1_ERASE_PROGRAM	include/sbchipc.h	263;"	d
+SFLASH_AT_BUF1_LOAD	include/sbchipc.h	271;"	d
+SFLASH_AT_BUF1_PROGRAM	include/sbchipc.h	265;"	d
+SFLASH_AT_BUF1_READ	include/sbchipc.h	258;"	d
+SFLASH_AT_BUF1_REPROGRAM	include/sbchipc.h	275;"	d
+SFLASH_AT_BUF1_WRITE	include/sbchipc.h	261;"	d
+SFLASH_AT_BUF1_WRITE_ERASE_PROGRAM	include/sbchipc.h	269;"	d
+SFLASH_AT_BUF2_COMPARE	include/sbchipc.h	274;"	d
+SFLASH_AT_BUF2_ERASE_PROGRAM	include/sbchipc.h	264;"	d
+SFLASH_AT_BUF2_LOAD	include/sbchipc.h	272;"	d
+SFLASH_AT_BUF2_PROGRAM	include/sbchipc.h	266;"	d
+SFLASH_AT_BUF2_READ	include/sbchipc.h	259;"	d
+SFLASH_AT_BUF2_REPROGRAM	include/sbchipc.h	276;"	d
+SFLASH_AT_BUF2_WRITE	include/sbchipc.h	262;"	d
+SFLASH_AT_BUF2_WRITE_ERASE_PROGRAM	include/sbchipc.h	270;"	d
+SFLASH_AT_ID_MASK	include/sbchipc.h	281;"	d
+SFLASH_AT_ID_SHIFT	include/sbchipc.h	282;"	d
+SFLASH_AT_MISMATCH	include/sbchipc.h	280;"	d
+SFLASH_AT_PAGE_ERASE	include/sbchipc.h	267;"	d
+SFLASH_AT_PAGE_READ	include/sbchipc.h	257;"	d
+SFLASH_AT_READ	include/sbchipc.h	256;"	d
+SFLASH_AT_READY	include/sbchipc.h	279;"	d
+SFLASH_AT_STATUS	include/sbchipc.h	260;"	d
+SFLASH_BUSY	include/sbchipc.h	234;"	d
+SFLASH_ST	include/sbchipc.h	215;"	d
+SFLASH_START	include/sbchipc.h	233;"	d
+SFLASH_ST_BE	include/sbchipc.h	244;"	d
+SFLASH_ST_BP_MASK	include/sbchipc.h	251;"	d
+SFLASH_ST_BP_SHIFT	include/sbchipc.h	252;"	d
+SFLASH_ST_DP	include/sbchipc.h	245;"	d
+SFLASH_ST_PP	include/sbchipc.h	242;"	d
+SFLASH_ST_RDSR	include/sbchipc.h	239;"	d
+SFLASH_ST_READ	include/sbchipc.h	241;"	d
+SFLASH_ST_RES	include/sbchipc.h	246;"	d
+SFLASH_ST_SE	include/sbchipc.h	243;"	d
+SFLASH_ST_SRWD	include/sbchipc.h	253;"	d
+SFLASH_ST_WEL	include/sbchipc.h	250;"	d
+SFLASH_ST_WIP	include/sbchipc.h	249;"	d
+SFLASH_ST_WRDIS	include/sbchipc.h	238;"	d
+SFLASH_ST_WREN	include/sbchipc.h	237;"	d
+SFLASH_ST_WRSR	include/sbchipc.h	240;"	d
+SFREE	include/semaphore.h	15;"	d
+SHELL_BANNER	include/shell.h	20;"	d
+SHELL_BUFLEN	include/shell.h	14;"	d
+SHELL_CHILDERR	include/shell.h	26;"	d
+SHELL_CMDPRIO	include/shell.h	17;"	d
+SHELL_CMDSTK	include/shell.h	16;"	d
+SHELL_EXIT	include/shell.h	23;"	d
+SHELL_MAXTOK	include/shell.h	15;"	d
+SHELL_PROMPT	include/shell.h	24;"	d
+SHELL_START	include/shell.h	22;"	d
+SHELL_SYNTAXERR	include/shell.h	25;"	d
+SHLL	compile/Makefile	/^SHLL = xsh_test.c shell-commands.c xsh_dhcpsnoop.c xsh_dhcp.c xsh_arp.c xsh_ping.c xsh_route.c$/;"	m
+SRC	compile/Makefile	/^SRC =	${SHLL:%.c=..\/shell\/%.c} \\$/;"	m
+STACKMAGIC	include/proc.h	22;"	d
+STATUS_ERL	include/mips.h	112;"	d
+STATUS_EXL	include/mips.h	111;"	d
+STATUS_HW0	include/mips.h	115;"	d
+STATUS_HW1	include/mips.h	116;"	d
+STATUS_HW2	include/mips.h	117;"	d
+STATUS_HW3	include/mips.h	118;"	d
+STATUS_HW4	include/mips.h	119;"	d
+STATUS_HW5	include/mips.h	120;"	d
+STATUS_IE	include/mips.h	110;"	d
+STATUS_SW0	include/mips.h	113;"	d
+STATUS_SW1	include/mips.h	114;"	d
+SUSED	include/semaphore.h	16;"	d
+SWT_ADDRESS_MASK	include/bcmswitch.h	29;"	d
+SWT_ADDRESS_PAGE	include/bcmswitch.h	32;"	d
+SWT_ADDRESS_PSHIFT	include/bcmswitch.h	33;"	d
+SWT_ADDRESS_REG	include/bcmswitch.h	31;"	d
+SWT_ADDRESS_SHIFT	include/bcmswitch.h	30;"	d
+SWT_COMMAND_BUSY	include/bcmswitch.h	46;"	d
+SWT_COMMAND_MASK	include/bcmswitch.h	42;"	d
+SWT_COMMAND_READ	include/bcmswitch.h	45;"	d
+SWT_COMMAND_SHIFT	include/bcmswitch.h	43;"	d
+SWT_COMMAND_WRITE	include/bcmswitch.h	44;"	d
+SWT_CONTROL_ENABLE	include/bcmswitch.h	27;"	d
+SWT_CPUPORT	include/bcmswitch.h	9;"	d
+SWT_PAGE_VLAN	include/bcmswitch.h	49;"	d
+SWT_PORTS	include/bcmswitch.h	8;"	d
+SWT_REG_VLAN_CONTROL0	include/bcmswitch.h	50;"	d
+SWT_REG_VLAN_CONTROL1	include/bcmswitch.h	51;"	d
+SWT_REG_VLAN_CONTROL2	include/bcmswitch.h	52;"	d
+SWT_REG_VLAN_CONTROL3	include/bcmswitch.h	53;"	d
+SWT_REG_VLAN_CONTROL4	include/bcmswitch.h	54;"	d
+SWT_REG_VLAN_CONTROL5	include/bcmswitch.h	55;"	d
+SWT_REG_VLAN_READ	include/bcmswitch.h	58;"	d
+SWT_REG_VLAN_TABACC	include/bcmswitch.h	56;"	d
+SWT_REG_VLAN_TAGMII	include/bcmswitch.h	64;"	d
+SWT_REG_VLAN_TAGPORT0	include/bcmswitch.h	59;"	d
+SWT_REG_VLAN_TAGPORT1	include/bcmswitch.h	60;"	d
+SWT_REG_VLAN_TAGPORT2	include/bcmswitch.h	61;"	d
+SWT_REG_VLAN_TAGPORT3	include/bcmswitch.h	62;"	d
+SWT_REG_VLAN_TAGPORT4	include/bcmswitch.h	63;"	d
+SWT_REG_VLAN_WRITE	include/bcmswitch.h	57;"	d
+SWT_SIZE_16BIT	include/bcmswitch.h	38;"	d
+SWT_SIZE_32BIT	include/bcmswitch.h	39;"	d
+SWT_SIZE_64BIT	include/bcmswitch.h	40;"	d
+SWT_SIZE_8BIT	include/bcmswitch.h	37;"	d
+SWT_SIZE_MASK	include/bcmswitch.h	35;"	d
+SWT_SIZE_SHIFT	include/bcmswitch.h	36;"	d
+SWT_VLAN_GROUPMASK	include/bcmswitch.h	71;"	d
+SWT_VLAN_TABACC_ENABLE	include/bcmswitch.h	67;"	d
+SWT_VLAN_TABACC_WRITE	include/bcmswitch.h	66;"	d
+SWT_VLAN_TABLEMAX	include/bcmswitch.h	74;"	d
+SWT_VLAN_UNTAGMASK	include/bcmswitch.h	72;"	d
+SWT_VLAN_WRITE_VALID	include/bcmswitch.h	69;"	d
+SYSERR	include/kernel.h	43;"	d
+TCP_Protocol	shell/xsh_dhcpsnoop.c	18;"	d	file:
+TIF_NOBLOCK	include/tty.h	51;"	d
+TIF_NOECHO	include/tty.h	52;"	d
+TIMEOUT	include/kernel.h	45;"	d
+TIME_BASE_FREQ_DEFAULT	include/platform.h	30;"	d
+TIME_BASE_FREQ_WRT350N	include/platform.h	29;"	d
+TIME_BASE_FREQ_WRT54G	include/platform.h	27;"	d
+TIME_BASE_FREQ_WRT54GL	include/platform.h	28;"	d
+TRAPVEC_ADDR	include/interrupt.h	17;"	d
+TRUE	include/kernel.h	26;"	d
+TTC_GIF	include/tty.h	44;"	d
+TTC_GOF	include/tty.h	45;"	d
+TTC_SIF	include/tty.h	47;"	d
+TTY0	include/device.h	31;"	d
+TTY1	include/device.h	32;"	d
+TTYS_ALLOC	include/tty.h	36;"	d
+TTYS_FREE	include/tty.h	35;"	d
+TX_WATERMARK	include/bcm4713.h	165;"	d
+UART_DLL_WRT350N	include/platform.h	35;"	d
+UART_DLL_WRT54G	include/platform.h	33;"	d
+UART_DLL_WRT54GL	include/platform.h	34;"	d
+UART_FCR_EFIFO	include/uart.h	53;"	d
+UART_FCR_RRESET	include/uart.h	54;"	d
+UART_FCR_TRESET	include/uart.h	55;"	d
+UART_FCR_TRIG0	include/uart.h	56;"	d
+UART_FCR_TRIG1	include/uart.h	57;"	d
+UART_FCR_TRIG2	include/uart.h	58;"	d
+UART_FCR_TRIG3	include/uart.h	59;"	d
+UART_FIFO_LEN	include/uart.h	74;"	d
+UART_IER_ELSI	include/uart.h	40;"	d
+UART_IER_EMSI	include/uart.h	41;"	d
+UART_IER_ERBFI	include/uart.h	38;"	d
+UART_IER_ETBEI	include/uart.h	39;"	d
+UART_IIR_IDMASK	include/uart.h	45;"	d
+UART_IIR_IRQ	include/uart.h	44;"	d
+UART_IIR_MSC	include/uart.h	46;"	d
+UART_IIR_RDA	include/uart.h	50;"	d
+UART_IIR_RLSI	include/uart.h	49;"	d
+UART_IIR_RTO	include/uart.h	48;"	d
+UART_IIR_THRE	include/uart.h	47;"	d
+UART_LCR_8N1	include/uart.h	63;"	d
+UART_LCR_DLAB	include/uart.h	62;"	d
+UART_LSR_DR	include/uart.h	70;"	d
+UART_LSR_TEMT	include/uart.h	72;"	d
+UART_LSR_THRE	include/uart.h	71;"	d
+UART_MCR_LOOP	include/uart.h	67;"	d
+UART_MCR_OUT2	include/uart.h	66;"	d
+UDP_Protocol	shell/xsh_dhcpsnoop.c	19;"	d	file:
+ZEROS	include/network.h	314;"	d
+_BACKPLANE_H__	include/backplane.h	8;"	d
+_BCM4713_H_	include/bcm4713.h	8;"	d
+_BUFPOOL_H_	include/bufpool.h	9;"	d
+_C	include/ctype.h	19;"	d
+_CLOCK_H_	include/clock.h	10;"	d
+_CTYPE_H_	include/ctype.h	12;"	d
+_DEVICE_H_	include/device.h	5;"	d
+_ETHER_H_	include/ether.h	8;"	d
+_KERNEL_H_	include/kernel.h	13;"	d
+_L	include/ctype.h	15;"	d
+_MEMORY_H_	include/memory.h	10;"	d
+_MIPS_H	include/mips.h	13;"	d
+_N	include/ctype.h	16;"	d
+_NET_H_	include/network.h	7;"	d
+_NVRAM_H_	include/nvram.h	9;"	d
+_P	include/ctype.h	18;"	d
+_PROC_H_	include/proc.h	10;"	d
+_QUEUE_H_	include/queue.h	27;"	d
+_S	include/ctype.h	17;"	d
+_SBCHIPC_H_	include/sbchipc.h	20;"	d
+_SBCONFIG_H_	include/sbconfig.h	17;"	d
+_SEMAPHORE_H_	include/semaphore.h	9;"	d
+_SHELL_H_	include/shell.h	9;"	d
+_STDARG_H_	include/stdarg.h	10;"	d
+_STDIO_H_	include/stdio.h	14;"	d
+_STDLIB_H_	include/stdlib.h	9;"	d
+_STRING_H_	include/string.h	9;"	d
+_TTY_H_	include/tty.h	6;"	d
+_U	include/ctype.h	14;"	d
+_VLAN_H_	include/vlan.h	9;"	d
+_X	include/ctype.h	20;"	d
+__XINU_SERIAL_H__	include/uart.h	9;"	d
+a0	include/mips.h	23;"	d
+a1	include/mips.h	24;"	d
+a2	include/mips.h	25;"	d
+a3	include/mips.h	26;"	d
+actCnfg	include/sbconfig.h	/^    volatile ulong actCnfg;     \/* activate configuration *\/$/;"	m	struct:backplaneConfig
+adMatch0	include/sbconfig.h	/^    volatile ulong adMatch0;    \/* address match0 *\/$/;"	m	struct:backplaneConfig
+adMatch1	include/sbconfig.h	/^    volatile ulong adMatch1;    \/* address match1 *\/$/;"	m	struct:backplaneConfig
+adMatch2	include/sbconfig.h	/^    volatile ulong adMatch2;    \/* address match2 *\/$/;"	m	struct:backplaneConfig
+adMatch3	include/sbconfig.h	/^    volatile ulong adMatch3;    \/* address match3 *\/$/;"	m	struct:backplaneConfig
+address	include/ether.h	/^    ulong address;              \/**< Stored as physical address         *\/$/;"	m	struct:dmaDescriptor
+addressLength	include/ether.h	/^    uchar addressLength;        \/**< Hardware address length            *\/$/;"	m	struct:ether
+age	include/network.h	/^	int age;$/;"	m	struct:arpentry
+arpD_pkt	network/arp/arpDaemon.c	/^struct packet arpD_pkt;$/;"	v	typeref:struct:packet
+arpD_pktPointer	network/arp/arpDaemon.c	/^struct packet *arpD_pktPointer;$/;"	v	typeref:struct:packet
+arpDaemon	network/arp/arpDaemon.c	/^void arpDaemon(){$/;"	f
+arpResolve	network/arp/arpDaemon.c	/^int arpResolve(uchar *ipaddr, uchar *mac){$/;"	f
+arpentry	include/network.h	/^struct arpentry   \/\/arp table entry variables $/;"	s
+arpgram	include/network.h	/^struct arpgram					\/**< ARP Packet Variables           *\/$/;"	s
+arpnum	include/network.h	/^	int arpnum; \/\/number of entries in the arptable$/;"	m	struct:arptable
+arps	include/network.h	/^	struct arpentry arps[ARPENT_LEN];$/;"	m	struct:arptable	typeref:struct:arptable::arpentry
+arpsem	include/network.h	/^	semaphore arpsem;$/;"	m	struct:arptable
+arptab	network/netInit.c	/^struct arptable arptab;$/;"	v	typeref:struct:arptable
+arptable	include/network.h	/^struct arptable$/;"	s
+bConfig	include/sbconfig.h	/^    volatile ulong bConfig;     \/* broadcast configuration *\/$/;"	m	struct:backplaneConfig
+bState	include/sbconfig.h	/^    volatile ulong bState;      \/* broadcast state *\/$/;"	m	struct:backplaneConfig
+backplaneConfig	include/sbconfig.h	/^struct backplaneConfig$/;"	s
+bcm4713	include/bcm4713.h	/^struct bcm4713$/;"	s
+bfpentry	include/bufpool.h	/^struct bfpentry$/;"	s
+bool	include/kernel.h	/^typedef	char         bool;       \/**< boolean type                         *\/$/;"	t
+bootfile	include/network.h	/^	uchar  bootfile[DHCP_BOOTFILE_LEN];  \/**< Bootfile name         *\/$/;"	m	struct:dhcpgram
+bpConfig	include/bcm4713.h	/^    volatile struct backplaneConfig bpConfig; \/**< configuration space  *\/$/;"	m	struct:bcm4713	typeref:struct:bcm4713::backplaneConfig
+broadcastaddress	include/sbchipc.h	/^    volatile ulong broadcastaddress;$/;"	m	struct:chipcregs
+broadcastdata	include/sbchipc.h	/^    volatile ulong broadcastdata;$/;"	m	struct:chipcregs
+buf	include/ether.h	/^    uchar *buf;                 \/**< Pointer to buffer space            *\/$/;"	m	struct:ethPktBuffer
+buffer	include/uart.h	/^	volatile uchar buffer;    \/**< receive buffer (read only)            *\/$/;"	m	struct:uart_csreg
+bufsize	include/bufpool.h	/^    ulong bufsize;$/;"	m	struct:bfpentry
+buildArpTable	network/netInit.c	/^void buildArpTable(void)$/;"	f
+buildRoutingTable	network/netInit.c	/^void buildRoutingTable(void)$/;"	f
+builtin	include/shell.h	/^    bool builtin;               \/**< built-in command?                  *\/$/;"	m	struct:centry
+bwa0	include/sbconfig.h	/^    volatile ulong bwa0;        \/* bandwidth allocation table0 *\/$/;"	m	struct:backplaneConfig
+camControl	include/bcm4713.h	/^    volatile ulong camControl;         \/**< EMAC CAM Control             *\/$/;"	m	struct:bcm4713
+camDataHi	include/bcm4713.h	/^    volatile ulong camDataHi;          \/**< EMAC CAM Data High           *\/$/;"	m	struct:bcm4713
+camDataLo	include/bcm4713.h	/^    volatile ulong camDataLo;          \/**< EMAC CAM Data Low            *\/$/;"	m	struct:bcm4713
+capabilities	include/sbchipc.h	/^    volatile ulong capabilities;$/;"	m	struct:chipcregs
+centry	include/shell.h	/^struct centry$/;"	s
+chipcregs	include/sbchipc.h	/^struct chipcregs$/;"	s
+chipid	include/sbchipc.h	/^    volatile ulong chipid;      \/* 0x0 *\/$/;"	m	struct:chipcregs
+chksum	include/network.h	/^    ushort chksum;              \/**< UDP Checksum                   *\/$/;"	m	struct:udpgram
+chksum	include/network.h	/^    ushort chksum;           \/**< IPv4 checksum                         *\/$/;"	m	struct:ipgram
+chksum	include/network.h	/^   ushort chksum;		\/**< ICMP checksum                  *\/$/;"	m	struct:icmpgram
+cli_dhcpgram	network/dhcpClient.c	/^struct dhcpgram *cli_dhcpgram;$/;"	v	typeref:struct:dhcpgram
+cli_ethergram	network/dhcpClient.c	/^struct ethergram *cli_ethergram;$/;"	v	typeref:struct:ethergram
+cli_ipgram	network/dhcpClient.c	/^struct ipgram *cli_ipgram;$/;"	v	typeref:struct:ipgram
+cli_udpgram	network/dhcpClient.c	/^struct udpgram *cli_udpgram;$/;"	v	typeref:struct:udpgram
+client	include/network.h	/^	uchar  client[IPv4_ADDR_LEN];  \/**< DHCP client IP address      *\/$/;"	m	struct:dhcpgram
+clockcontrol_m2	include/sbchipc.h	/^    volatile ulong clockcontrol_m2;     \/* mii\/uart\/mipsref *\/$/;"	m	struct:chipcregs
+clockcontrol_mips	include/sbchipc.h	/^    volatile ulong clockcontrol_mips;   \/* aka m3 *\/$/;"	m	struct:chipcregs
+clockcontrol_n	include/sbchipc.h	/^    volatile ulong clockcontrol_n;      \/* 0x90 *\/$/;"	m	struct:chipcregs
+clockcontrol_pci	include/sbchipc.h	/^    volatile ulong clockcontrol_pci;    \/* aka m1 *\/$/;"	m	struct:chipcregs
+clockcontrol_sb	include/sbchipc.h	/^    volatile ulong clockcontrol_sb;     \/* aka m0 *\/$/;"	m	struct:chipcregs
+code	include/network.h	/^   uchar code;			\/**< ICMP code, reason for msg type *\/$/;"	m	struct:icmpgram
+command	include/kernel.h	36;"	d
+commandtab	shell/shell-commands.c	/^struct centry commandtab[] = {$/;"	v	typeref:struct:centry
+config_ncdl	include/nvram.h	/^    unsigned int config_ncdl;$/;"	m	struct:nvram_header
+config_refresh	include/nvram.h	/^    unsigned int config_refresh;$/;"	m	struct:nvram_header
+control	include/ether.h	/^    ulong control;              \/**< DMA control bits                   *\/$/;"	m	struct:dmaDescriptor
+corecontrol	include/sbchipc.h	/^    volatile ulong corecontrol; \/* corerev >= 1 *\/$/;"	m	struct:chipcregs
+count	include/semaphore.h	/^    int count;                  \/**< count for this semaphore *\/$/;"	m	struct:sement
+crc_ver_init	include/nvram.h	/^    unsigned int crc_ver_init;$/;"	m	struct:nvram_header
+cs01attrwaitcnt	include/sbchipc.h	/^    volatile ulong cs01attrwaitcnt;$/;"	m	struct:chipcregs
+cs01config	include/sbchipc.h	/^    volatile ulong cs01config;  \/* 0x100 *\/$/;"	m	struct:chipcregs
+cs01iowaitcnt	include/sbchipc.h	/^    volatile ulong cs01iowaitcnt;$/;"	m	struct:chipcregs
+cs01memwaitcnt	include/sbchipc.h	/^    volatile ulong cs01memwaitcnt;$/;"	m	struct:chipcregs
+cs23attrwaitcnt	include/sbchipc.h	/^    volatile ulong cs23attrwaitcnt;$/;"	m	struct:chipcregs
+cs23config	include/sbchipc.h	/^    volatile ulong cs23config;$/;"	m	struct:chipcregs
+cs23iowaitcnt	include/sbchipc.h	/^    volatile ulong cs23iowaitcnt;$/;"	m	struct:chipcregs
+cs23memwaitcnt	include/sbchipc.h	/^    volatile ulong cs23memwaitcnt;$/;"	m	struct:chipcregs
+cs4config	include/sbchipc.h	/^    volatile ulong cs4config;$/;"	m	struct:chipcregs
+cs4waitcnt	include/sbchipc.h	/^    volatile ulong cs4waitcnt;$/;"	m	struct:chipcregs
+csr	include/ether.h	/^    struct bcm4713 *csr;        \/**< control and status registers       *\/$/;"	m	struct:ether	typeref:struct:ether::bcm4713
+data	include/ether.h	/^    uchar *data;                \/**< Start of data within buffer        *\/$/;"	m	struct:ethPktBuffer
+data	include/network.h	/^    char data[1];            \/**< Dummy field that refers to payload    *\/$/;"	m	struct:ethergram
+data	include/network.h	/^    uchar data[1];              \/**< UDP data                       *\/$/;"	m	struct:udpgram
+data	include/network.h	/^   uchar data[1];		\/**< ICMP data			    *\/$/;"	m	struct:icmpgram
+data	include/vlan.h	/^    uchar data[1];              \/**< Packet data                        *\/$/;"	m	struct:vlanPkt
+deleteRoutingTableEntry	shell/xsh_route.c	/^void deleteRoutingTableEntry(uchar destNetwork[])$/;"	f
+dentry	include/device.h	/^typedef struct dentry$/;"	s
+destArgPtr	shell/xsh_route.c	/^char* destArgPtr;$/;"	v
+destIP	shell/xsh_route.c	/^uchar destIP[IP_ADDR_LEN];$/;"	v
+destIpPtr	shell/xsh_route.c	/^uchar* destIpPtr;$/;"	v
+destNetwork	include/network.h	/^	uchar destNetwork[IP_ADDR_LEN];$/;"	m	struct:routeEntry
+dev	include/ether.h	/^    device *dev;                \/**< eth device structure               *\/$/;"	m	struct:ether
+devAddress	include/ether.h	/^    uchar devAddress[ETH_ADDR_LEN];$/;"	m	struct:ether
+devControl	include/bcm4713.h	/^    volatile ulong devControl;         \/**< 0x000 Device control        *\/$/;"	m	struct:bcm4713
+devcall	include/kernel.h	34;"	d
+device	include/device.h	/^} device;$/;"	t	typeref:struct:dentry
+dhcpClient	network/dhcpClient.c	/^void dhcpClient(int packet2){$/;"	f
+dhcpgram	include/network.h	/^struct dhcpgram                 \/**< DHCP Packet Variables          *\/$/;"	s
+disc_dhcpgram	network/packet.c	/^struct dhcpgram *disc_dhcpgram;$/;"	v	typeref:struct:dhcpgram
+disc_ethergram	network/packet.c	/^struct ethergram *disc_ethergram;$/;"	v	typeref:struct:ethergram
+disc_ipgram	network/packet.c	/^struct ipgram *disc_ipgram;$/;"	v	typeref:struct:ipgram
+disc_udpgram	network/packet.c	/^struct udpgram *disc_udpgram;$/;"	v	typeref:struct:udpgram
+displayRoutingTable	shell/xsh_route.c	/^void displayRoutingTable(){$/;"	f
+dll	include/uart.h	33;"	d
+dlm	include/uart.h	34;"	d
+dmaDescriptor	include/ether.h	/^struct dmaDescriptor$/;"	s
+dmaRxAddress	include/bcm4713.h	/^    volatile ulong dmaRxAddress;       \/**< DMA Rx Descriptor Ring       *\/$/;"	m	struct:bcm4713
+dmaRxControl	include/bcm4713.h	/^    volatile ulong dmaRxControl;       \/**< DMA Rx Control Register      *\/$/;"	m	struct:bcm4713
+dmaRxLast	include/bcm4713.h	/^    volatile ulong dmaRxLast;          \/**< DMA Rx Last Posted Desc      *\/$/;"	m	struct:bcm4713
+dmaRxStatus	include/bcm4713.h	/^    volatile ulong dmaRxStatus;        \/**< DMA Rx Current & Status      *\/$/;"	m	struct:bcm4713
+dmaTxAddress	include/bcm4713.h	/^    volatile ulong dmaTxAddress;       \/**< DMA Tx Descriptor Ring       *\/$/;"	m	struct:bcm4713
+dmaTxControl	include/bcm4713.h	/^    volatile ulong dmaTxControl;       \/**< DMA Tx Control Register      *\/$/;"	m	struct:bcm4713
+dmaTxLast	include/bcm4713.h	/^    volatile ulong dmaTxLast;          \/**< DMA Tx Last Posted Desc      *\/$/;"	m	struct:bcm4713
+dmaTxStatus	include/bcm4713.h	/^    volatile ulong dmaTxStatus;        \/**< DMA Tx Current & Status      *\/$/;"	m	struct:bcm4713
+dst	include/network.h	/^    uchar  dst[IPv4_ADDR_LEN];  \/**< IPv4 destination                   *\/$/;"	m	struct:ipgram
+dst	include/network.h	/^    uchar dst[ETH_ADDR_LEN];    \/**< Ethernet destination MAC Address   *\/$/;"	m	struct:ethergram
+dst	include/vlan.h	/^    uchar dst[ETH_ADDR_LEN];    \/**< Destination Mac                    *\/$/;"	m	struct:vlanPkt
+dstIpAddress	include/network.h	/^	uchar  dstIpAddress[IP_ADDR_LEN];	\/** ARP Destination IP Address  *\/$/;"	m	struct:arpgram
+dstMacAddress	include/network.h	/^	uchar  dstMacAddress[ETH_ADDR_LEN];	\/** ARP Destination MAC Address *\/$/;"	m	struct:arpgram
+dstPort	include/network.h	/^    ushort dstPort;             \/**< UDP Destination port           *\/$/;"	m	struct:udpgram
+dvclose	include/device.h	/^    devcall (*dvclose) (struct dentry *, ...);$/;"	m	struct:dentry
+dvcntl	include/device.h	/^    devcall (*dvcntl) (struct dentry *, ...);$/;"	m	struct:dentry
+dvcsr	include/device.h	/^    int dvcsr;$/;"	m	struct:dentry
+dvgetc	include/device.h	/^    devcall (*dvgetc) (struct dentry *, ...);$/;"	m	struct:dentry
+dvinit	include/device.h	/^    devcall (*dvinit) (struct dentry *, ...);$/;"	m	struct:dentry
+dvioblk	include/device.h	/^    char *dvioblk;$/;"	m	struct:dentry
+dvminor	include/device.h	/^    int dvminor;$/;"	m	struct:dentry
+dvname	include/device.h	/^    char *dvname;$/;"	m	struct:dentry
+dvnum	include/device.h	/^    int dvnum;$/;"	m	struct:dentry
+dvopen	include/device.h	/^    devcall (*dvopen) (struct dentry *, ...);$/;"	m	struct:dentry
+dvputc	include/device.h	/^    devcall (*dvputc) (struct dentry *, ...);$/;"	m	struct:dentry
+dvread	include/device.h	/^    devcall (*dvread) (struct dentry *, ...);$/;"	m	struct:dentry
+dvseek	include/device.h	/^    devcall (*dvseek) (struct dentry *, ...);$/;"	m	struct:dentry
+dvwrite	include/device.h	/^    devcall (*dvwrite) (struct dentry *, ...);$/;"	m	struct:dentry
+elapsed	include/network.h	/^	ushort elapsed;             \/**< DHCP time elapsed              *\/$/;"	m	struct:dhcpgram
+emacIntmask	include/bcm4713.h	/^    volatile ulong emacIntmask;$/;"	m	struct:bcm4713
+emacIntmask	include/bcmswitch.h	/^    ulong emacIntmask;$/;"	m	struct:mdioregs
+emacIntstatus	include/bcm4713.h	/^    volatile ulong emacIntstatus;$/;"	m	struct:bcm4713
+emacIntstatus	include/bcmswitch.h	/^    ulong emacIntstatus;$/;"	m	struct:mdioregs
+enetControl	include/bcm4713.h	/^    volatile ulong enetControl;        \/**< EMAC ENET Control            *\/$/;"	m	struct:bcm4713
+errors	include/ether.h	/^    ulong errors;               \/**< Number of Ethernet errors          *\/$/;"	m	struct:ether
+ethPktBuffer	include/ether.h	/^struct ethPktBuffer$/;"	s
+ether	include/ether.h	/^struct ether$/;"	s
+ethergram	include/network.h	/^struct ethergram             \/**< Ethernet Packet Variables             *\/$/;"	s
+exceptionVector	include/interrupt.h	29;"	d
+existsInTable	shell/xsh_arp.c	/^bool existsInTable(uchar ipAddr[]){$/;"	f
+fcr	include/uart.h	32;"	d
+firstid	include/queue.h	61;"	d
+firstkey	include/queue.h	62;"	d
+flags	include/ether.h	/^    ushort flags;               \/**< Receive flags                      *\/$/;"	m	struct:rxHeader
+flags	include/network.h	/^	ushort flags;               \/**< DHCP flags                     *\/$/;"	m	struct:dhcpgram
+flags_froff	include/network.h	/^    ushort flags_froff;      \/**< IPv4 Flags and Fragment offset        *\/$/;"	m	struct:ipgram
+flagst	include/sbconfig.h	/^    volatile ulong flagst;      \/* current sbflags *\/$/;"	m	struct:backplaneConfig
+flashaddress	include/sbchipc.h	/^    volatile ulong flashaddress;$/;"	m	struct:chipcregs
+flashcontrol	include/sbchipc.h	/^    volatile ulong flashcontrol;        \/* 0x40 *\/$/;"	m	struct:chipcregs
+flashdata	include/sbchipc.h	/^    volatile ulong flashdata;$/;"	m	struct:chipcregs
+fp	include/mips.h	51;"	d
+frag_ethergram	network/packet.c	/^struct ethergram *frag_ethergram;$/;"	v	typeref:struct:ethergram
+frag_icmpgram	network/packet.c	/^struct icmpgram *frag_icmpgram;$/;"	v	typeref:struct:icmpgram
+frag_ipgram	network/packet.c	/^struct ipgram *frag_ipgram;$/;"	v	typeref:struct:ipgram
+freebuf	include/bufpool.h	/^    semaphore freebuf;$/;"	m	struct:bfpentry
+fref_sel_delay	include/sbchipc.h	/^    volatile ulong fref_sel_delay;$/;"	m	struct:chipcregs
+gateway	include/network.h	/^	uchar gateway[IP_ADDR_LEN];$/;"	m	struct:routeEntry
+getEntry	shell/xsh_ping.c	/^int getEntry(uchar ipAddr[]){$/;"	f
+getValidTableLocation	shell/xsh_arp.c	/^int getValidTableLocation(void){$/;"	f
+gp	include/mips.h	48;"	d
+gpTimer	include/bcm4713.h	/^    volatile ulong gpTimer;            \/**< General Purpose Timer        *\/$/;"	m	struct:bcm4713
+gpiocontrol	include/sbchipc.h	/^    volatile ulong gpiocontrol;$/;"	m	struct:chipcregs
+gpioin	include/sbchipc.h	/^    volatile ulong gpioin;      \/* 0x60 *\/$/;"	m	struct:chipcregs
+gpiointmask	include/sbchipc.h	/^    volatile ulong gpiointmask;$/;"	m	struct:chipcregs
+gpiointpolarity	include/sbchipc.h	/^    volatile ulong gpiointpolarity;$/;"	m	struct:chipcregs
+gpioout	include/sbchipc.h	/^    volatile ulong gpioout;$/;"	m	struct:chipcregs
+gpioouten	include/sbchipc.h	/^    volatile ulong gpioouten;$/;"	m	struct:chipcregs
+gtwyArgPtr	shell/xsh_route.c	/^char* gtwyArgPtr;$/;"	v
+gtwyIP	shell/xsh_route.c	/^uchar gtwyIP[IP_ADDR_LEN];$/;"	v
+gtwyIpPtr	shell/xsh_route.c	/^uchar* gtwyIpPtr;$/;"	v
+hasBeenUpdated	network/arp/arpDaemon.c	/^bool hasBeenUpdated;$/;"	v
+hasmsg	include/proc.h	/^	bool hasmsg;            \/**< nonzero iff msg is valid                *\/$/;"	m	struct:pentry
+head	include/bufpool.h	/^    void *head;$/;"	m	struct:bfpentry
+hlen	include/network.h	/^	uchar  hlen;				\/** ARP hardware length             *\/$/;"	m	struct:arpgram
+hlen	include/network.h	/^	uchar  hlen;                \/**< DHCP hardware address length   *\/$/;"	m	struct:dhcpgram
+hops	include/network.h	/^	uchar  hops;                \/**< DHCP hop count allowed         *\/$/;"	m	struct:dhcpgram
+htonl	include/network.h	14;"	d
+htons	include/network.h	12;"	d
+htype	include/network.h	/^	uchar  htype;               \/**< DHCP hardware type             *\/$/;"	m	struct:dhcpgram
+htype	include/network.h	/^	ushort htype;				\/** ARP hardware type               *\/$/;"	m	struct:arpgram
+hwaddr	include/network.h	/^	uchar  hwaddr[DHCP_HWFIELD_LEN];  \/**< Client hardware address  *\/$/;"	m	struct:dhcpgram
+icmpDaemon	network/icmpDaemon.c	/^void icmpDaemon(){$/;"	f
+icmp_pkt	network/icmpDaemon.c	/^struct packet icmp_pkt;$/;"	v	typeref:struct:packet
+icmpgram	include/network.h	/^struct icmpgram			\/**< ICMP Packet Variables	    *\/$/;"	s
+icount	include/ether.h	/^    ushort icount;              \/**< Packets in buffer                  *\/$/;"	m	struct:ether
+icount	include/tty.h	/^    unsigned short icount;      \/* # characters in input buffer     *\/$/;"	m	struct:tty
+id	include/network.h	/^	ulong  id;                  \/**< DHCP transaction ID            *\/$/;"	m	struct:dhcpgram
+id	include/network.h	/^    ushort id;               \/**< IPv4 identification                   *\/$/;"	m	struct:ipgram
+idHigh	include/sbconfig.h	/^    volatile ulong idHigh;      \/* identification *\/$/;"	m	struct:backplaneConfig
+idLow	include/sbconfig.h	/^    volatile ulong idLow;       \/* identification *\/$/;"	m	struct:backplaneConfig
+ident	include/network.h	/^   ushort ident;		\/**< ICMP identifier		    *\/$/;"	m	struct:icmpgram
+ier	include/uart.h	/^	volatile uchar ier;       \/**< interrupt enable                      *\/$/;"	m	struct:uart_csreg
+iflags	include/tty.h	/^    unsigned char iflags;       \/* TIF_* below                      *\/$/;"	m	struct:tty
+iir	include/uart.h	/^	volatile uchar iir;       \/**< interrupt ident (read only)           *\/$/;"	m	struct:uart_csreg
+imConfigHigh	include/sbconfig.h	/^    volatile ulong imConfigHigh;        \/* initiator configuration *\/$/;"	m	struct:backplaneConfig
+imConfigLow	include/sbconfig.h	/^    volatile ulong imConfigLow; \/* initiator configuration *\/$/;"	m	struct:backplaneConfig
+imState	include/sbconfig.h	/^    volatile ulong imState;     \/* initiator agent state *\/$/;"	m	struct:backplaneConfig
+in	include/ether.h	/^    struct ethPktBuffer *in[ETH_IBLEN]; \/**< Input buffer               *\/$/;"	m	struct:ether	typeref:struct:ether::ethPktBuffer
+in	include/tty.h	/^    unsigned char in[IBLEN];$/;"	m	struct:tty
+inPool	include/ether.h	/^    int inPool;                 \/**< buffer pool id for input           *\/$/;"	m	struct:ether
+intVec	include/sbconfig.h	/^    volatile ulong intVec;      \/* interrupt mask *\/$/;"	m	struct:backplaneConfig
+interface	include/network.h	/^	int interface;$/;"	m	struct:routeEntry
+interface	include/network.h	/^	uchar interface;$/;"	m	struct:packet
+interrupt	include/kernel.h	38;"	d
+interruptMask	include/bcm4713.h	/^    volatile ulong interruptMask;      \/**< Interrupt Mask               *\/$/;"	m	struct:bcm4713
+interruptMask	include/ether.h	/^    ulong interruptMask;        \/**< interrupt mask                     *\/$/;"	m	struct:ether
+interruptStatus	include/bcm4713.h	/^    volatile ulong interruptStatus;    \/**< 0x020 Interrupt Status       *\/$/;"	m	struct:bcm4713
+interruptStatus	include/ether.h	/^    ulong interruptStatus;      \/**< interrupt status                   *\/$/;"	m	struct:ether
+interruptVector	include/interrupt.h	30;"	d
+intmask	include/sbchipc.h	/^    volatile ulong intmask;$/;"	m	struct:chipcregs
+intr	include/device.h	/^    void (*intr) (void);$/;"	m	struct:dentry
+intstatus	include/sbchipc.h	/^    volatile ulong intstatus;   \/* 0x20 *\/$/;"	m	struct:chipcregs
+ipAddress	include/network.h	/^	uchar ipAddress[IP_ADDR_LEN];$/;"	m	struct:arpentry
+ipAddress	shell/xsh_arp.c	/^uchar ipAddress[IP_ADDR_LEN];$/;"	v
+ipAdr	network/arp/arpDaemon.c	/^uchar *ipAdr;$/;"	v
+ipPointer	shell/xsh_arp.c	/^char* ipPointer;$/;"	v
+ipPtr	shell/xsh_ping.c	/^char* ipPtr;$/;"	v
+ipSet	network/netDaemon.c	/^bool ipSet = FALSE;$/;"	v
+ipcount	network/dhcpClient.c	/^int ipcount = 0;$/;"	v
+ipcounter	network/packet.c	/^int ipcounter = 0;$/;"	v
+ipgram	include/network.h	/^struct ipgram                \/**< IPv4 Packet Variables                 *\/$/;"	s
+ipsFlag	include/sbconfig.h	/^    volatile ulong ipsFlag;     \/* initiator port ocp slave flag *\/$/;"	m	struct:backplaneConfig
+irqmask	include/kernel.h	/^typedef unsigned long   irqmask; \/**< machine status for disable\/restore  *\/$/;"	t
+isEndOfLine	include/shell.h	39;"	d
+isInTable	shell/xsh_arp.c	/^int isInTable(uchar ipAddr[]){$/;"	f
+isOtherSpecial	include/shell.h	41;"	d
+isOurReply	network/arp/arpDaemon.c	/^bool isOurReply(){$/;"	f
+isOurRequest	network/arp/arpDaemon.c	/^bool isOurRequest(void){$/;"	f
+isQuote	include/shell.h	40;"	d
+isWhitespace	include/shell.h	42;"	d
+isalnum	include/ctype.h	31;"	d
+isalpha	include/ctype.h	24;"	d
+isascii	include/ctype.h	35;"	d
+isbaddev	include/device.h	43;"	d
+isbadpid	include/proc.h	47;"	d
+isbadpool	include/bufpool.h	49;"	d
+isbadqueue	include/queue.h	57;"	d
+isbadsem	include/semaphore.h	34;"	d
+iscntrl	include/ctype.h	34;"	d
+isdigit	include/ctype.h	27;"	d
+isema	include/ether.h	/^    semaphore isema;            \/**< I\/0 sem for eth input              *\/$/;"	m	struct:ether
+isema	include/tty.h	/^    semaphore isema;            \/* input available semaphore        *\/$/;"	m	struct:tty
+isempty	include/queue.h	59;"	d
+ishexnumber	include/ctype.h	40;"	d
+islower	include/ctype.h	26;"	d
+isprint	include/ctype.h	33;"	d
+isprshort	include/ctype.h	32;"	d
+ispunct	include/ctype.h	30;"	d
+isspace	include/ctype.h	29;"	d
+istart	include/ether.h	/^    ushort istart;              \/**< Index of first byte                *\/$/;"	m	struct:ether
+istart	include/tty.h	/^    unsigned short istart;      \/* index of first character         *\/$/;"	m	struct:tty
+isupper	include/ctype.h	25;"	d
+isxdigit	include/ctype.h	28;"	d
+jp	include/mips.h	45;"	d
+k0	include/mips.h	46;"	d
+k1	include/mips.h	47;"	d
+key	include/queue.h	/^	ulong key;          \/**< key on which queue is ordered               *\/$/;"	m	struct:qentry
+lcr	include/uart.h	/^	volatile uchar lcr;       \/**< line control                          *\/$/;"	m	struct:uart_csreg
+len	include/network.h	/^    ushort len;                 \/**< UDP length, includes header    *\/$/;"	m	struct:udpgram
+len	include/network.h	/^    ushort len;              \/**< IPv4 packet length including IHL      *\/$/;"	m	struct:ipgram
+length	include/ether.h	/^    int length;                 \/**< Length of packet data              *\/$/;"	m	struct:ethPktBuffer
+length	include/ether.h	/^    ushort length;              \/**< Length of packet data              *\/$/;"	m	struct:rxHeader
+length	include/memory.h	/^	ulong           length; \/**< size of memory block (incl. struct) *\/$/;"	m	struct:memblock
+length	include/network.h	/^	int length;$/;"	m	struct:packet
+length	include/nvram.h	/^    unsigned int length;          \/**< bytes (header+vars)              *\/$/;"	m	struct:nvram_header
+local	include/kernel.h	35;"	d
+lsr	include/uart.h	/^	volatile uchar lsr;       \/**< line status                           *\/$/;"	m	struct:uart_csreg
+macAddress	include/network.h	/^	uchar macAddress[ETH_ADDR_LEN];$/;"	m	struct:arpentry
+macControl	include/bcm4713.h	/^    volatile ulong macControl;         \/**< 0x0A8 MAC Control            *\/$/;"	m	struct:bcm4713
+magic	include/nvram.h	/^    unsigned int magic;           \/**< 'FLSH' (little endian)           *\/$/;"	m	struct:nvram_header
+mask	include/device.h	/^    int mask;$/;"	m	struct:dentry
+maxaddr	include/platform.h	/^	void     *maxaddr;$/;"	m	struct:platform
+mcr	include/uart.h	/^	volatile uchar mcr;       \/**< modem control                         *\/$/;"	m	struct:uart_csreg
+mdio	include/bcmswitch.h	/^    struct mdioregs *mdio;$/;"	m	struct:swtstate	typeref:struct:swtstate::mdioregs
+mdioControl	include/bcm4713.h	/^    volatile ulong mdioControl;        \/**< EMAC MDIO Control            *\/$/;"	m	struct:bcm4713
+mdioControl	include/bcmswitch.h	/^    ulong mdioControl;          \/**< 0x410 EMAC MDIO Control         *\/$/;"	m	struct:mdioregs
+mdioData	include/bcm4713.h	/^    volatile ulong mdioData;$/;"	m	struct:bcm4713
+mdioData	include/bcmswitch.h	/^    ulong mdioData;$/;"	m	struct:mdioregs
+mdioregs	include/bcmswitch.h	/^struct mdioregs$/;"	s
+memblk	include/memory.h	/^} memblk;$/;"	t	typeref:struct:memblock
+memblock	include/memory.h	/^typedef struct memblock$/;"	s
+message	include/kernel.h	39;"	d
+mibControl	include/bcm4713.h	/^    volatile ulong mibControl;         \/**< EMAC MIB Control             *\/$/;"	m	struct:bcm4713
+msg	include/proc.h	/^	message msg;            \/**< message sent to this thread             *\/$/;"	m	struct:pentry
+msr	include/uart.h	/^	volatile uchar msr;       \/**< modem status                          *\/$/;"	m	struct:uart_csreg
+mtu	include/ether.h	/^    ushort mtu;                 \/**< Maximum transmission units         *\/$/;"	m	struct:ether
+myIP	network/netInit.c	/^uchar myIP[IP_ADDR_LEN];$/;"	v
+name	include/platform.h	/^	char     name[16];$/;"	m	struct:platform
+name	include/proc.h	/^	char    name[PNMLEN];   \/**< process name                            *\/$/;"	m	struct:pentry
+name	include/shell.h	/^    char *name;                 \/**< name of command                    *\/$/;"	m	struct:centry
+nbuf	include/bufpool.h	/^    ulong nbuf;$/;"	m	struct:bfpentry
+ncommand	shell/shell-commands.c	/^ulong ncommand = sizeof(commandtab) \/ sizeof(struct centry);$/;"	v
+netD_pkt	network/netDaemon.c	/^struct packet netD_pkt;$/;"	v	typeref:struct:packet
+netDaemon	network/netDaemon.c	/^void netDaemon(int ETH_0){$/;"	f
+netInit	network/netInit.c	/^void netInit(void)$/;"	f
+netmask	include/network.h	/^	uchar netmask[IP_ADDR_LEN];$/;"	m	struct:routeEntry
+newMac	network/arp/arpDaemon.c	/^uchar *newMac;$/;"	v
+next	include/bufpool.h	/^    struct poolbuf *next;$/;"	m	struct:bfpentry	typeref:struct:bfpentry::poolbuf
+next	include/bufpool.h	/^    struct poolbuf *next;$/;"	m	struct:poolbuf	typeref:struct:poolbuf::poolbuf
+next	include/memory.h	/^	struct memblock *next;  \/**< pointer to next memory block        *\/$/;"	m	struct:memblock	typeref:struct:memblock::memblock
+next	include/nvram.h	/^    struct nvram_tuple *next;   \/**< linked list of tuples              *\/$/;"	m	struct:nvram_tuple	typeref:struct:nvram_tuple::nvram_tuple
+next	include/queue.h	/^	short next;         \/**< index of next process or tail               *\/$/;"	m	struct:qentry
+nonempty	include/queue.h	60;"	d
+ntohl	include/network.h	16;"	d
+ntohs	include/network.h	13;"	d
+numarp	network/netInit.c	/^int numarp = 0;$/;"	v
+nvram_header	include/nvram.h	/^struct nvram_header$/;"	s
+nvram_tuple	include/nvram.h	/^struct nvram_tuple$/;"	s
+ocount	include/tty.h	/^    unsigned short ocount;      \/* # characters in output buffer *\/$/;"	m	struct:tty
+off_dhcpgram	network/dhcpClient.c	/^struct dhcpgram *off_dhcpgram;$/;"	v	typeref:struct:dhcpgram
+off_ethergram	network/dhcpClient.c	/^struct ethergram *off_ethergram;$/;"	v	typeref:struct:ethergram
+off_ipgram	network/dhcpClient.c	/^struct ipgram *off_ipgram;$/;"	v	typeref:struct:ipgram
+off_udpgram	network/dhcpClient.c	/^struct udpgram *off_udpgram;$/;"	v	typeref:struct:udpgram
+oflags	include/tty.h	/^    unsigned char oflags;       \/* TOF_* below                      *\/$/;"	m	struct:tty
+oidle	include/tty.h	/^    int oidle;                  \/* TTY transmitter idle         *\/$/;"	m	struct:tty
+op	include/network.h	/^	ushort op;				\/** ARP operation                   *\/$/;"	m	struct:arpgram
+opcode	include/network.h	/^        uchar  opcode;              \/**< DHCP Operation                 *\/$/;"	m	struct:dhcpgram
+opts	include/network.h	/^    uchar  opts[1];            \/**< DHCP Options field              *\/$/;"	m	struct:dhcpgram
+opts	include/network.h	/^    uchar  opts[1];          \/**< Options and padding is variable       *\/$/;"	m	struct:ipgram
+osema	include/tty.h	/^    semaphore osema;            \/* output buffer space semaphore *\/$/;"	m	struct:tty
+ostart	include/tty.h	/^    unsigned short ostart;      \/* index of first character     *\/$/;"	m	struct:tty
+out	include/tty.h	/^    unsigned char out[OBLEN];$/;"	m	struct:tty
+outPool	include/ether.h	/^    int outPool;                \/**< buffer pool id for output          *\/$/;"	m	struct:ether
+ovrrun	include/ether.h	/^    ushort ovrrun;              \/**< Buffer overruns                    *\/$/;"	m	struct:ether
+packet	include/network.h	/^struct packet \/* holds packets as well as interface and length *\/$/;"	s
+pad	include/ether.h	/^    ushort pad[12];             \/**< Padding                            *\/$/;"	m	struct:rxHeader
+pad0	include/bcm4713.h	/^    volatile ulong pad0[7];$/;"	m	struct:bcm4713
+pad0	include/sbchipc.h	/^    volatile ulong pad0[5];$/;"	m	struct:chipcregs
+pad0	include/sbconfig.h	/^    volatile ulong pad0[2];$/;"	m	struct:backplaneConfig
+pad1	include/bcm4713.h	/^    volatile ulong pad1[31];$/;"	m	struct:bcm4713
+pad1	include/sbchipc.h	/^    volatile ulong pad1[6];$/;"	m	struct:chipcregs
+pad1	include/sbconfig.h	/^    volatile ulong pad1[3];$/;"	m	struct:backplaneConfig
+pad10	include/bcm4713.h	/^    volatile ulong pad10[9];$/;"	m	struct:bcm4713
+pad10	include/sbconfig.h	/^    volatile ulong pad10;$/;"	m	struct:backplaneConfig
+pad11	include/bcm4713.h	/^    volatile uchar pad11[256 * 9];$/;"	m	struct:bcm4713
+pad11	include/sbconfig.h	/^    volatile ulong pad11[3];$/;"	m	struct:backplaneConfig
+pad12	include/sbconfig.h	/^    volatile ulong pad12[3];$/;"	m	struct:backplaneConfig
+pad13	include/sbconfig.h	/^    volatile ulong pad13[3];$/;"	m	struct:backplaneConfig
+pad2	include/bcm4713.h	/^    volatile ulong pad2[21];$/;"	m	struct:bcm4713
+pad2	include/sbchipc.h	/^    volatile ulong pad2[1];$/;"	m	struct:chipcregs
+pad2	include/sbconfig.h	/^    volatile ulong pad2[11];$/;"	m	struct:backplaneConfig
+pad3	include/bcm4713.h	/^    volatile ulong pad3[63];$/;"	m	struct:bcm4713
+pad3	include/sbchipc.h	/^    volatile ulong pad3[2];$/;"	m	struct:chipcregs
+pad3	include/sbconfig.h	/^    volatile ulong pad3;$/;"	m	struct:backplaneConfig
+pad4	include/bcm4713.h	/^    volatile ulong pad4[56];$/;"	m	struct:bcm4713
+pad4	include/sbchipc.h	/^    volatile ulong pad4[2];$/;"	m	struct:chipcregs
+pad4	include/sbconfig.h	/^    volatile ulong pad4[3];$/;"	m	struct:backplaneConfig
+pad5	include/bcm4713.h	/^    volatile ulong pad5[64];$/;"	m	struct:bcm4713
+pad5	include/sbchipc.h	/^    volatile ulong pad5[3];$/;"	m	struct:chipcregs
+pad5	include/sbconfig.h	/^    volatile ulong pad5;$/;"	m	struct:backplaneConfig
+pad6	include/bcm4713.h	/^    volatile ulong pad6;$/;"	m	struct:bcm4713
+pad6	include/sbchipc.h	/^    volatile ulong pad6[2];$/;"	m	struct:chipcregs
+pad6	include/sbconfig.h	/^    volatile ulong pad6;$/;"	m	struct:backplaneConfig
+pad7	include/bcm4713.h	/^    volatile ulong pad7;$/;"	m	struct:bcm4713
+pad7	include/sbchipc.h	/^    volatile ulong pad7[17];$/;"	m	struct:chipcregs
+pad7	include/sbconfig.h	/^    volatile ulong pad7[7];$/;"	m	struct:backplaneConfig
+pad8	include/bcm4713.h	/^    volatile ulong pad8[49];$/;"	m	struct:bcm4713
+pad8	include/sbchipc.h	/^    volatile ulong pad8[116];$/;"	m	struct:chipcregs
+pad8	include/sbconfig.h	/^    volatile ulong pad8;$/;"	m	struct:backplaneConfig
+pad9	include/bcm4713.h	/^    volatile ulong pad9[8];$/;"	m	struct:bcm4713
+pad9	include/sbchipc.h	/^    volatile uchar pad9[248];   \/* corerev >= 1 *\/$/;"	m	struct:chipcregs
+pad9	include/sbconfig.h	/^    volatile ulong pad9;$/;"	m	struct:backplaneConfig
+page	include/bcmswitch.h	/^    uchar page;$/;"	m	struct:swtstate
+pair	include/nvram.h	/^    char pair[1];               \/**< name = value                       *\/$/;"	m	struct:nvram_tuple
+parallelflashconfig	include/sbchipc.h	/^    volatile ulong parallelflashconfig;$/;"	m	struct:chipcregs
+parallelflashwaitcnt	include/sbchipc.h	/^    volatile ulong parallelflashwaitcnt;$/;"	m	struct:chipcregs
+parse	network/netFunctions.c	/^int parse(char numStr[]){$/;"	f
+parseCIDR_Mask	network/netFunctions.c	/^uchar* parseCIDR_Mask(char *str){$/;"	f
+parseIP	network/netFunctions.c	/^int parseIP(char *ipstr, uchar *ip){$/;"	f
+payload	include/network.h	/^	uchar payload[PKTSZ];$/;"	m	struct:packet
+pcb	include/proc.h	/^} pcb;$/;"	t	typeref:struct:pentry
+pdev	include/tty.h	/^    struct dentry *pdev;        \/* tty dev structure                *\/$/;"	m	struct:tty	typeref:struct:tty::dentry
+pentry	include/proc.h	/^typedef struct pentry$/;"	s
+phy	include/ether.h	/^    device *phy;                \/**< physical eth device for Tx DMA     *\/$/;"	m	struct:ether
+pid	include/network.h	/^	int pid;$/;"	m	struct:arpentry
+pingIPAddress	shell/xsh_ping.c	/^uchar pingIPAddress[IP_ADDR_LEN];$/;"	v
+ping_ethergram	network/packet.c	/^struct ethergram *ping_ethergram;$/;"	v	typeref:struct:ethergram
+ping_icmpgram	network/packet.c	/^struct icmpgram *ping_icmpgram;$/;"	v	typeref:struct:icmpgram
+ping_ipgram	network/packet.c	/^struct ipgram *ping_ipgram;$/;"	v	typeref:struct:ipgram
+pktPointer	network/netDaemon.c	/^struct packet *pktPointer;$/;"	v	typeref:struct:packet
+platform	include/platform.h	/^struct platform$/;"	s
+plen	include/network.h	/^	uchar  plen;				\/** ARP protocol length             *\/$/;"	m	struct:arpgram
+pll_on_delay	include/sbchipc.h	/^    volatile ulong pll_on_delay;        \/* 0xb0 *\/$/;"	m	struct:chipcregs
+poolbuf	include/bufpool.h	/^struct poolbuf$/;"	s
+poolid	include/bufpool.h	/^    int poolid;$/;"	m	struct:poolbuf
+prev	include/queue.h	/^	short prev;         \/**< index of previous process or head           *\/$/;"	m	struct:qentry
+printIP	network/netFunctions.c	/^void printIP(uchar ip[]){$/;"	f
+printNumberedPacket	network/netFunctions.c	/^void printNumberedPacket(uchar packet[], int length){$/;"	f
+printPacket	network/netFunctions.c	/^void printPacket(uchar packet[], int length){$/;"	f
+printTable	shell/xsh_arp.c	/^void printTable(){$/;"	f
+printUsage	shell/xsh_arp.c	/^void printUsage(char *prgrm){$/;"	f
+printf	include/stdio.h	49;"	d
+priority	include/proc.h	/^	ulong   priority;       \/**< priority of process                     *\/$/;"	m	struct:pentry
+procedure	include/shell.h	/^    command (*procedure) (int, char *[]);\/**< procedure                *\/$/;"	m	struct:centry
+process	include/kernel.h	37;"	d
+proto	include/network.h	/^	ushort proto;				\/** ARP protocol                    *\/$/;"	m	struct:arpgram
+proto	include/network.h	/^    uchar  proto;            \/**< IPv4 protocol                         *\/$/;"	m	struct:ipgram
+pucsr	include/tty.h	/^    struct uart_csreg *pucsr;   \/* UART control\/status regs         *\/$/;"	m	struct:tty	typeref:struct:tty::uart_csreg
+puts	include/stdio.h	48;"	d
+qentry	include/queue.h	/^struct qentry$/;"	s
+queue	include/queue.h	/^typedef unsigned long queue;$/;"	t
+queue	include/semaphore.h	/^    queue queue;                \/**< requires queue.h.        *\/$/;"	m	struct:sement
+queuehead	include/queue.h	50;"	d
+queuetail	include/queue.h	51;"	d
+ra	include/mips.h	53;"	d
+rbr	include/uart.h	30;"	d
+rcvLazy	include/bcm4713.h	/^    volatile ulong rcvLazy;            \/**< 0x100 Lazy Interrupt Control *\/$/;"	m	struct:bcm4713
+removeFromTable	shell/xsh_arp.c	/^void removeFromTable(uchar ipToRemove[]){$/;"	f
+res_arpgram	network/packet.c	/^struct arpgram *res_arpgram;$/;"	v	typeref:struct:arpgram
+res_ethergram	network/packet.c	/^struct ethergram *res_ethergram;$/;"	v	typeref:struct:ethergram
+roundew	include/memory.h	38;"	d
+roundmb	include/memory.h	48;"	d
+roundword	include/bufpool.h	54;"	d
+routeAdd	network/route/routeAdd.c	/^void routeAdd(uchar *destIP, uchar *mask, uchar *gtwyIP, int interface){$/;"	f
+routeEntry	include/network.h	/^struct routeEntry \/*one route entry*\/$/;"	s
+routeInit	network/route/routeInit.c	/^void routeInit(){$/;"	f
+routeNextHop	network/route/routeNextHop.c	/^int routeNextHop(uchar destinationIP[]){$/;"	f
+routeNum	include/network.h	/^	int routeNum;	$/;"	m	struct:routeTable
+routeSem	include/network.h	/^	semaphore routeSem;$/;"	m	struct:routeTable
+routeTab	network/netInit.c	/^struct routeTable routeTab;$/;"	v	typeref:struct:routeTable
+routeTable	include/network.h	/^struct routeTable \/*table for route entries*\/$/;"	s
+router	include/network.h	/^	uchar  router[IPv4_ADDR_LEN];  \/**< DHCP gateway IP address     *\/$/;"	m	struct:dhcpgram
+routes	include/network.h	/^	struct routeEntry routes[ROUTEENT_LEN];$/;"	m	struct:routeTable	typeref:struct:routeTable::routeEntry
+rxAlign	include/bcm4713.h	/^    volatile ulong rxAlign;            \/**< MIB Rx Align Errors          *\/$/;"	m	struct:bcm4713
+rxBroadcast	include/bcm4713.h	/^    volatile ulong rxBroadcast;        \/**< MIB Rx Broadcast Packets     *\/$/;"	m	struct:bcm4713
+rxBufs	include/ether.h	/^    struct ethPktBuffer **rxBufs; \/**< Rx ring array          *\/$/;"	m	struct:ether	typeref:struct:ether::ethPktBuffer
+rxConfig	include/bcm4713.h	/^    volatile ulong rxConfig;           \/**< 0x400 EMAC Rx config         *\/$/;"	m	struct:bcm4713
+rxCrc	include/bcm4713.h	/^    volatile ulong rxCrc;              \/**< MIB Rx CRC Errors            *\/$/;"	m	struct:bcm4713
+rxCrcAlign	include/bcm4713.h	/^    volatile ulong rxCrcAlign;         \/**< MIB Rx CRC Align Errors      *\/$/;"	m	struct:bcm4713
+rxErrors	include/ether.h	/^    ulong rxErrors;             \/**< Count of Rx errors.                *\/$/;"	m	struct:ether
+rxFragment	include/bcm4713.h	/^    volatile ulong rxFragment;         \/**< MIB Rx Fragment Packets      *\/$/;"	m	struct:bcm4713
+rxGoodOctets	include/bcm4713.h	/^    volatile ulong rxGoodOctets;       \/**< MIB Rx Good Octets           *\/$/;"	m	struct:bcm4713
+rxGoodPackets	include/bcm4713.h	/^    volatile ulong rxGoodPackets;      \/**< MIB Rx Good Packets          *\/$/;"	m	struct:bcm4713
+rxHead	include/ether.h	/^    ulong rxHead;               \/**< Rx ring head index                 *\/$/;"	m	struct:ether
+rxHeader	include/ether.h	/^struct rxHeader$/;"	s
+rxJabber	include/bcm4713.h	/^    volatile ulong rxJabber;           \/**< MIB Rx Jabber Packets        *\/$/;"	m	struct:bcm4713
+rxMaxLength	include/bcm4713.h	/^    volatile ulong rxMaxLength;        \/**< EMAC Rx Max Packet Length    *\/$/;"	m	struct:bcm4713
+rxMissed	include/bcm4713.h	/^    volatile ulong rxMissed;           \/**< MIB Rx Missed Packets        *\/$/;"	m	struct:bcm4713
+rxMulticast	include/bcm4713.h	/^    volatile ulong rxMulticast;        \/**< MIB Rx Multicast Packets     *\/$/;"	m	struct:bcm4713
+rxNonPause	include/bcm4713.h	/^    volatile ulong rxNonPause;         \/**< MIB Rx Non-Pause Packets     *\/$/;"	m	struct:bcm4713
+rxOctets	include/bcm4713.h	/^    volatile ulong rxOctets;           \/**< MIB Rx Octets                *\/$/;"	m	struct:bcm4713
+rxOffset	include/ether.h	/^    ulong rxOffset;             \/**< Size in bytes of rxHeader          *\/$/;"	m	struct:ether
+rxOversize	include/bcm4713.h	/^    volatile ulong rxOversize;         \/**< MIB Rx Oversize Packets      *\/$/;"	m	struct:bcm4713
+rxPackets	include/bcm4713.h	/^    volatile ulong rxPackets;          \/**< MIB Rx Packets               *\/$/;"	m	struct:bcm4713
+rxPause	include/bcm4713.h	/^    volatile ulong rxPause;            \/**< MIB Rx Pause Packets         *\/$/;"	m	struct:bcm4713
+rxPending	include/ether.h	/^    ulong rxPending;            \/**< Number of Rx ring descriptors      *\/$/;"	m	struct:ether
+rxRing	include/ether.h	/^    struct dmaDescriptor *rxRing; \/**< array receive ring descs.*\/$/;"	m	struct:ether	typeref:struct:ether::dmaDescriptor
+rxSymbol	include/bcm4713.h	/^    volatile ulong rxSymbol;           \/**< MIB Rx Symbol Errors         *\/$/;"	m	struct:bcm4713
+rxTail	include/ether.h	/^    ulong rxTail;               \/**< Rx ring tail index                 *\/$/;"	m	struct:ether
+rxUndersize	include/bcm4713.h	/^    volatile ulong rxUndersize;        \/**< MIB Rx Undersize Packets     *\/$/;"	m	struct:bcm4713
+rx_1024_max	include/bcm4713.h	/^    volatile ulong rx_1024_max;        \/**< MIB Rx 1024 to max bytes     *\/$/;"	m	struct:bcm4713
+rx_128_255	include/bcm4713.h	/^    volatile ulong rx_128_255;         \/**< MIB Rx 128 to 255 bytes      *\/$/;"	m	struct:bcm4713
+rx_256_511	include/bcm4713.h	/^    volatile ulong rx_256_511;         \/**< MIB Rx 256 to 511 bytes      *\/$/;"	m	struct:bcm4713
+rx_512_1023	include/bcm4713.h	/^    volatile ulong rx_512_1023;        \/**< MIB Rx 512 to 1023 bytes     *\/$/;"	m	struct:bcm4713
+rx_64	include/bcm4713.h	/^    volatile ulong rx_64;              \/**< MIB Rx <= 64 byte Packets    *\/$/;"	m	struct:bcm4713
+rx_65_127	include/bcm4713.h	/^    volatile ulong rx_65_127;          \/**< MIB Rx 65 to 127 bytes       *\/$/;"	m	struct:bcm4713
+rxirq	include/ether.h	/^    ulong rxirq;                \/**< Count of Rx interrupt requests     *\/$/;"	m	struct:ether
+s0	include/mips.h	35;"	d
+s1	include/mips.h	36;"	d
+s2	include/mips.h	37;"	d
+s3	include/mips.h	38;"	d
+s4	include/mips.h	39;"	d
+s5	include/mips.h	40;"	d
+s6	include/mips.h	41;"	d
+s7	include/mips.h	42;"	d
+s8	include/mips.h	49;"	d
+s9	include/mips.h	52;"	d
+scanf	include/stdio.h	50;"	d
+scr	include/uart.h	/^	volatile uchar scr;       \/**< scratch                               *\/$/;"	m	struct:uart_csreg
+sem	include/proc.h	/^	int     sem;            \/**< waiting on semaphore                    *\/$/;"	m	struct:pentry
+semaphore	include/semaphore.h	/^typedef unsigned int semaphore;$/;"	t
+semblk	include/semaphore.h	/^} semblk;$/;"	t	typeref:struct:sement
+sement	include/semaphore.h	/^typedef struct sement           \/* semaphore table entry      *\/$/;"	s
+sendArpReplyPacket	network/packet.c	/^void sendArpReplyPacket(uchar packet[]){$/;"	f
+sendArpResolvePacket	network/packet.c	/^void sendArpResolvePacket(uchar* ipAddress){$/;"	f
+sendDiscoverPacket	network/packet.c	/^void sendDiscoverPacket(){$/;"	f
+sendEchoReplyPacket	network/packet.c	/^void sendEchoReplyPacket(uchar packet[]){$/;"	f
+sendEchoRequestPacket	network/packet.c	/^void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining){$/;"	f
+sendPings	shell/xsh_ping.c	/^void sendPings(uchar ipAddr[], int numOfPings){$/;"	f
+seq	include/network.h	/^   ushort seq;			\/**< ICMP Sequence number	    *\/$/;"	m	struct:icmpgram
+server	include/network.h	/^	uchar  server[IPv4_ADDR_LEN];  \/**< DHCP server IP address      *\/$/;"	m	struct:dhcpgram
+servname	include/network.h	/^	uchar  servname[DHCP_SERVNAME_LEN];  \/**< Server name           *\/$/;"	m	struct:dhcpgram
+setMyIP	network/netDaemon.c	/^void setMyIP(uchar packet[]){$/;"	f
+slow_clk_ctl	include/sbchipc.h	/^    volatile ulong slow_clk_ctl;$/;"	m	struct:chipcregs
+snoopActive	network/netDaemon.c	/^bool snoopActive;$/;"	v
+sp	include/mips.h	50;"	d
+src	include/network.h	/^    uchar  src[IPv4_ADDR_LEN];  \/**< IPv4 source                        *\/$/;"	m	struct:ipgram
+src	include/network.h	/^    uchar src[ETH_ADDR_LEN];    \/**< Ethernet source MAC Address        *\/$/;"	m	struct:ethergram
+src	include/vlan.h	/^    uchar src[ETH_ADDR_LEN];    \/**< Source Mac                         *\/$/;"	m	struct:vlanPkt
+srcIpAddress	include/network.h	/^	uchar  srcIpAddress[IP_ADDR_LEN];	\/** ARP Source IP Address       *\/$/;"	m	struct:arpgram
+srcMacAddress	include/network.h	/^	uchar  srcMacAddress[ETH_ADDR_LEN];	\/** ARP Source MAC Address      *\/$/;"	m	struct:arpgram
+srcPort	include/network.h	/^    ushort srcPort;             \/**< UDP Source port                *\/$/;"	m	struct:udpgram
+state	include/bufpool.h	/^    uchar state;$/;"	m	struct:bfpentry
+state	include/ether.h	/^    uchar state;                \/**< ETH_STATE_*above                   *\/$/;"	m	struct:ether
+state	include/network.h	/^	int state;$/;"	m	struct:arpentry
+state	include/proc.h	/^	int     state;          \/**< process state: PRCURR, etc.             *\/$/;"	m	struct:pentry
+state	include/semaphore.h	/^    char state;                 \/**< the state SFREE or SUSED *\/$/;"	m	struct:sement
+state	include/tty.h	/^    unsigned char state;        \/* TTYS_* below                     *\/$/;"	m	struct:tty
+stderr	include/stdio.h	27;"	d
+stdin	include/stdio.h	25;"	d
+stdout	include/stdio.h	26;"	d
+stkbase	include/proc.h	/^	void    *stkbase;       \/**< base of run time stack                  *\/$/;"	m	struct:pentry
+stklen	include/proc.h	/^	int     stklen;         \/**< stack length                            *\/$/;"	m	struct:pentry
+stkptr	include/proc.h	/^	void    *stkptr;        \/**< saved stack pointer                     *\/$/;"	m	struct:pentry
+swtstate	include/bcmswitch.h	/^struct swtstate$/;"	s
+syscall	include/kernel.h	33;"	d
+t0	include/mips.h	27;"	d
+t1	include/mips.h	28;"	d
+t2	include/mips.h	29;"	d
+t3	include/mips.h	30;"	d
+t4	include/mips.h	31;"	d
+t5	include/mips.h	32;"	d
+t6	include/mips.h	33;"	d
+t7	include/mips.h	34;"	d
+t8	include/mips.h	43;"	d
+t9	include/mips.h	44;"	d
+thr	include/uart.h	31;"	d
+time_base_freq	include/platform.h	/^	ulong    time_base_freq;$/;"	m	struct:platform
+tmConfigHigh	include/sbconfig.h	/^    volatile ulong tmConfigHigh;        \/* target configuration *\/$/;"	m	struct:backplaneConfig
+tmConfigLow	include/sbconfig.h	/^    volatile ulong tmConfigLow; \/* target configuration *\/$/;"	m	struct:backplaneConfig
+tmErrLog	include/sbconfig.h	/^    volatile ulong tmErrLog;    \/* (sonics >= 2.3) *\/$/;"	m	struct:backplaneConfig
+tmErrLoga	include/sbconfig.h	/^    volatile ulong tmErrLoga;   \/* (sonics >= 2.3) *\/$/;"	m	struct:backplaneConfig
+tmStateHigh	include/sbconfig.h	/^    volatile ulong tmStateHigh; \/* target state *\/$/;"	m	struct:backplaneConfig
+tmStateLow	include/sbconfig.h	/^    volatile ulong tmStateLow;  \/* target state *\/$/;"	m	struct:backplaneConfig
+toascii	include/ctype.h	38;"	d
+tolower	include/ctype.h	37;"	d
+tos	include/network.h	/^    uchar  tos;              \/**< IPv4 Type of Service                  *\/$/;"	m	struct:ipgram
+toupper	include/ctype.h	36;"	d
+tpi	include/vlan.h	/^    ushort tpi;                 \/**< Tag Protocol Identifier            *\/$/;"	m	struct:vlanPkt
+tpsFlag	include/sbconfig.h	/^    volatile ulong tpsFlag;     \/* target port ocp slave flag *\/$/;"	m	struct:backplaneConfig
+truncew	include/memory.h	39;"	d
+truncmb	include/memory.h	49;"	d
+ttl	include/network.h	/^    uchar  ttl;              \/**< IPv4 time to live                     *\/$/;"	m	struct:ipgram
+tty	include/tty.h	/^struct tty$/;"	s
+txBroadcast	include/bcm4713.h	/^    volatile ulong txBroadcast;        \/**< MIB Tx Broadcast Packets     *\/$/;"	m	struct:bcm4713
+txBufs	include/ether.h	/^    struct ethPktBuffer **txBufs; \/**< Tx ring array          *\/$/;"	m	struct:ether	typeref:struct:ether::ethPktBuffer
+txCollExcess	include/bcm4713.h	/^    volatile ulong txCollExcess;       \/**< MIB Tx Excessive Collision   *\/$/;"	m	struct:bcm4713
+txCollLate	include/bcm4713.h	/^    volatile ulong txCollLate;         \/**< MIB Tx Late Collisions       *\/$/;"	m	struct:bcm4713
+txCollMultiple	include/bcm4713.h	/^    volatile ulong txCollMultiple;     \/**< MIB Tx Multiple Collision    *\/$/;"	m	struct:bcm4713
+txCollSingle	include/bcm4713.h	/^    volatile ulong txCollSingle;       \/**< MIB Tx Single Collisions     *\/$/;"	m	struct:bcm4713
+txCollisions	include/bcm4713.h	/^    volatile ulong txCollisions;       \/**< MIB Tx Total Collisions      *\/$/;"	m	struct:bcm4713
+txDeferred	include/bcm4713.h	/^    volatile ulong txDeferred;         \/**< MIB Tx Deferred Packets      *\/$/;"	m	struct:bcm4713
+txFragment	include/bcm4713.h	/^    volatile ulong txFragment;         \/**< MIB Tx Fragment Packets      *\/$/;"	m	struct:bcm4713
+txGoodOctets	include/bcm4713.h	/^    volatile ulong txGoodOctets;       \/**< MIB Tx Good Octets           *\/$/;"	m	struct:bcm4713
+txGoodPackets	include/bcm4713.h	/^    volatile ulong txGoodPackets;      \/**< MIB Tx Good Packets          *\/$/;"	m	struct:bcm4713
+txHead	include/ether.h	/^    ulong txHead;               \/**< Tx ring head index                 *\/$/;"	m	struct:ether
+txJabber	include/bcm4713.h	/^    volatile ulong txJabber;           \/**< MIB Tx Jabber Packets        *\/$/;"	m	struct:bcm4713
+txLostCarrier	include/bcm4713.h	/^    volatile ulong txLostCarrier;      \/**< MIB Tx Carrier Lost          *\/$/;"	m	struct:bcm4713
+txMaxLength	include/bcm4713.h	/^    volatile ulong txMaxLength;        \/**< EMAC Tx Max Packet Length    *\/$/;"	m	struct:bcm4713
+txMulticast	include/bcm4713.h	/^    volatile ulong txMulticast;        \/**< MIB Tx Multicast Packets     *\/$/;"	m	struct:bcm4713
+txOctets	include/bcm4713.h	/^    volatile ulong txOctets;           \/**< MIB Tx Octets                *\/$/;"	m	struct:bcm4713
+txOversize	include/bcm4713.h	/^    volatile ulong txOversize;         \/**< MIB Tx Oversize Packets      *\/$/;"	m	struct:bcm4713
+txPackets	include/bcm4713.h	/^    volatile ulong txPackets;          \/**< MIB Tx Packets               *\/$/;"	m	struct:bcm4713
+txPause	include/bcm4713.h	/^    volatile ulong txPause;            \/**< MIB Tx Pause Packets         *\/$/;"	m	struct:bcm4713
+txPending	include/ether.h	/^    ulong txPending;            \/**< Number of Tx ring descriptors      *\/$/;"	m	struct:ether
+txRing	include/ether.h	/^    struct dmaDescriptor *txRing; \/**< array transmit ring descs.*\/$/;"	m	struct:ether	typeref:struct:ether::dmaDescriptor
+txTail	include/ether.h	/^    ulong txTail;               \/**< Tx ring tail index                 *\/$/;"	m	struct:ether
+txUnderruns	include/bcm4713.h	/^    volatile ulong txUnderruns;        \/**< MIB Tx Underruns             *\/$/;"	m	struct:bcm4713
+txWatermark	include/bcm4713.h	/^    volatile ulong txWatermark;        \/**< EMAC Tx Watermark            *\/$/;"	m	struct:bcm4713
+tx_1024_max	include/bcm4713.h	/^    volatile ulong tx_1024_max;        \/**< MIB Tx 1024 to max bytes     *\/$/;"	m	struct:bcm4713
+tx_128_255	include/bcm4713.h	/^    volatile ulong tx_128_255;         \/**< MIB Tx 128 to 255 bytes      *\/$/;"	m	struct:bcm4713
+tx_256_511	include/bcm4713.h	/^    volatile ulong tx_256_511;         \/**< MIB Tx 256 to 511 bytes      *\/$/;"	m	struct:bcm4713
+tx_512_1023	include/bcm4713.h	/^    volatile ulong tx_512_1023;        \/**< MIB Tx 512 to 1023 bytes     *\/$/;"	m	struct:bcm4713
+tx_64	include/bcm4713.h	/^    volatile ulong tx_64;              \/**< MIB Tx <= 64 byte Packets    *\/$/;"	m	struct:bcm4713
+tx_65_127	include/bcm4713.h	/^    volatile ulong tx_65_127;          \/**< MIB Tx 65 to 127 bytes       *\/$/;"	m	struct:bcm4713
+txirq	include/ether.h	/^    ulong txirq;                \/**< Count of Tx interrupt requests     *\/$/;"	m	struct:ether
+type	include/network.h	/^    ushort type;             \/**< Ethernet Packet Type                  *\/$/;"	m	struct:ethergram
+type	include/network.h	/^   uchar type;			\/**< ICMP packet type		    *\/$/;"	m	struct:icmpgram
+type	include/vlan.h	/^    ushort type;                \/**< Ether type                         *\/$/;"	m	struct:vlanPkt
+uart0data	include/sbchipc.h	/^    volatile uchar uart0data;   \/* 0x300 *\/$/;"	m	struct:chipcregs
+uart0fcr	include/sbchipc.h	/^    volatile uchar uart0fcr;$/;"	m	struct:chipcregs
+uart0imr	include/sbchipc.h	/^    volatile uchar uart0imr;$/;"	m	struct:chipcregs
+uart0lcr	include/sbchipc.h	/^    volatile uchar uart0lcr;$/;"	m	struct:chipcregs
+uart0lsr	include/sbchipc.h	/^    volatile uchar uart0lsr;$/;"	m	struct:chipcregs
+uart0mcr	include/sbchipc.h	/^    volatile uchar uart0mcr;$/;"	m	struct:chipcregs
+uart0msr	include/sbchipc.h	/^    volatile uchar uart0msr;$/;"	m	struct:chipcregs
+uart0scratch	include/sbchipc.h	/^    volatile uchar uart0scratch;$/;"	m	struct:chipcregs
+uart1data	include/sbchipc.h	/^    volatile uchar uart1data;   \/* 0x400 *\/$/;"	m	struct:chipcregs
+uart1fcr	include/sbchipc.h	/^    volatile uchar uart1fcr;$/;"	m	struct:chipcregs
+uart1imr	include/sbchipc.h	/^    volatile uchar uart1imr;$/;"	m	struct:chipcregs
+uart1lcr	include/sbchipc.h	/^    volatile uchar uart1lcr;$/;"	m	struct:chipcregs
+uart1lsr	include/sbchipc.h	/^    volatile uchar uart1lsr;$/;"	m	struct:chipcregs
+uart1mcr	include/sbchipc.h	/^    volatile uchar uart1mcr;$/;"	m	struct:chipcregs
+uart1msr	include/sbchipc.h	/^    volatile uchar uart1msr;$/;"	m	struct:chipcregs
+uart1scratch	include/sbchipc.h	/^    volatile uchar uart1scratch;$/;"	m	struct:chipcregs
+uart_clkdiv	include/sbchipc.h	/^    volatile ulong uart_clkdiv; \/* corerev >= 3 *\/$/;"	m	struct:chipcregs
+uart_csreg	include/uart.h	/^struct uart_csreg$/;"	s
+uart_dll	include/platform.h	/^	uchar    uart_dll;$/;"	m	struct:platform
+uart_irqnum	include/platform.h	/^	uchar	 uart_irqnum;$/;"	m	struct:platform
+uchar	include/kernel.h	/^typedef unsigned char   uchar;   \/**< unsigned char type                  *\/$/;"	t
+udpgram	include/network.h	/^struct udpgram                  \/**< UDP Packet Variables           *\/$/;"	s
+ulong	include/kernel.h	/^typedef unsigned long   ulong;   \/**< unsigned long type                  *\/$/;"	t
+updateArpTable	network/arp/arpDaemon.c	/^bool updateArpTable(uchar * mac, uchar * ipaddr){$/;"	f
+ushort	include/kernel.h	/^typedef unsigned short  ushort;  \/**< unsigned short type                 *\/$/;"	t
+v0	include/mips.h	21;"	d
+v1	include/mips.h	22;"	d
+va_arg	include/stdarg.h	17;"	d
+va_copy	include/stdarg.h	15;"	d
+va_end	include/stdarg.h	18;"	d
+va_list	include/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t
+va_start	include/stdarg.h	16;"	d
+ver_ihl	include/network.h	/^    uchar  ver_ihl;          \/**< IPv4 Version and Internet Header Len  *\/$/;"	m	struct:ipgram
+vlanId	include/vlan.h	/^    ushort vlanId;              \/**< PCP&CFI (4bits), ID (12bits)       *\/$/;"	m	struct:vlanPkt
+vlanPkt	include/vlan.h	/^struct vlanPkt$/;"	s
+watchdog	include/sbchipc.h	/^    volatile ulong watchdog;    \/* 0x80 *\/$/;"	m	struct:chipcregs
+xsh_arp	shell/xsh_arp.c	/^command xsh_arp(int nargs, char *args[]){$/;"	f
+xsh_dhcp	shell/xsh_dhcp.c	/^command xsh_dhcp(int nargs, char *args[]){$/;"	f
+xsh_dhcpsnoop	shell/xsh_dhcpsnoop.c	/^command xsh_dhcpsnoop(int nargs, char *args[])$/;"	f
+xsh_ping	shell/xsh_ping.c	/^command xsh_ping(int nargs, char *args[]){$/;"	f
+xsh_route	shell/xsh_route.c	/^command xsh_route(int nargs, char *args[]){$/;"	f
+xsh_test	shell/xsh_test.c	/^command xsh_test(int nargs, char *args[])$/;"	f
+yourIP	include/network.h	/^	uchar  yourIP[IPv4_ADDR_LEN];  \/**< DHCP your IP address        *\/$/;"	m	struct:dhcpgram
+zero	include/mips.h	19;"	d

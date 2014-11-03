@@ -20,6 +20,7 @@ command xsh_dhcpsnoop(int, char *[]);
 command xsh_dhcp(int, char *[]);
 command xsh_arp(int, char *[]);
 command xsh_ping(int, char *[]);
+command xsh_route(int, char *[]);
 
 /* This structure describes commands available to the shell. */
 struct centry commandtab[] = {
@@ -35,7 +36,8 @@ struct centry commandtab[] = {
     {"dhcpsnoop", FALSE, xsh_dhcpsnoop},
     {"dhcp", FALSE, xsh_dhcp},
     {"arp", FALSE, xsh_arp},
-    {"ping", FALSE, xsh_ping}
+    {"ping", FALSE, xsh_ping},
+    {"route", FALSE, xsh_route}
 };
 
 ulong ncommand = sizeof(commandtab) / sizeof(struct centry);

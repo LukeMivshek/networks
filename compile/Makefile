@@ -17,13 +17,15 @@ $(VERBOSE).SILENT:
 #-----------------------------------------------------------------------
 
 # SHELL
-SHLL = xsh_test.c shell-commands.c xsh_dhcpsnoop.c xsh_dhcp.c xsh_arp.c xsh_ping.c
+SHLL = xsh_test.c shell-commands.c xsh_dhcpsnoop.c xsh_dhcp.c xsh_arp.c xsh_ping.c xsh_route.c
 NET  = netInit.c netDaemon.c dhcpClient.c packet.c icmpDaemon.c netFunctions.c
 NETARP = arpDaemon.c
+NETROUTE = routeAdd.c routeInit.c routeNextHop.c
 
 SRC =	${SHLL:%.c=../shell/%.c} \
 		${NET:%.c=../network/%.c} \
-			${NETARP:%.c=../network/arp/%.c}
+			${NETARP:%.c=../network/arp/%.c} \
+				${NETROUTE:%.c=../network/route/%.c}
 
 KRNOBJ = ${SRC:%.c=%.o}
 

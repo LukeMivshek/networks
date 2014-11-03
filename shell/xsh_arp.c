@@ -3,7 +3,6 @@
 void printTable(void);
 void printUsage(char*);
 bool existsInTable(uchar[]);
-struct arptable arptab;
 int arpResolve(uchar*, uchar*);
 int parseIP(char*, uchar *);
 void removeFromTable(uchar[]);
@@ -159,9 +158,9 @@ void printTable(){
 		}
 		printf("State: ");		
 		if(arptab.arps[m].state == 0){
-			printf("EMPTY      ");
+			printf("EMPTY ");
 		}else if(arptab.arps[m].state == 1){
-			printf("RESOLVED   ");
+			printf("RESOLVED ");
 		}else if(arptab.arps[m].state == 2){
 			printf("UNRESOLVED ");
 		}else{
@@ -258,7 +257,7 @@ int getValidTableLocation(void){
 	int c = 0;
 	for(c = 0; c < ARPENT_LEN; c++){
 		if(arptab.arps[c].state == ARPENT_STATE_EMPTY){
-			printf("Returning %d in getValidTableLocation (empty state)\n");
+			//printf("Returning %d in getValidTableLocation (empty state)\n");
 			return c;
 		}
 	}

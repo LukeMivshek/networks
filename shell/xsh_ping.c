@@ -10,6 +10,7 @@ void sendPings(uchar[], int);
 int getEntry(uchar[]);
 char* ipPtr;
 int parseIP(char*, uchar *);
+int parse(char[]);
 uchar pingIPAddress[IP_ADDR_LEN];
 bool existsInTable(uchar[]);
 
@@ -28,25 +29,14 @@ command xsh_ping(int nargs, char *args[]){
 			printf("Error parsing IP\n");
 			return OK;
 		}
-		printf("calling sendPing from two args with %d number of pings\n", numOfPings);
+		printf("Sending %d number of pings\n", numOfPings);
 		sendPings(pingIPAddress, numOfPings);
 
 	//a number is given, use that as number of pings
 	}else if(nargs == 3){
-			numOfPings = 0;
-			char *pings = args[2];
-			while(*pings){
-				if(isdigit((uchar)*pings)){
-					numOfPings *= 10;
-					numOfPings += *pings - '0';	
-				}else{
-					printf("Incorrect 3rd argument of ping, should be a numerical value\n");
-				}
-				pings++;
-			}
 			ipPtr = args[1];
 			if(parseIP(ipPtr, pingIPAddress)){
-				sendPings(pingIPAddress, numOfPings);
+				sendPings(pingIPAddress, parse(args[2]));
 			}
 
 	}else{

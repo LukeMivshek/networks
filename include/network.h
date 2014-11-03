@@ -317,7 +317,6 @@ struct arpgram					/**< ARP Packet Variables           */
 #define ARP_HLEN               0x06
 #define ARP_PLEN               0x04
 
-
 struct arpentry   //arp table entry variables 
 {
 	uchar ipAddress[IP_ADDR_LEN];
@@ -350,6 +349,25 @@ struct packet /* holds packets as well as interface and length */
 	int length;
 };
 
+#define ROUTEENT_LEN 10
+
+struct routeEntry /*one route entry*/
+{
+	uchar destNetwork[IP_ADDR_LEN];
+	uchar netmask[IP_ADDR_LEN];
+	uchar gateway[IP_ADDR_LEN];
+	int interface;
+};
+
+struct routeTable /*table for route entries*/
+{
+	struct routeEntry routes[ROUTEENT_LEN];
+	semaphore routeSem;
+	int routeNum;	
+};
+
+extern struct routeTable routeTab;
+
 /* prototypes */
 //net daemon prototype
 void netDaemon(int);
@@ -362,6 +380,11 @@ void arpDaemon(void);
 
 //icmpDaemon prototype
 void icmpDaemon(void);
+
+//route prototypes
+void routeAdd(uchar*, uchar*, uchar*, int);
+void routeInit(void);
+int routeNextHop(uchar[]);
 
 //my ip address
 extern uchar myIP[IP_ADDR_LEN];
