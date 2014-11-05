@@ -3,11 +3,21 @@
 #include <xinu.h>
 
 int parseIP(char*, uchar*);
-uchar* parseCIDR_Mask(char*);
+int parseCIDR_Mask(char*);
 int parse(char[]);
 void printIP(uchar[]);
 void printNumberedPacket(uchar[], int);
 void printPacket(uchar[], int);
+void printDecimalIP(uchar[]);
+
+void printDecimalIP(uchar ip[]){
+	char string[16];
+
+	sprintf(string, "%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3]);
+
+	string[15] = '\0';
+	printf("%-15s", string);
+}
 
 int parseIP(char *ipstr, uchar *ip){
 	bzero(ip, IP_ADDR_LEN);
@@ -26,39 +36,56 @@ int parseIP(char *ipstr, uchar *ip){
 	return OK;
 }
 
-uchar* parseCIDR_Mask(char *str){
-	uchar mask[IP_ADDR_LEN];
-	bzero(mask, IP_ADDR_LEN);
-	uchar* maskPtr;
+/*
+ * takes char array classless IP Address with \mask
+ * returns mask int
+ */
+int parseCIDR_Mask(char *str){
+	//uchar mask[IP_ADDR_LEN];
+	//bzero(mask, IP_ADDR_LEN);
+
+	//uchar* maskPtr;
+
 	int n = 0;
+	
 	bool isMask = FALSE;
 	while(*str){
 		if(isMask){
 			n *= 10;
-			n *= *str - '0';
+			n += *str - '0';
 		}else if ((char)*str == '/'){
 			isMask = TRUE;
 		}
 		str++;
 	}
+	
+/*	
 	int block = n / 8;
 	int count = 0;
 	while(count < block){
 		mask[count] = 0xFF;
 		count++;
 	}
+	
 	int end = n % 8;
+	
 	if(n == 32){
 		mask[3] = 0xFF;
 	}else{
 		mask[block] = (0xFF << (8-end));
 	}
+
 	count = block;
+	
 	while(count < IP_ADDR_LEN){
 		mask[count] = 0x00;
+		count++;
 	}
+
 	maskPtr = &mask[0];
-	return maskPtr;	
+*/
+	
+	return n;	
 }
 
 int parse(char numStr[]){

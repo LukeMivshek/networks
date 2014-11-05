@@ -5,7 +5,7 @@ struct packet *arpD_pktPointer;
 struct packet arpD_pkt;
 void printPacket(uchar[], int);
 void sendArpReplyPacket(uchar[]);
-
+int existsInTable(uchar[]);
 bool isOurRequest(void);
 bool isOurReply(void);
 bool hasBeenUpdated;
@@ -16,7 +16,7 @@ uchar *newMac;
 
 void arpDaemon(){
 	printf("Started arpDaemon\n");
-
+	
 	while(1){
 		//recieve arp packets from netDaemon
 		message msg = receive();
@@ -40,7 +40,7 @@ void arpDaemon(){
 		if(arpD_pkt.payload[21] == ARP_OPCODE_REPLY){
 			//now check if its our reply
 			if(isOurReply()){
-				printf("Arp packet is our reply\n");
+				//printf("Arp packet is our reply\n");
 				memcpy(newMac, &arpD_pkt.payload[22], ETH_ADDR_LEN);
 				memcpy(ipAdr, &arpD_pkt.payload[28], IP_ADDR_LEN);
 
@@ -70,7 +70,7 @@ bool isOurReply(){
 		if(arpD_pkt.payload[i+38] == myIP[i]){
 			//printf("match\n");
 		}else{
-			printf("Mismatch IP Addresses not our reply\n");
+			//printf("Mismatch IP Addresses not our reply\n");
 			return FALSE;
 		}
 	}
@@ -78,7 +78,7 @@ bool isOurReply(){
 	//printf("incoming packet: \n");
 	//printPacket(arpD_pkt.payload, 64);
 
-	printf("isOurReply returning true\n");
+	//printf("isOurReply returning true\n");
 	return TRUE;	
 }
 
@@ -97,16 +97,16 @@ int arpResolve(uchar *ipaddr, uchar *mac){
 	int tries = 0;
 
 	while(tries < 3){
-		printf("Attempt %d in arpResolve\n", tries);
+		//printf("Attempt %d in arpResolve\n", tries);
 
 		printf("Sending Arp Resolve packet\n");
 		sendArpResolvePacket(ipaddr);
 	
 		//sleep, then check if we found our arp reply by flag thats set if its found
-		sleep(1000);
+		sleep(3000);
 		//if the table count doesn't equal what it did before sleep
 		if(hasBeenUpdated){
-			printf("Returning OK in arp Resolve, mac set to %02X\n", mac);
+			//printf("Returning OK in arp Resolve, mac set to %02X\n", mac);
 			hasBeenUpdated = FALSE;
 			return OK;
 		}else{
@@ -126,7 +126,7 @@ int arpResolve(uchar *ipaddr, uchar *mac){
  * return SYSERR if nothing is updated
  */
 bool updateArpTable(uchar * mac, uchar * ipaddr){
-	printf("Updating Table\n");
+	//printf("Updating Table\n");
 	
 	int t;
 	//Update table at arpnum sopt, arpnum being set to the next editable spot
@@ -140,7 +140,7 @@ bool updateArpTable(uchar * mac, uchar * ipaddr){
 	memcpy(&arptab.arps[arptab.arpnum].macAddress, mac, ETH_ADDR_LEN);
 	arptab.arps[arptab.arpnum].pid = 0;
 
-	printf("Returning True in updateArpTable, updated entry: %d\n",arptab.arpnum);
+	//printf("Returning True in updateArpTable, updated entry: %d\n",arptab.arpnum);
 	return TRUE;
 }
 
@@ -157,6 +157,6 @@ bool isOurRequest(void){
 			return FALSE;
 		}
 	}
-	printf("isOurRequest returning True\n");
+	//printf("isOurRequest returning True\n");
 	return TRUE;
 }

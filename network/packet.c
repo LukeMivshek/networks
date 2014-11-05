@@ -188,12 +188,12 @@ void sendArpResolvePacket(uchar* ipAddress){
 	memcpy(&res_arpgram->dstMacAddress[0], &zeros, ETH_ADDR_LEN);
 	memcpy(&res_arpgram->dstIpAddress[0], ipAddress, IP_ADDR_LEN);
 
-	printf("Writing Arp resolve packet to ETH0\n");
+	//printf("Writing Arp resolve packet to ETH0\n");
 
 	//printArpPacket(packet);
 	write(ETH0, packet, PKTSZ);
 
-	printf("End of Arp resolve write\n");
+	//printf("End of Arp resolve write\n");
 	return;
 }
 
@@ -236,11 +236,11 @@ void sendArpReplyPacket(uchar packet[]){
 	memcpy(&res_arpgram->dstMacAddress[0], &packet[22], ETH_ADDR_LEN);
 	memcpy(&res_arpgram->dstIpAddress[0], &packet[28], 4);
 
-	printf("Writing Arp reply packet to ETH0\n");
+	//printf("Writing Arp reply packet to ETH0\n");
 
 	write(ETH0, replyPacket, PKTSZ);	
 	
-	printf("End of reply write\n");
+	//printf("End of reply write\n");
 	return;
 }
 

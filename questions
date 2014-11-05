@@ -1,9 +1,7 @@
-Did I do the Makefile right? (NETARP)
+the 3 tag is not in our dhcp offer, so I can't set the default gateway
+	we have tag 36, wiki says its a len 1 feild, were getting len 4, and morbius IP
+	same thing in the ACK
 
-What should this table look like in include.h?
-	whats the right way to do this?
-	what kind of data entry/removing are we doing (adding to 1st spot, kicking out last)
+what should routeInit be doing? Thinking net init should call routeInit
 
-Do we need another daemon in addition to arpDaemon to do the 3 tries?
-
-what is the ' file in include
+where does routenexthop come in

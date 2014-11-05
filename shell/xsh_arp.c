@@ -40,6 +40,7 @@ command xsh_arp(int nargs, char *args[]){
 			if(existsInTable(ipAddress) == TRUE){
 				return OK;
 			}else{
+				printf("Wut\n");
 				return SYSERR;
 			}
 			
@@ -88,9 +89,10 @@ void printUsage(char *prgrm){
 
 /*
  * takes an ip address and returns TRUE if it exists in the arp table
+ * will try to arp resolve the ip address if it is not in table
  */
 bool existsInTable(uchar ipAddr[]){
-	printf("Checking if IP Address exists in table.\n");
+	//printf("Checking if IP Address exists in table.\n");
 	
 	//uchar pointers to pass into arpResolve	
 	uchar* ip;
@@ -99,8 +101,8 @@ bool existsInTable(uchar ipAddr[]){
 	//printf("Arpnum = %d", arptab.arpnum);
 	//check if ip is in the table
 	if(isInTable(ipAddr) == -1){
-		printf("IP address not in table\n");
-		printf("Attempting to resolve requested mapping...\n");
+		//printf("IP address not in table\n");
+		//printf("Attempting to resolve requested mapping...\n");
 		
 		ip = (uchar*)&arptab.arps[arptab.arpnum].ipAddress;
 		mac = (uchar*)&arptab.arps[arptab.arpnum].macAddress;
@@ -113,28 +115,28 @@ bool existsInTable(uchar ipAddr[]){
 
 		arptab.arps[arptab.arpnum].state = ARPENT_STATE_UNRESOLVED;		
 
-		printf("Modifying entry: %d\n", arptab.arpnum);
+		//printf("Modifying entry: %d\n", arptab.arpnum);
 
 		if(arpResolve(ip, mac) == OK){
-			printf("Mapping resolved\n");
+			//printf("Mapping resolved\n");
 			//setting state to resolved
 			
 			arptab.arps[arptab.arpnum].state = ARPENT_STATE_RESOLVED;
 			
 			return TRUE;
 		}else{
-			printf("Resolve failed.\n");
+			//printf("Resolve failed.\n");
 			//setting state to empty and reset counter
 			arptab.arps[arptab.arpnum].state = ARPENT_STATE_EMPTY;
 		}
 		return FALSE;
 	}else{
-		printf("IP Address found in arp table, returning true in existsInTable\n");
+		//printf("IP Address found in arp table, returning true in existsInTable\n");
 		return TRUE;
 	}
 	
 	//we should have returned true or false 
-	printf("Returning SYSERR in existsInTable function\n");
+	//printf("Returning SYSERR in existsInTable function\n");
 	return SYSERR;
 }
 
@@ -239,13 +241,13 @@ int isInTable(uchar ipAddr[]){
 		}
 
 		if(!mismatch){
-			printf("Returing true in isInTable IP: %d MAC: %d\n", arptab.arps[k].ipAddress, arptab.arps[k].macAddress);
+			//printf("Returing true in isInTable IP: %d MAC: %d\n", arptab.arps[k].ipAddress, arptab.arps[k].macAddress);
 			return k;
 		}
 		
 	}	
 	
-	printf("Returning SYSERR in isInTable(uchar ipAddr)\n");	
+	//printf("Returning SYSERR in isInTable(uchar ipAddr)\n");	
 	return -1;
 }
 
@@ -264,11 +266,11 @@ int getValidTableLocation(void){
 
 	for(c = 0; c < ARPENT_LEN; c++){
 		if(arptab.arps[c].age == 9){
-			printf("Returning %d in getValidTableLocation (age 9) \n");
+			//printf("Returning %d in getValidTableLocation (age 9) \n");
 			return c;
 		}
 	}
 
-	printf("Returning SYSERR in getValidTableLocation\n");
+	//printf("Returning SYSERR in getValidTableLocation\n");
 	return SYSERR;
 }

@@ -58,20 +58,24 @@ void sendPings(uchar ipAddr[], int numOfPings){
 	int drop = 0;
 	int temp;
 	//look up the index in the table with getEntry
-	int index = getEntry(ipAddr);
+	//int index = getEntry(ipAddr);
 	
-	if(index == -1){
-		printf("IP requested for Ping could not be resolved.\n");
-		return;
-	}	
 	int totalTime = clocktime;
 	int q = 0;
 	for(q = 0; q < numOfPings; q++){
 		//send one packet then wait on reply (comes from netdaemon)
 		printf("");
 		time = clocktime;
-		sendEchoRequestPacket(arptab.arps[index].macAddress, arptab.arps[index].ipAddress, currpid, (numOfPings-q-1));
-			
+
+		int routeIndex = routeNextHop(ipAddr);
+
+		if(routeIndex == -1){
+			sendEchoRequestPacket(arptab.arps[getEntry(ipAddr)].macAddress , ipAddr, currpid, (numOfPings-q-1));
+		}else if(routeIndex == -2){
+			printf("No route avaliable\n");
+		}else{
+			sendEchoRequestPacket(arptab.arps[getEntry(routeTab.routes[routeIndex].gateway)].macAddress , ipAddr, currpid, (numOfPings-q-1));
+		}
 		//wait on the response from net daemon
 		message msg = recvtime(1500);
 		if(msg < 0){
@@ -116,12 +120,12 @@ int getEntry(uchar ipAddr[]){
 					
 				//no mismatch was found
 				if(!mismatch){
-					printf("getMac returning: ");
-					int w = 0;
+					//printf("getMac returning: ");
+					/*int w = 0;
 					for(w = 0; w < ETH_ADDR_LEN; w++){
 						printf("%02X ", arptab.arps[a].macAddress[w]);
 					}
-					printf("\n");
+					printf("\n");*/
 					return a;
 
 				//mismatch is true, next entry	

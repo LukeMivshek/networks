@@ -363,7 +363,7 @@ struct routeTable /*table for route entries*/
 {
 	struct routeEntry routes[ROUTEENT_LEN];
 	semaphore routeSem;
-	int routeNum;	
+	int routeNum;
 };
 
 extern struct routeTable routeTab;
@@ -381,8 +381,10 @@ void arpDaemon(void);
 //icmpDaemon prototype
 void icmpDaemon(void);
 
+void gatewayCheck(void);
+
 //route prototypes
-void routeAdd(uchar*, uchar*, uchar*, int);
+void routeAdd(uchar*, int, uchar*, int);
 void routeInit(void);
 int routeNextHop(uchar[]);
 

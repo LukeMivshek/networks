@@ -2,7 +2,7 @@
 
 int parseIP(char*, uchar[]);
 int parse(char[]);
-uchar* parseCIDR_Mask(char*);
+int parseCIDR_Mask(char*);
 void displayRoutingTable(void);
 void deleteRoutingTableEntry(uchar[]);
 void addRoutingTableEntry(uchar[]);
@@ -12,7 +12,7 @@ uchar* destIpPtr;
 uchar* gtwyIpPtr;
 char* destArgPtr;
 char* gtwyArgPtr;
-
+void printDecimalIP(uchar[]);
 
 command xsh_route(int nargs, char *args[]){
 	bzero(destIP, IP_ADDR_LEN);
@@ -25,7 +25,7 @@ command xsh_route(int nargs, char *args[]){
 		printf("Routing Table\n");
 		displayRoutingTable();
 	}else if(nargs == 5 && (!strcmp(args[1], "add"))){
-		printf("Add Routing entry\n");
+		printf("Adding Routing entry\n");
 		destArgPtr = args[2];
 		gtwyArgPtr = args[3];
 		if(parseIP(destArgPtr, destIpPtr) && parseIP(gtwyArgPtr, gtwyIpPtr)){
@@ -34,7 +34,10 @@ command xsh_route(int nargs, char *args[]){
 			
 		}
 	}else if(nargs == 3 && (!strcmp(args[1], "delete"))){
-		printf("Delete Routing entry\n");
+		printf("Deleting Routing entry\n");
+		destArgPtr = args[2];
+		parseIP(destArgPtr, destIpPtr);
+		deleteRoutingTableEntry(destIP);
 	}else{
 		printf("Invalid Routing input\n");
 	}
@@ -47,41 +50,66 @@ command xsh_route(int nargs, char *args[]){
  */
 void displayRoutingTable(){
 	int v = 0; 
-	printf("Entry   Destination     Netmask         Gateway       Interface\n");
-	for(v = 0; v < ROUTEENT_LEN; v++){
-		printf("%d       ", v);
-		int q = 0;
-		for(q = 0; q < IP_ADDR_LEN; q++){
-			printf("%02X ", routeTab.routes[v].destNetwork[q]);
+	printf("%-8s%-15s\t%-15s\t%-15s\t%-15s\n", "Entry", "Destination", "Netmask", "Gateway", "Interface");
+	while(routeTab.routes[v].interface != -1){
+		if(v == ROUTEENT_LEN){
+			break;
 		}
-		printf("    ");
-		for(q = 0; q < IP_ADDR_LEN; q++){
-			printf("%02X ", routeTab.routes[v].netmask[q]);
-		}
-		printf("    ");
-		for(q = 0; q < IP_ADDR_LEN; q++){
-			printf("%02X ", routeTab.routes[v].gateway[q]);
-		}
-		printf("  ");
+
+		printf("%d\t", v);
+		printDecimalIP(routeTab.routes[v].destNetwork);
+		printf("\t");
+		printDecimalIP(routeTab.routes[v].netmask);
+		printf("\t");
+		printDecimalIP(routeTab.routes[v].gateway);
+		printf("\t");
 		
 		if(routeTab.routes[v].interface == 2){
 			printf("ETH0");
-		}else if(routeTab.routes[v].interface == -1){
+		}else{
+			printf("Unknown");
 		}
-
-		//else if(routeTab.routes[v].interface == 1){
-		//	printf("ETH1");
-		//}
-		else{
-			printf("UNKNOWN");
-		}
-
+		//next entry
 		printf("\n");
+
+		v = v +1;
 	}
 }
 
-void deleteRoutingTableEntry(uchar destNetwork[])
-{
-	
-}
+/*
+ * takes a destination IP address and clears the matching entry if it exists
+ */
+void deleteRoutingTableEntry(uchar destNetwork[]){
+	int w = 0; 
 
+	//we wont ever delete the default entry here
+	for(w = 0; w < ROUTEENT_LEN-1; w++){
+		
+		bool mismatch = FALSE;
+
+		int u = 0;
+		for(u = 0; u < IP_ADDR_LEN; u++){
+			if(destNetwork[u] != routeTab.routes[w].destNetwork[u]){
+				mismatch = TRUE;
+				break;
+			}
+		}
+
+		if(!mismatch){
+			//clear all the feilds of the entry, set interface back to -1 (free)
+			int c = 0;
+			for(c = 0; c < IP_ADDR_LEN; c++){
+				routeTab.routes[w].destNetwork[c] = 0x00;
+				routeTab.routes[w].netmask[c] = 0x00;
+				routeTab.routes[w].gateway[c] = 0x00;
+			}
+			routeTab.routes[w].interface = -1;
+
+			printf("Entry %d cleared from routing table\n", w);
+			return;
+		}
+	}
+	
+	printf("Destination network not found in routing table\n");
+	return;
+}

@@ -139,4 +139,3 @@ void dhcpClient(int packet2){
 		printf("Writing dhcp reply packet.\n");
 	}
 }
-

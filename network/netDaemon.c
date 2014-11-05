@@ -2,7 +2,9 @@
  * edited by Luke Mivshek and Casey French
  */
 #include <xinu.h>
-
+void setLocalRoutingDest(void);
+void printDecimalIP(uchar[]);
+void setDefaultRouteEntry(uchar[]);
 int Get_Ethergram_Type(uchar[]);
 void printPacket(uchar[], int);
 bool Is_Our_Offer(int,int,int,int);
@@ -16,7 +18,7 @@ void setMyIP(uchar[]);
 void printNumberedPacket(uchar packet[], int length);
 void Print_Netstat(uchar[]);
 void Print_Entire_Packet(uchar[]);
-
+int getEntry(uchar[]);
 bool ipSet = FALSE;
 bool snoopActive;
 
@@ -31,6 +33,7 @@ void netDaemon(int ETH_0){
 	int dhcp_pid;
 	int arp_pid;
 	int icmp_pid;
+	int gateway_pid;
 
 	//spawn dhcpClient and get our own IP
 	ready(dhcp_pid = create((void *)dhcpClient, INITSTK, 40, "dhcp_client", 1,ETH_0), 0);
@@ -43,7 +46,7 @@ void netDaemon(int ETH_0){
 	ready(icmp_pid = create((void *)icmpDaemon,INITSTK, 41, "icmp_daemon", 0), 0);
 	//send dhcp discover, method in packet.c
 	sendDiscoverPacket();
-	
+
 	ipSet = FALSE;
 
 	while(1){
@@ -57,7 +60,6 @@ void netDaemon(int ETH_0){
 		if(snoopActive){
 			Print_Entire_Packet(netD_pkt.payload);
 		}			
-
 
 		/* 
  		 * Handling ARP Packets 
@@ -143,6 +145,9 @@ void netDaemon(int ETH_0){
 				//Copy current packet to amlloced space
 				memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
 
+				//set default route
+				setDefaultRouteEntry(netD_pkt.payload);
+
 				//send the arp daemon the packet start
 				send(dhcp_pid, (int)pktPointer);
 
@@ -151,19 +156,81 @@ void netDaemon(int ETH_0){
 			if(Is_Our_ACK(packet_tag,packet_length, packet_value, packet_transactionID) ==TRUE){
 				printf("Found Our ACK Packet\n");
 				setMyIP(netD_pkt.payload);
+				
+				
+				setLocalRoutingDest();
 				Print_Netstat(netD_pkt.payload);	
+				ready(gateway_pid = create((void *)gatewayCheck, INITSTK, 40, "gateway_check", 1,ETH_0), 0);
+			}
+			bool nope = FALSE;
+			uchar tempIP[IP_ADDR_LEN];
+			tempIP[0] = netD_pkt.payload[26];
+			tempIP[1] = netD_pkt.payload[27];
+			tempIP[2] = netD_pkt.payload[28];
+			tempIP[3] = netD_pkt.payload[29];
+			int routeIndex = routeNextHop(tempIP);
+			int k;
+			for(k = 0; k < IP_ADDR_LEN; k++){
+				if(myIP[0] != tempIP[0]){
+					nope = TRUE;	
+				}
+			}
+			if(routeIndex >= 0 && !nope){
+				memcpy(& netD_pkt.payload[0], &arptab.arps[getEntry(tempIP)].macAddress, ETH_ADDR_LEN);
+				write(ETH0, netD_pkt.payload, PKTSZ);
 			}
 			
-		}
-
+		}	
 		bzero(netD_pkt.payload, PKTSZ);
 	}
 }
 
+void setLocalRoutingDest(){
+	
+	int mask = 0xFFFFFFFF << (sizeof(int)*8 - 24);
+	
+	routeTab.routes[1].netmask[0] = (uchar)((mask >> 24) & 0xFF);
+	routeTab.routes[1].netmask[1] = (uchar)((mask >> 16) & 0xFF);
+	routeTab.routes[1].netmask[2] = (uchar)((mask >> 8) & 0xFF);
+	routeTab.routes[1].netmask[3] = (uchar)((mask >> 0) & 0xFF);
+	
+	routeTab.routes[1].destNetwork[0] = routeTab.routes[1].netmask[0] & myIP[0];
+	routeTab.routes[1].destNetwork[1] = routeTab.routes[1].netmask[1] & myIP[1];
+	routeTab.routes[1].destNetwork[2] = routeTab.routes[1].netmask[2] & myIP[2];
 
-// -- Start helper functions --
+	return;
+	/*
+	printf("resolving!!!: ");
+	printDecimalIP(routeTab.routes[0].gateway);
+	
+	if(&existsInTable(routeTab.routes[0].gateway)){
+		printf("resolved default gateway mac\n");
+	}else{
+		printf("unable to resolve default gateway mac\n");
+	}
+	*/
+	
+}
 
+/*
+ * set the default route from the offer packet
+ */
+void setDefaultRouteEntry(uchar packet[]){
+	/*
+	int g = 300;
+	while(g < 322){
+		printf("byte %d: %02X\n",g, packet[g]);
+		g++;
+	}
+	*/
+	
+	//copy option feild over to our table
+	memcpy(&routeTab.routes[0].gateway, &packet[318], IP_ADDR_LEN);
+	
+	routeTab.routes[1].interface = 2;
 
+	//memcpy(&routeTab.routes[1].destNetwork, &packet[ ],IP_ADDR_LEN);		
+}
 
 /*
  * This function returns the type of ethergram
@@ -195,10 +262,12 @@ void Print_Netstat(uchar packet[]){
 	printf("Hop count:                %02X\n", packet[45]);  
 	printf("Transaction ID:           %02X\n", (packet[46]+packet[47]+packet[48]+packet[49]));
 	printf("Time Elapsed:             %02X%02X\n", packet[50], packet[51]);
-	printf("Client IP:                %02X.%02X.%02X.%02X\n", packet[54], packet[55], packet[56], packet[57]);
-	printf("Your IP:                  %02X.%02X.%02X.%02X\n", packet[58], packet[59], packet[60], packet[61]);
-	printf("Server IP:                %02X.%02X.%02X.%02X\n", packet[62], packet[63], packet[64], packet[65]);
-	printf("Router IP:                %02X.%02X.%02X.%02X\n", packet[66], packet[67], packet[68], packet[69]);
+	printf("Client IP:                %02X %02X %02X %02X\n", packet[54], packet[55], packet[56], packet[57]);
+	printf("Your IP:                  %02X %02X %02X %02X\n", packet[58], packet[59], packet[60], packet[61]);
+	printf("Server IP:                %02X %02X %02X %02X\n", packet[62], packet[63], packet[64], packet[65]);
+	printf("Router IP:                ");
+	printDecimalIP(routeTab.routes[0].gateway);
+	printf("\n");
 	printf("-------------------------------------\n");
     	
 }
@@ -319,5 +388,12 @@ bool Is_Our_Echo_Reply(uchar packet[]){
  * given a packet, chech that it is an Echo request directed at us
  */
 bool Is_Echo_Request(uchar packet[]){
-	return SYSERR;
+		int x;
+		for(x = 0; x < IP_ADDR_LEN; x++){
+			if(packet[30 + x] != myIP[x]){
+				printf("My IP mismatch packet destination address, returning false\n");
+				return FALSE;
+			}
+		}
+		return TRUE;
 }
