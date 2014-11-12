@@ -18,9 +18,9 @@ $(VERBOSE).SILENT:
 
 # SHELL
 SHLL = xsh_test.c shell-commands.c xsh_dhcpsnoop.c xsh_dhcp.c xsh_arp.c xsh_ping.c xsh_route.c
-NET  = netInit.c netDaemon.c dhcpClient.c packet.c icmpDaemon.c netFunctions.c gatewayCheck.c
+NET  = netInit.c netDaemon.c dhcpClient.c packet.c icmpDaemon.c netFunctions.c gatewayCheck.c ipWrite.c netWrite.c
 NETARP = arpDaemon.c
-NETROUTE = routeAdd.c routeInit.c routeNextHop.c
+NETROUTE = routeAdd.c routeInit.c routeNextHop.c routeForward.c
 
 SRC =	${SHLL:%.c=../shell/%.c} \
 		${NET:%.c=../network/%.c} \

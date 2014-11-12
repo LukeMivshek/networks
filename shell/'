@@ -20,11 +20,14 @@ command xsh_ping(int nargs, char *args[]){
 
 	//setting the default value of pings
 	int numOfPings = 10;
-	int size = MIN_ECHO_SIZE;
+	int size = 60;
+
+	printf("here\n");
 
 	//two args
 	if(nargs == 2){
 		ipPtr = args[1];
+		
 		if(!parseIP(ipPtr, pingIPAddress)){
 			printf("Error parsing IP\n");
 			return SYSERR;
@@ -44,7 +47,7 @@ command xsh_ping(int nargs, char *args[]){
 		numOfPings = parse(args[2]);
 
 		//size is default
-		sendPings(pingIPAddress, numOfPings, size);	
+		//sendPings(pingIPAddress, numOfPings, size);	
 
 	}else if(nargs == 4){
 		ipPtr = args[1];
@@ -57,11 +60,13 @@ command xsh_ping(int nargs, char *args[]){
 		size = parse(args[3]);
 		
 		//both number of pings and size have been set from user
-		sendPings(pingIPAddress, numOfPings, size);
+		//sendPings(pingIPAddress, numOfPings, size);
+		
 	}else{
 		printf("Incorrect number of args\n");
 	}
 	
+	printf("Returning OK in xsh_ping (shell)\n");
 	return OK;
 }
 
@@ -90,17 +95,15 @@ void sendPings(uchar ipAddr[], int numOfPings, int size){
 
 		int routeIndex = routeNextHop(ipAddr);
 
-		//sendEchoRequestPacket(arptab.arps[getEntry(ipAddr)].macAddress , ipAddr, currpid, (numOfPings-q-1), size);
-		
 		if(routeIndex == -1){
-			sendEchoRequestPacket(arptab.arps[getEntry(ipAddr)].macAddress , ipAddr, currpid, (numOfPings-q-1), size);
+			//sendEchoRequestPacket(arptab.arps[getEntry(ipAddr)].macAddress , ipAddr, currpid, (numOfPings-q-1), size);
 		}else if(routeIndex == -2){
 			printf("No route avaliable\n");
 		}else{
-			sendEchoRequestPacket(arptab.arps[getEntry(routeTab.routes[routeIndex].gateway)].macAddress , ipAddr, currpid, (numOfPings-q-1),size);
+			//sendEchoRequestPacket(arptab.arps[getEntry(routeTab.routes[routeIndex].gateway)].macAddress , ipAddr, currpid, (numOfPings-q-1),size);
 		}
 		//wait on the response from net daemon
-		message msg = recvtime(2000);
+		message msg = recvtime(1500);
 		if(msg < 0){
 			temp = clocktime - time;
 			printf("No response, time: %dms\n", temp);

@@ -10,6 +10,7 @@ void sendDiscoverPacket(void);
 void sendArpReplyPacket(uchar[]);
 void sendEchoRequestPacket(uchar[], uchar[], int, int, int);
 void sendEchoReplyPacket(uchar[]);
+void routeForward(uchar[], uchar[]);
 void printNumberedPacket(uchar[], int);
 
 /* DHCP */ 
@@ -300,12 +301,6 @@ void sendEchoRequestPacket(uchar MAC[], uchar IP[], int pid, int pingsRemaining,
 	ping_icmpgram->seq = pingsRemaining;
 	ping_icmpgram->chksum = 0;
 	ping_icmpgram->chksum = checksum(ping_icmpgram, size);
-	
-	// If size of packet is smaller than the minimum ping packet size it beoms the minimum size
-	if(size < MIN_ECHO_SIZE){
-		size = MIN_ECHO_SIZE;
-	}
-	
 	/*
 	int u;
 	for(u = 0; u < 18; u++){
@@ -371,4 +366,25 @@ void sendEchoReplyPacket(uchar packet[]){
 	return;
 }
 
+void routeForward(uchar packet[], int routeIndex){
 
+	if(routeIndex == -1){
+		printf("routing packet of zeros\n");
+	ready(create((void*)routeForward, INITSTK, 40, "routeFwd_negativeOne", 2, netD_pkt.payload, arptab.arps[getEntry(fwd_ipgram->dst)].macAddress), 0);
+	}else if(routeIndex == -2){
+		printf("Cannot forward packet, no valid route avaliable\n");
+	}else{
+		printf("routing packet\n");
+		ready(create((void*)routeForward, INITSTK, 40, "routeFwd_negativeOne", 2, netD_pkt.payload, arptab.arps[getEntry(routeTab.routes[routeIndex].gateway)].macAddress), 0);
+	}
+
+	struct  ethergram *route_ethergram = (struct ethergram*)packet;
+	int y;
+	for(y = 0; y < ETH_ADDR_LEN; y++){
+		route_ethergram->dst[y] = mac[y];
+	}
+
+	write(ETH0, packet, PKTSZ);
+
+
+}

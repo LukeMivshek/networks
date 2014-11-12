@@ -139,6 +139,8 @@ struct ipgram                /**< IPv4 Packet Variables                 */
 #define ICMP_TIMESTMP_REPLY	0x14
 #define ICMP_QUERY_CODE		0x00
 
+#define MIN_ECHO_SIZE		78
+
 /*
  * ICMP QUERY HEADER
  *
@@ -240,7 +242,7 @@ struct dhcpgram                 /**< DHCP Packet Variables          */
 	uchar  hwaddr[DHCP_HWFIELD_LEN];  /**< Client hardware address  */
 	uchar  servname[DHCP_SERVNAME_LEN];  /**< Server name           */
 	uchar  bootfile[DHCP_BOOTFILE_LEN];  /**< Bootfile name         */
-    uchar  opts[1];            /**< DHCP Options field              */
+	uchar  opts[1];            /**< DHCP Options field              */
 };
 
 #define DHCP_OPCODE_REQUEST 1
@@ -383,10 +385,14 @@ void icmpDaemon(void);
 
 void gatewayCheck(void);
 
+void ipWrite(void *, int, uchar *, uchar, uchar[]);
+void netWrite(uchar[],uchar[],int,ushort);
+
 //route prototypes
 void routeAdd(uchar*, int, uchar*, int);
 void routeInit(void);
 int routeNextHop(uchar[]);
+void routeForward(uchar[],uchar[]);
 
 //my ip address
 extern uchar myIP[IP_ADDR_LEN];
@@ -398,7 +404,7 @@ extern bool ipSet;
 void sendDiscoverPacket(void);
 void sendArpResolvePacket(uchar*);
 void sendArpReply(uchar[]);
-void sendEchoRequestPacket(uchar[], uchar[], int, int);
+void sendEchoRequestPacket(uchar[], uchar[], int, int, int);
 void sendEchoReplyPacket(uchar[]);
 
 #endif /*_NET_H_*/

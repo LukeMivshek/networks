@@ -21,6 +21,11 @@ void Print_Entire_Packet(uchar[]);
 int getEntry(uchar[]);
 bool ipSet = FALSE;
 bool snoopActive;
+void routeForward(uchar[], uchar[]);
+
+
+struct ethergram *fwd_ethergram;
+struct ipgram *fwd_ipgram;
 
 /**
  * reads from ethernet device and decides what to do with packets.
@@ -77,8 +82,6 @@ void netDaemon(int ETH_0){
 			
 			//send the arp daemon the packet start
 			send(arp_pid, (int)pktPointer);
-
-			sleep(200);
 		}
 		
 		/* 
@@ -96,9 +99,10 @@ void netDaemon(int ETH_0){
 			 *
 			 */ 
  			if(netD_pkt.payload[23] == IPv4_PROTO_ICMP){
-
+				printf("kittens\n");
+				//printNumberedPacket(netD_pkt.payload, );
 				if(Is_Our_Echo_Reply(netD_pkt.payload)){
-				
+					
 					//message pass to the shell, using the pid from the packet
 					pktPointer = malloc(sizeof(struct packet));
 					
@@ -115,8 +119,6 @@ void netDaemon(int ETH_0){
 					memcpy(pktPointer, &netD_pkt, sizeof(struct packet));
 					//send to icmp daemon
 					send(icmp_pid, (int)pktPointer);
-				}else{
-					printf("Incoming ICMP is neither request or reply\n");
 				}
 			}
 
@@ -162,25 +164,43 @@ void netDaemon(int ETH_0){
 				Print_Netstat(netD_pkt.payload);	
 				ready(gateway_pid = create((void *)gatewayCheck, INITSTK, 40, "gateway_check", 1,ETH_0), 0);
 			}
-			bool nope = FALSE;
-			uchar tempIP[IP_ADDR_LEN];
-			tempIP[0] = netD_pkt.payload[26];
-			tempIP[1] = netD_pkt.payload[27];
-			tempIP[2] = netD_pkt.payload[28];
-			tempIP[3] = netD_pkt.payload[29];
-			int routeIndex = routeNextHop(tempIP);
+		}
+			bool myIpCheck = TRUE;
+			bool zerosCheck = TRUE;
+			bool myMACCheck = TRUE;
+			uchar myMac[ETH_ADDR_LEN];
+			bzero(myMac, ETH_ADDR_LEN);
+			struct ethergram *fwd_ethergram = (struct ethergram*)netD_pkt.payload;
+			struct ipgram *fwd_ipgram = (struct ipgram*)fwd_ethergram->data;
+			int routeIndex = routeNextHop(fwd_ipgram->dst);
 			int k;
 			for(k = 0; k < IP_ADDR_LEN; k++){
-				if(myIP[0] != tempIP[0]){
-					nope = TRUE;	
+				if(myIP[k] != fwd_ipgram->dst[k]){
+					myIpCheck = FALSE;	
+				}
+				if(fwd_ipgram->dst[k] != 0){
+					zerosCheck = FALSE;
 				}
 			}
-			if(routeIndex >= 0 && !nope){
-				memcpy(& netD_pkt.payload[0], &arptab.arps[getEntry(tempIP)].macAddress, ETH_ADDR_LEN);
-				write(ETH0, netD_pkt.payload, PKTSZ);
+			control(ETH0, ETH_CTRL_GET_MAC, (ulong)myMac, 0);
+			int p;
+			for(p = 0; p < ETH_ADDR_LEN; p++){
+				if(myMac[p] != fwd_ethergram->dst[p]){
+					myMACCheck = FALSE;
+				}
+			}
+			if(!myIpCheck && !zerosCheck && myMACCheck){
+				if(routeIndex == -1){
+					printf("routing packet of zeros\n");
+					ready(create((void*)routeForward, INITSTK, 40, "routeFwd_negativeOne", 2, netD_pkt.payload, fwd_ipgram->dst), 0);
+				}else if(routeIndex == -2){
+					printf("Cannot forward packet, no valid route avaliable\n");
+				}else{
+					printf("routing packet\n");
+					ready(create((void*)routeForward, INITSTK, 40, "routeFwd_negativeOne", 2, netD_pkt.payload, routeTab.routes[routeIndex].gateway), 0);
+				}
 			}
 			
-		}	
 		bzero(netD_pkt.payload, PKTSZ);
 	}
 }
